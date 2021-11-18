@@ -1,0 +1,78 @@
+/* Newpark Base CSS */ 
+
+/* Type */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Colours */
+#main_nav > ul > li.nav-item > a {
+    color: #072660;
+}
+
+#main_nav > ul > li.nav-item > a:hover,
+#main_nav > ul > li.nav-item > a:focus {
+    font-weight: 600;
+}
+
+#main_nav > ul > li.nav-item > a:active {
+    text-decoration: underline;
+}
+
+.bg-nav {
+    background-color: #fafafa;
+}
+
+/* Nav */
+.navbar {
+    padding: 1rem !important;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.navbar-toggler-icon {
+    background-image: url("/static/svg/menu-icon.svg") !important;
+    width: 2em;
+    height: 2em;
+}
+
+button.navbar-toggler {
+    border: none;
+}
+
+.navbar .megamenu { 
+    padding: 1rem; 
+}
+
+.dropdown-menu .megamenu .show {
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+}
+
+  /* Desktop */
+  @media all and (min-width: 992px) {
+  
+    .navbar .has-megamenu {
+        position: static!important;
+    }
+    .navbar .megamenu {
+        left: 0; 
+        right: 0; 
+        width: 100%; 
+        margin-top: 0;
+    }
+  
+  }	
+  
+  /* Mobile */
+  @media(max-width: 991px) {
+    .navbar.fixed-top .navbar-collapse, 
+    .navbar.sticky-top .navbar-collapse {
+        overflow-y: auto;
+        max-height: 90vh;
+        margin-top: 10px;
+    }
+  }
