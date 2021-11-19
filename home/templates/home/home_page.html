@@ -10,15 +10,18 @@
 {% endblock extra_css %}
 
 {% block content %}
-
-{% image page.aboutcover original %}
-<h1>{{ page.aboutheading }}</h1>
-
-<div class="short_description">
-    {{ page.aboutbody|richtext }}
-</div>
-
-<p><a href="{{ page.about_page }}">About</a></p>
-
-
+<main>
+<div class="about-section">
+    {% image page.aboutcover original as tmp_photo %}
+    <div class="about-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.7)), url({{ tmp_photo.url }}) center center;">
+    </div>
+    <div class="about-content-container content-container">
+        <h1>{{ page.aboutheading }}</h1>
+        <div class="section-text-content">
+            {{ page.aboutbody|richtext }}
+        </div>
+        <a class="btn btn-navy btn-lg btn-block" href="{{ page.about_page }}">More About Newpark</a>
+    </div>
+  </div>
+</main>
 {% endblock content %}

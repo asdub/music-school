@@ -7,6 +7,37 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+/* Buttons */
+.btn-navy {
+    color: #fff !important;
+    background-color: #072660 !important;
+    border-color: #072660 !important;
+    width: 100%;
+}
+
+.btn {
+    transition: all 0.2s ease-in-out !important;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* Content Padding/ Margins & Width Limits */
+.content-container {
+    padding: 1rem 2rem;
+}
+
+h1 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.navbar >.container, 
+.navbar >.container-fluid {
+    max-width: 1400px;
+}
+
 /* Colours */
 #main_nav > ul > li.nav-item > a {
     color: #072660;
@@ -28,6 +59,8 @@ body {
 /* Nav */
 .navbar {
     padding: 1rem !important;
+    min-height: 82px;
+    max-height: 82px;
 }
 
 .navbar-collapse {

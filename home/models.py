@@ -23,7 +23,8 @@ class HomePage(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
+        verbose_name='About Button Link'
     )
     search_fields = Page.search_fields + [
         index.SearchField('aboutheading'),
@@ -32,8 +33,8 @@ class HomePage(Page):
 
     content_panels = [
         FieldPanel('title'),
-        ImageChooserPanel('aboutcover', heading='Cover Image',),
-        FieldPanel('aboutheading', heading='Section Heading',),
-        FieldPanel('aboutbody', classname="full"),
+        ImageChooserPanel('aboutcover', heading='About Cover Image',),
+        FieldPanel('aboutheading', heading='About Section Heading',),
+        FieldPanel('aboutbody', heading='About Content', classname='full'),
         PageChooserPanel('about_page'),
     ]
