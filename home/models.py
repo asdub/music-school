@@ -16,7 +16,15 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    musiccover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     aboutheading = models.CharField(max_length=250, null=True)
+    musicheading = models.CharField(max_length=250, null=True)
     aboutbody = RichTextField(blank=True)
     about_page = models.ForeignKey(
         'wagtailcore.Page',
@@ -25,6 +33,14 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+',
         verbose_name='About Button Link'
+    )
+    music_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Music Button Link'
     )
     search_fields = Page.search_fields + [
         index.SearchField('aboutheading'),
@@ -37,4 +53,7 @@ class HomePage(Page):
         FieldPanel('aboutheading', heading='About Section Heading',),
         FieldPanel('aboutbody', heading='About Content', classname='full'),
         PageChooserPanel('about_page'),
+        ImageChooserPanel('musiccover', heading='Music Cover Image',),
+        FieldPanel('musicheading', heading='Music Section Heading',),
+        PageChooserPanel('music_page'),
     ]

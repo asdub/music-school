@@ -11,17 +11,26 @@
 
 {% block content %}
 <main>
-<div class="about-section">
-    {% image page.aboutcover original as tmp_photo %}
-    <div class="about-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.7)), url({{ tmp_photo.url }}) center center;">
-    </div>
-    <div class="about-content-container content-container">
-        <h1>{{ page.aboutheading }}</h1>
-        <div class="section-text-content">
-            {{ page.aboutbody|richtext }}
+    <div class="about-section">
+        {% image page.aboutcover original as about_photo %}
+        <div class="about-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.7)), url({{ about_photo.url }}) center center;">
         </div>
-        <a class="btn btn-navy btn-lg btn-block" href="{{ page.about_page }}">More About Newpark</a>
+        <div class="about-content-container content-container">
+            <h1>{{ page.aboutheading }}</h1>
+            <div class="section-text-content">
+                {{ page.aboutbody|richtext }}
+            </div>
+            <a class="btn btn-navy btn-lg btn-block" href="{{ page.about_page }}">More About Newpark <i class="fas fa-chevron-right"></i></a>
+        </div>
     </div>
-  </div>
+    <div class="music-section">
+        {% image page.musiccover original as music_photo %}
+        <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3)), url({{ music_photo.url }}) center center;">
+            <div class="heading-container">
+                <h1>{{ page.musicheading }}</h1>
+            </div>
+            <a class="btn btn-navy btn-lg btn-block" href="{{ page.music_page }}">Explore Music at Newpark <i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
 </main>
 {% endblock content %}

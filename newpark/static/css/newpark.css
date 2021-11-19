@@ -7,6 +7,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.fas {
+    font-size: 80%;
+}
+
 /* Buttons */
 .btn-navy {
     color: #fff !important;
