@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-about{% endblock %}
+
+{% block content %}
+    {% image page.cover fill-80x80 %}
+    <h1>{{ page.title }}</h1>
+
+    <div class="short_description">{{ page.heading }}</div>
+
+    {{ page.body|richtext }}
+
+    <p><a href="{{ page.get_parent.url }}">Retrun to About</a></p>
+
+{% endblock %}
