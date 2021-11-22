@@ -12,6 +12,10 @@ body {
 }
 
 /* Buttons */
+a:link {
+    text-decoration: none;
+}
+
 .btn-navy {
     color: #fff !important;
     background-color: #072660 !important;
@@ -60,11 +64,17 @@ h1 {
     background-color: #fafafa;
 }
 
+/* Box Shadows */
+.box-shadow {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
 /* Nav */
 .navbar {
     padding: 1rem !important;
     min-height: 82px;
     max-height: 82px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 
 .navbar-collapse {
@@ -89,6 +99,7 @@ button.navbar-toggler {
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
 }
 
+
   /* Desktop */
   @media all and (min-width: 992px) {
   
@@ -111,5 +122,20 @@ button.navbar-toggler {
         overflow-y: auto;
         max-height: 90vh;
         margin-top: 10px;
+    }
+
+    #main_nav {
+        background: linear-gradient( rgb(6, 30, 75, 0.96), rgba(7, 38, 96, 0.96));
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 1rem;
+        border-radius: 3px;
+    }
+
+    #main_nav > ul > li.nav-item > a {
+        color: white;
+    }
+
+    .navbar-nav {
+        align-items: flex-end;
     }
   }

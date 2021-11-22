@@ -11,7 +11,7 @@
 
 {% block content %}
 <main>
-    <div class="about-section">
+    <div class="about-section box-shadow">
         {% image page.aboutcover original as about_photo %}
         <div class="about-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.7)), url({{ about_photo.url }}) center center;">
         </div>
@@ -23,14 +23,17 @@
             <a class="btn btn-navy btn-lg btn-block" href="{{ page.about_page }}">More About Newpark <i class="fas fa-chevron-right"></i></a>
         </div>
     </div>
-    <div class="music-section">
+    <div class="music-section box-shadow">
         {% image page.musiccover original as music_photo %}
-        <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3)), url({{ music_photo.url }}) center center;">
-            <div class="heading-container">
-                <h1>{{ page.musicheading }}</h1>
+        <a href="{{ page.music_page }}">
+            <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3)), url({{ music_photo.url }}) center center;">
+                <div class="music-hero-overlay"></div>
+                    <div class="heading-container">
+                        <h1>{{ page.musicheading }}</h1>
+                    </div>
+                <span class="btn btn-navy btn-lg btn-block" href="{{ page.music_page }}">Explore Music at Newpark <i class="fas fa-chevron-right"></i></span>
             </div>
-            <a class="btn btn-navy btn-lg btn-block" href="{{ page.music_page }}">Explore Music at Newpark <i class="fas fa-chevron-right"></i></a>
-        </div>
+        </a>
     </div>
 </main>
 {% endblock content %}
