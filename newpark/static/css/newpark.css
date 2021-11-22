@@ -128,7 +128,7 @@ button.navbar-toggler {
         background: linear-gradient( rgb(6, 30, 75, 0.96), rgba(7, 38, 96, 0.96));
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         padding: 1rem;
-        border-radius: 3px;
+        border-radius: 5px;
     }
 
     #main_nav > ul > li.nav-item > a {

@@ -1,3 +1,10 @@
+/* Generic Settings */
+a:link {
+    color: rgba(7, 38, 96, 1);
+    text-decoration: none;
+}
+
+/* Home - Layout Main */
 main {
     position: relative;
     display: grid;
@@ -38,6 +45,7 @@ main {
     grid-area: content;
 }
 
+/* Home - Music Secion */
 .music-section {
     grid-area: music;
     margin: 1rem;
@@ -87,8 +95,50 @@ main {
     opacity: 1;
 }
 
+.heading-container-blk {
+    margin: 0 1rem;
+}
+
 .heading-container > h1 {
     color: white;
+}
+
+/* Home - Contect Secton */
+.contact-section {
+    grid-area: contact;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: "contactinfo map";
+    background: #fafafa;
+    margin: 1rem;
+    border-radius: 5px;
+}
+
+.contact-container {
+    grid-area: contactinfo;
+}
+
+.contact-item-container {
+    padding: 1rem;
+}
+
+.contact-item > span {
+    font-size: 90%;
+}
+
+.map-container {
+    grid-area: map;
+}
+
+iframe {
+    display: block;
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 5px;
+}
+
+.map-container-content {
+    padding: 0 1rem 1rem 1rem;
 }
 
 @media only screen and (min-width: 768px) { 
@@ -117,6 +167,10 @@ main {
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
     }
+    .contact-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media only screen and (min-width: 1200px) { 
@@ -131,5 +185,9 @@ main {
             "contact contact contact"
             "social social social"
             "footer footer footer";
+    }
+    .contact-section {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "contactinfo map map";
     }
 }

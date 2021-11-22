@@ -9,23 +9,16 @@ from wagtail.admin.edit_handlers import PageChooserPanel
 
 
 class HomePage(Page):
-    aboutcover = models.ForeignKey(
+    #About Section
+    about_cover = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    musiccover = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    aboutheading = models.CharField(max_length=250, null=True)
-    musicheading = models.CharField(max_length=250, null=True)
-    aboutbody = RichTextField(blank=True)
+    about_heading = models.CharField(max_length=250, null=True)
+    about_body = RichTextField(blank=True, null=True)
     about_page = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
@@ -34,6 +27,16 @@ class HomePage(Page):
         related_name='+',
         verbose_name='About Button Link'
     )
+
+    #Music Section
+    music_cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    music_heading = models.CharField(max_length=250, null=True)
     music_page = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
@@ -42,18 +45,34 @@ class HomePage(Page):
         related_name='+',
         verbose_name='Music Button Link'
     )
+
+    #Contact Section
+    contact_phone = models.CharField(max_length=100, null=True)
+    contact_email = models.CharField(max_length=100, null=True)
+    contact_address = RichTextField(blank=True, null=True)
+    googlemaps_embed = models.CharField(max_length=350, null=True)
+
+    # Search
     search_fields = Page.search_fields + [
-        index.SearchField('aboutheading'),
-        index.SearchField('aboutbody'),
+        index.SearchField('about_heading'),
+        index.SearchField('about_body'),
     ]
 
-    content_panels = [
+    #CMS Content Panels
+    content_panels = Page.content_panels + [
         FieldPanel('title'),
-        ImageChooserPanel('aboutcover', heading='About Cover Image',),
-        FieldPanel('aboutheading', heading='About Section Heading',),
-        FieldPanel('aboutbody', heading='About Content', classname='full'),
+        ImageChooserPanel('about_cover', heading='About Cover Image',),
+        FieldPanel('about_heading', heading='About Section Heading',),
+        FieldPanel('about_body', heading='About Content', classname='full'),
         PageChooserPanel('about_page'),
-        ImageChooserPanel('musiccover', heading='Music Cover Image',),
-        FieldPanel('musicheading', heading='Music Section Heading',),
+        ImageChooserPanel('music_cover', heading='Music Cover Image',),
+        FieldPanel('music_heading', heading='Music Section Heading',),
         PageChooserPanel('music_page'),
+        FieldPanel('contact_phone', heading='Contact Number'),
+        FieldPanel('contact_email', heading='Contact Email'),
+        FieldPanel('contact_address', heading='Contact Address'),
+        FieldPanel('googlemaps_embed', heading='Google Maps Embed Link')
     ]
+
+
+
