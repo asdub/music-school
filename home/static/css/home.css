@@ -138,7 +138,22 @@ iframe {
 }
 
 .map-container-content {
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem;
+}
+
+/* Contact Form */
+.contact-container > form > ul {
+    list-style: none;
+}
+
+.contact-container > form > ul > li > label {
+    display: none;
+}
+
+.contact-container > form > ul > li > input,
+.contact-container > form > ul > li > textarea {
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
 }
 
 @media only screen and (min-width: 768px) { 

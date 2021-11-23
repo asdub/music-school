@@ -40,21 +40,9 @@
             <div class="heading-container-blk">
                 <h1>Contact Us</h1>
             </div>
-            <div class="contact-item-container">
-                <div class="contact-item">
-                    <span>Phone:</span>
-                    <a href="tel:{{ page.contact_phone}}">{{ page.contact_phone}}</a>
-                </div>
-                <div class="contact-item">
-                    <span>Email:</span>
-                    <a href="mailto:{{ page.contact_email}}">{{ page.contact_email}}</a>
-                </div>
-                <br>
-                <div class="contact-item">
-                    <span>Address:</span>
-                    {{ page.contact_address|richtext }}
-                </div>
-            </div>
+            {% block contact_form %}
+                {% include "includes/contact_form.html" %}
+            {% endblock contact_form %}
         </div>
         <div class="map-container">
             <div class="map-container-content">

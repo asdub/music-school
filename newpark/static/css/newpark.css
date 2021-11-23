@@ -47,13 +47,27 @@ h1 {
 }
 
 /* Colours */
-#main_nav > ul > li.nav-item > a {
+#main_nav li a {
     color: #072660;
+    transition: all 0.2s ease-in-out;
 }
 
-#main_nav > ul > li.nav-item > a:hover,
-#main_nav > ul > li.nav-item > a:focus {
-    font-weight: 600;
+#main_nav li:not(:last-child) a:hover,
+#main_nav li:not(:last-child) a:focus {
+    transform: scale(1.1);
+}
+
+#main_nav li:not(:last-child) a:hover:after,
+#main_nav li:not(:last-child) a:focus:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    width: 20px;
+    margin: auto;
+    border-bottom:3px solid #072660;
+    border-radius: 10px;
 }
 
 #main_nav > ul > li.nav-item > a:active {

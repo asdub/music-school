@@ -6,6 +6,18 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.images.models import Image
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import PageChooserPanel
+from wagtail.contrib.settings.models import BaseSetting, register_setting
+
+
+@register_setting
+class MyCustomSettings(BaseSetting):
+    contact_form = models.ForeignKey(
+        'wagtailcore.Page', null=True, on_delete=models.SET_NULL)
+
+    panels = [
+        # note the page type declared within the pagechooserpanel
+        PageChooserPanel('contact_form', ['contact.ContactForm']),
+    ]
 
 
 class HomePage(Page):
@@ -60,7 +72,6 @@ class HomePage(Page):
 
     #CMS Content Panels
     content_panels = Page.content_panels + [
-        FieldPanel('title'),
         ImageChooserPanel('about_cover', heading='About Cover Image',),
         FieldPanel('about_heading', heading='About Section Heading',),
         FieldPanel('about_body', heading='About Content', classname='full'),
