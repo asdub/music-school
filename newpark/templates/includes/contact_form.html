@@ -3,16 +3,23 @@
 
 {% get_contact_form as contact_form %}
 <div class="form-container">
-    <p>{{ contact_form.intro }}</p>
+    {% if request.session.form_page_success %}
+    <p> Thanks for submitting the form!</p>
+    {% else %}
+    <p>{{ contact_form.page.intro|richtext }}</p>
     <form action="{% pageurl contact_form.page %}" method="POST" role="form">
         {% csrf_token %}
         <ul>
             {{ contact_form.form.as_ul }}
+            {% if page.pk != contact_form.pk %}
+            <input name="source-page-id" type="hidden" value="{{ page.pk }}">
+          {% endif %}
         </ul>
         <div class="btn-container">
             <button class="btn btn-navy btn-lg btn-block" type="submit">
-                Submit Form
+                Submit
             </button>
         </div>
     </form>
+    {% endif %}
 </div>

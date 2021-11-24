@@ -133,8 +133,10 @@ main {
 iframe {
     display: block;
     max-width: 100%;
-    max-height: 400px;
+    max-height: 450px;
     border-radius: 5px;
+    float: right;
+    padding-bottom: 0.5rem;
 }
 
 .map-container-content {
@@ -165,6 +167,10 @@ iframe {
     color: #5c5c5c;
     font-size: 90%;
     padding: 0.25rem;
+}
+
+.btn-container {
+    margin: 0 0 1rem 0;
 }
 
 @media only screen and (min-width: 768px) { 
