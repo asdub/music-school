@@ -62,6 +62,7 @@ class ContactForm(AbstractEmailForm):
 
         if source_page:
             request.session['form_page_success'] = True
+            request.session['source-page'] = source_page.url
             return redirect(source_page.url  + '#contact-us', permanent=False)
 
         # if no source_page is set, render default landing page
