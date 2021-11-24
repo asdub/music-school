@@ -49,8 +49,7 @@ class ContactForm(AbstractEmailForm):
         FieldPanel('thank_you_text', heading="Form submission/ thank you text"),
         MultiFieldPanel([
             FieldRowPanel([
-                FieldPanel('from_address', classname="col6"),
-                FieldPanel('to_address', classname="col6"),
+                FieldPanel('to_address'),
             ]),
             FieldPanel('subject'),
         ], heading="Email Settings"),
