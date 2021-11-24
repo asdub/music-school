@@ -11,6 +11,10 @@ body {
     font-size: 80%;
 }
 
+.text-link {
+    text-decoration: underline;
+}
+
 /* Buttons */
 a:link {
     text-decoration: none;

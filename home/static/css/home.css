@@ -116,6 +116,8 @@ main {
 
 .contact-container {
     grid-area: contactinfo;
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-item-container {
@@ -145,7 +147,15 @@ iframe {
 
 /* Contact Form */
 .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 0 2rem;
+    height: calc(100% - 8rem);
+}
+
+.form-container > p {
+    margin: 0.5rem 0 0 0;
 }
 
 .form-container > form > ul {
@@ -167,6 +177,12 @@ iframe {
     color: #5c5c5c;
     font-size: 90%;
     padding: 0.25rem;
+}
+
+.form-success {
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    padding: 1rem;
 }
 
 .btn-container {

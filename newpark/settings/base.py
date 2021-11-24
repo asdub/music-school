@@ -160,7 +160,7 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "newpark"
+WAGTAIL_SITE_NAME = "Newpark Academy of Music"
 
 # Search
 # https://docs.wagtail.io/en/stable/topics/search/backends.html
@@ -172,4 +172,15 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'https://newparkmusic.ie'
+
+#Email Settings 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_DEFAULT_FROM')
+EMAIL_TO = os.environ.get('EMAIL_TO')
