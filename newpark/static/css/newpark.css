@@ -117,10 +117,14 @@ button.navbar-toggler {
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
 }
 
+/* Footer */
+footer {
+    grid-area: footer;
+}
 
-  /* Desktop */
-  @media all and (min-width: 992px) {
-  
+
+/* Desktop */
+@media all and (min-width: 992px) {
     .navbar .has-megamenu {
         position: static!important;
     }
@@ -131,10 +135,10 @@ button.navbar-toggler {
         margin-top: 0;
     }
   
-  }	
+}	
   
-  /* Mobile */
-  @media(max-width: 991px) {
+/* Mobile */
+@media(max-width: 991px) {
     .navbar.fixed-top .navbar-collapse, 
     .navbar.sticky-top .navbar-collapse {
         overflow-y: auto;
@@ -156,4 +160,4 @@ button.navbar-toggler {
     .navbar-nav {
         align-items: flex-end;
     }
-  }
+}
