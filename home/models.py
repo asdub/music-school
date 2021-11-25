@@ -8,7 +8,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import PageChooserPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 
-
 @register_setting
 class MyCustomSettings(BaseSetting):
     contact_form = models.ForeignKey(

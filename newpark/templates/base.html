@@ -122,7 +122,52 @@
           
         {% endblock %}
         <footer class="footer" role="contentinfo">
-           
+            <div class="footer-container">
+                <div class="footer-contact white">
+                    <div class="contact-item-container">
+                        <div class="contact-item">
+                            <span><i class="fas fa-map-marker"></i> Address:</span>
+                            {{ page.contact_address|richtext }}
+                        </div>
+                        <div class="contact-item">
+                            <span><i class="fas fa-phone"></i></span>
+                            <a href="tel:{{ page.contact_phone}}">{{ page.contact_phone}}</a>
+                        </div>
+                        <div class="contact-item">
+                            <span><i class="far fa-envelope"></i></span>
+                            <a href="mailto:{{ page.contact_email}}">{{ page.contact_email}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="#"> About </a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"> Music </a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"> Enrol </a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"> Remote Lessons </a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"> Newpark Festival 2022 </a></li>
+                        </ul>
+                </div>
+                <div class="footer-social">
+                        <div class="social-items-container">
+                            <a target="”_blank”" href="https://www.facebook.com/newparkmusic/">
+                                <i class="fab fa-facebook-square newpark-social-icons" aria-hidden="true"></i>
+                                <span>newparkmusic</span>
+                            </a>
+                            <a target="”_blank”" href="https://twitter.com/newparkmusic">
+                                <i class="fab fa-twitter newpark-social-icons" aria-hidden="true"></i>
+                                <span>@NewparkMusic</span>
+                            </a>
+                            <a target="”_blank”" href="https://www.instagram.com/newparkmusic">
+                                <i class="fab fa-instagram newpark-social-icons" aria-hidden="true"></i>
+                                <span>@newparkmusic</span>
+                            </a>
+                        </div>
+                </div>
+            </div>
+            <div class="footer-logo">
+                <img src="{% static 'svg/newpark-round-white-outline.svg' %}" alt="Newpark Academy of Music">
+            </div>
         </footer>
     </body>
 </html>

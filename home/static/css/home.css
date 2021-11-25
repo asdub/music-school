@@ -15,8 +15,7 @@ main {
         "about"
         "music"
         "contact"
-        "social"
-        "footer";
+        "social";
     max-width: 1400px;
     margin: auto;
 }
@@ -120,14 +119,6 @@ main {
     flex-direction: column;
 }
 
-.contact-item-container {
-    padding: 1rem;
-}
-
-.contact-item > span {
-    font-size: 90%;
-}
-
 .map-container {
     grid-area: map;
 }
@@ -205,7 +196,6 @@ iframe {
             "music music"
             "contact contact"
             "social social"
-            "footer footer";
     }
     .about-section {
         display: grid;
@@ -237,7 +227,6 @@ iframe {
             "music music ."
             "contact contact contact"
             "social social social"
-            "footer footer footer";
     }
     .contact-section {
         grid-template-columns: 1fr 1fr 1fr;

@@ -15,6 +15,10 @@ body {
     text-decoration: underline;
 }
 
+.white {
+    color: white;
+}
+
 /* Buttons */
 a:link {
     text-decoration: none;
@@ -119,9 +123,53 @@ button.navbar-toggler {
 
 /* Footer */
 footer {
-    grid-area: footer;
+    background: #072660;
+    font-size: 90%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center
 }
 
+.footer-logo {
+    padding: 0 2rem;
+}
+
+footer > .footer-logo > img {
+    height: 12vw;
+}
+
+.footer-contact.white > div > div > a {
+    color: white;
+    font-size: 90%;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    width: 100%;
+    padding: 2rem;
+}
+
+.footer-menu > ul > li > a {
+    padding: 0;
+}
+
+.contact-item-container {
+    padding: 0 1rem;
+}
+
+.contact-item > span {
+    font-size: 90%;
+}
+
+.social-items-container {
+    display: flex;
+    flex-direction: column;
+}
 
 /* Desktop */
 @media all and (min-width: 992px) {
