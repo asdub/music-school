@@ -126,21 +126,24 @@
                 <div class="footer-contact white">
                     <div class="contact-item-container">
                         <div class="contact-item">
-                            <span><i class="fas fa-map-marker"></i> Address:</span>
+                            <span><i class="fas fa-map-marker"></i> Address</span>
                             {{ page.contact_address|richtext }}
                         </div>
                         <div class="contact-item">
+                        <div class="contact-item-inner">
                             <span><i class="fas fa-phone"></i></span>
                             <a href="tel:{{ page.contact_phone}}">{{ page.contact_phone}}</a>
                         </div>
-                        <div class="contact-item">
+                        <div class="contact-item-inner">
                             <span><i class="far fa-envelope"></i></span>
                             <a href="mailto:{{ page.contact_email}}">{{ page.contact_email}}</a>
+                        </div>
                         </div>
                     </div>
                 </div>
                 <div class="footer-menu">
-                        <ul class="navbar-nav">
+                        <ul class="footer-nav">
+                            <span>Navigation</span>
                             <li class="nav-item"><a class="nav-link" href="#"> About </a></li>
                             <li class="nav-item"><a class="nav-link" href="#"> Music </a></li>
                             <li class="nav-item"><a class="nav-link" href="#"> Enrol </a></li>
@@ -162,11 +165,22 @@
                                 <i class="fab fa-instagram newpark-social-icons" aria-hidden="true"></i>
                                 <span>@newparkmusic</span>
                             </a>
+                            <a target="”_blank”" href="">
+                                <i class="fab fa-spotify newpark-social-icons" aria-hidden="true"></i>
+                                <span>@newparkmusic</span>
+                            </a>
                         </div>
                 </div>
-            </div>
-            <div class="footer-logo">
-                <img src="{% static 'svg/newpark-round-white-outline.svg' %}" alt="Newpark Academy of Music">
+                <div class="footer-logo">
+                    <img src="{% static 'svg/newpark-round-white-outline.svg' %}" alt="Newpark Academy of Music">
+                </div>
+                <div class="footer-terms">
+                    <span>© 2021 Newpark Academy of Music</span>
+                    <div class="privacy-nav">
+                        <div class="privacy-item"><a class="nav-link" href="#"> Privacy Policy </a></div>
+                        <div class="privacy-item"><a class="nav-link" href="#"> Terms of Service </a></div>
+                    </div>
+                </div>
             </div>
         </footer>
     </body>
