@@ -13,4 +13,4 @@ def get_subscribe_form(context):
     subscribe_form = my_custom_settings.subscribe_form.specific
     form = subscribe_form.get_form(
         page=subscribe_form, user=request.user)
-    return {'page': subscribe_form, 'subscribe_form': form}
+    return {'page': subscribe_form, 'form': form}

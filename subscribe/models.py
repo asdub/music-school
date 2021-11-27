@@ -20,17 +20,19 @@ class SubscribeField(AbstractFormField):
     page = ParentalKey(
         'SubscribeForm',
         on_delete=models.CASCADE,
-        related_name='subscribe_fields',
+        related_name='form_fields',
     )
 
 class SubscribeForm(AbstractEmailForm):
     template = "includes/subscribe_form.html"
     landing_page_template = "includes/subscribe_form_landing.html"
 
+    intro_text = RichTextField(blank=True)
     confirmation_text = RichTextField(blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [
-        InlinePanel('subscribe_fields', label='Subscribe Fields'),
+        FieldPanel('intro_text', heading="Subscibe Form Text"),
+        InlinePanel('form_fields', label='Subscribe Fields'),
         FieldPanel('confirmation_text', heading="Subscribe Confirmation Text"),
     ]
 
@@ -39,7 +41,7 @@ class SubscribeForm(AbstractEmailForm):
         source_page = Page.objects.get(pk=source_page_id)
 
         if source_page:
-            request.session['submission_success'] = True
+            request.session['subscribe_success'] = True
             request.session['source-page'] = source_page.url
             return redirect(source_page.url  + '#footer', permanent=False)
 

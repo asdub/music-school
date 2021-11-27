@@ -121,7 +121,7 @@
         {% block extra_js %}
           
         {% endblock %}
-        <footer class="footer" role="contentinfo">
+        <footer id="footer" class="footer" role="contentinfo">
             <div class="footer-container">
                 <div class="footer-contact white">
                     <div class="contact-item-container">
@@ -150,6 +150,13 @@
                             <li class="nav-item"><a class="nav-link" href="#"> Remote Lessons </a></li>
                             <li class="nav-item"><a class="nav-link" href="#"> Newpark Festival 2022 </a></li>
                         </ul>
+                </div>
+                <div class="footer-subscribe">
+                    <div class="subscribe-container">
+                        {% block subscribe_form %}
+                            {% include "includes/subscribe_form.html" %}
+                        {% endblock subscribe_form %}
+                    </div>
                 </div>
                 <div class="footer-social">
                         <div class="social-items-container">
