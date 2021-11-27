@@ -18,6 +18,16 @@ class MyCustomSettings(BaseSetting):
         PageChooserPanel('contact_form', ['contact.ContactForm']),
     ]
 
+@register_setting
+class SubscribeSettings(BaseSetting):
+    subscribe_form = models.ForeignKey(
+        'wagtailcore.Page', null=True, on_delete=models.SET_NULL)
+
+    panels = [
+        # note the page type declared within the pagechooserpanel
+        PageChooserPanel('subscribe_form', ['subscribe.SubscribeForm']),
+    ]
+
 
 class HomePage(Page):
     #About Section
