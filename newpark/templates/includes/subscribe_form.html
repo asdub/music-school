@@ -2,12 +2,13 @@
 {% load wagtailcore_tags %}
 
 {% get_subscribe_form as subscribe_form %}
-<div class="form-container">
+<div class="form-container subscribe-form">
     {% if request.session.subscribe_success %}
     <div class="form-success">
         <p>{{ subscribe_form.page.confirmation_text|richtext }}</p>
     </div>
     {% else %}
+    <p>{{ subscribe_form.page.intro_text|richtext }}</p>
     <form action="{% pageurl subscribe_form.page %}" method="POST" role="form">
         {% csrf_token %}
         <ul>
@@ -17,7 +18,7 @@
           {% endif %}
         </ul>
         <div class="btn-container">
-            <button class="btn btn-navy btn-lg btn-block" type="submit">
+            <button class="btn btn-light btn-sm btn-block" type="submit">
                 Submit
             </button>
         </div>

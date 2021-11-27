@@ -139,6 +139,7 @@ footer {
     grid-template-rows: auto;
     grid-template-areas:
         "nav"
+        "subscribe"
         "contact"
         "social"
         "logo"
@@ -156,8 +157,8 @@ footer {
     grid-area: nav;
 }
 
-.footer-terms {
-    grid-area: terms;
+.footer-subscription {
+    grid-area: subscribe;
 }
 
 .footer-social {
@@ -166,6 +167,10 @@ footer {
 
 .footer-logo {
     grid-area: logo;
+}
+
+.footer-terms {
+    grid-area: terms;
 }
 
 .footer-menu > ul {
@@ -285,6 +290,35 @@ footer {
 
 .footer-terms > div > div:nth-child(2) > a {
     padding-left: 5px;
+}
+
+
+.form-container.subscribe-form > form > ul > li > input {
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
+    width: 100%;
+    margin: 0.25rem 0;
+    background: #253e6c;
+    color: white;
+    font-size: 90%;
+    padding: 0.25rem;
+}
+
+.form-container.subscribe-form > p {
+    color: white;
+}
+.form-container.subscribe-form > form > ul > li:nth-child(2) {
+    display: flex;
+}
+
+.form-container.subscribe-form > form > ul > li:nth-child(2) > label {
+    display: block;
+    font-size: 80%;
+    color: white;
+}
+
+.form-container.subscribe-form > form > div {
+    float: right;
 }
 
 /** SCREENS **/
