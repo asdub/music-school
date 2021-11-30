@@ -48,6 +48,7 @@ class HomePage(Page):
         related_name='+',
         verbose_name='About Button Link'
     )
+    about_button = models.CharField(max_length=100, null=True)
 
     #Music Section
     music_cover = models.ForeignKey(
@@ -66,6 +67,26 @@ class HomePage(Page):
         related_name='+',
         verbose_name='Music Button Link'
     )
+    music_button = models.CharField(max_length=100, null=True)
+
+    #Suppot Section
+    support_cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    support_heading = models.CharField(max_length=250, null=True)
+    support_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Support Button Link'
+    )
+    support_button = models.CharField(max_length=100, null=True)
 
     #Contact Section
     contact_phone = models.CharField(max_length=100, null=True)
@@ -85,9 +106,15 @@ class HomePage(Page):
         FieldPanel('about_heading', heading='About Section Heading',),
         FieldPanel('about_body', heading='About Content', classname='full'),
         PageChooserPanel('about_page'),
+        FieldPanel('about_button', heading='About Button Text', classname='full'),
         ImageChooserPanel('music_cover', heading='Music Cover Image',),
         FieldPanel('music_heading', heading='Music Section Heading',),
         PageChooserPanel('music_page'),
+        FieldPanel('music_button', heading='Music Button Text', classname='full'),
+        ImageChooserPanel('support_cover', heading='Support Cover Image',),
+        FieldPanel('support_heading', heading='Support Section Heading',),
+        PageChooserPanel('support_page'),
+        FieldPanel('support_button', heading='Support Button Text', classname='full'),
         FieldPanel('contact_phone', heading='Contact Number'),
         FieldPanel('contact_email', heading='Contact Email'),
         FieldPanel('contact_address', heading='Contact Address'),

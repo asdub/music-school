@@ -20,20 +20,56 @@
             <div class="section-text-content">
                 {{ page.about_body|richtext }}
             </div>
-            <a class="btn btn-navy btn-lg btn-block" href="{{ page.about_page }}">More About Newpark <i class="fas fa-chevron-right"></i></a>
+            <a class="btn btn-navy btn-lg btn-block" href="{{ page.about_page }}">{{ page.about_button }} <i class="fas fa-chevron-right"></i></a>
         </div>
     </div>
     <div class="music-section box-shadow">
         {% image page.music_cover original as music_photo %}
         <a href="{{ page.music_page }}">
             <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3)), url({{ music_photo.url }}) center center;">
-                <div class="music-hero-overlay"></div>
+                <div class="music-hero-overlay">
+                   <div class="pathway">
+                       <div class="path-container">
+                            <a class="btn-path" href="{{ page.about_page }}">Newpark Nippers <i class="fas fa-chevron-right"></i></a>
+                       </div>
+                       <div class="path-container">
+                            <a class="btn-path" href="{{ page.about_page }}">Gateway to Music <i class="fas fa-chevron-right"></i></a>
+                       </div>
+                       <div class="path-container">
+                            <a class="btn-path" href="{{ page.about_page }}">Gateway to Instruments <i class="fas fa-chevron-right"></i></a>
+                       </div>
+                       <div class="path-container">
+                            <a class="btn-path" href="{{ page.about_page }}">Individual Lessons <i class="fas fa-chevron-right"></i></a>
+                        <div class="path-container-inner">
+                            <a class="btn-path-inner" href="{{ page.about_page }}">Ensemble <i class="fas fa-chevron-right"></i></a>
+                            <a class="btn-path-inner" href="{{ page.about_page }}">Musicianship <i class="fas fa-chevron-right"></i></a>
+                            <a class="btn-path-inner" href="{{ page.about_page }}">Workshops <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                       </div>
+                       <div class="path-container">
+                        <a class="btn-path" href="{{ page.about_page }}">Jazz Improvisation <i class="fas fa-chevron-right"></i></a>
+                       </div>
+                       <div class="path-container">
+                        <a class="btn-path" href="{{ page.about_page }}">Micro Courses <i class="fas fa-chevron-right"></i></a>
+                       </div>
+                   </div>
+                </div>
                     <div class="heading-container">
                         <h1>{{ page.music_heading }}</h1>
                     </div>
-                <span class="btn btn-navy btn-lg btn-block" href="{{ page.music_page }}">Explore Music at Newpark <i class="fas fa-chevron-right"></i></span>
+                <span class="btn btn-navy btn-lg btn-block" href="{{ page.music_page }}">{{ page.music_button }} <i class="fas fa-chevron-right"></i></span>
             </div>
         </a>
+    </div>
+    <div class="support-section">
+        {% image page.support_cover original as support_photo %}
+        <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3)), url({{ support_photo.url }}) center center;">
+            <div class="music-hero-overlay"></div>
+                <div class="heading-container">
+                    <h1>{{ page.support_heading }}</h1>
+                </div>
+            <span class="btn btn-navy btn-lg btn-block" href="{{ page.music_page }}">{{ page.support_button }} <i class="fas fa-chevron-right"></i></span>
+        </div>
     </div>
     <div id="contact-us" class="contact-section box-shadow">
         <div class="contact-container">

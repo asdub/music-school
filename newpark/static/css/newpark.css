@@ -1,8 +1,10 @@
 /* Newpark Base CSS */ 
 
+
 /* Type */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
 
+/*CSS vars */
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -48,6 +50,32 @@ a:link {
 
 .btn:hover {
     opacity: 0.85;
+}
+
+.btn-path {
+    background: white;
+    width: fit-content;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+}
+
+.btn-path-inner {
+    background: white;
+    width: fit-content;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+}
+
+/* Pathway */
+.pathway {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 3rem 1rem 0rem 1rem;
+}
+
+.path-container {
+    margin: 1rem; 
 }
 
 /* Content Padding/ Margins & Width Limits */
