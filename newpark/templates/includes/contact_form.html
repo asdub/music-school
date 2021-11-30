@@ -5,6 +5,7 @@
 <div class="form-container">
     {% if request.session.form_page_success %}
     <div class="form-success">
+        <i class="fas fa-check-circle"></i>
         <p>{{ contact_form.page.thank_you_text|richtext }}</p>
         <a href="{% url 'new_message' %}">
             <span class="text-link"><i class="fas fa-chevron-right"></i> Send another message?</span>
@@ -16,7 +17,7 @@
         {% csrf_token %}
         <ul>
             {{ contact_form.form.as_ul }}
-            {% if page.pk != contact_form.pk %}
+        {% if page.pk != contact_form.pk %}
             <input name="source-page-id" type="hidden" value="{{ page.pk }}">
           {% endif %}
         </ul>

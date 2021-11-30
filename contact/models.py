@@ -41,7 +41,7 @@ class ContactForm(AbstractEmailForm):
     landing_page_template = "includes/contact_form_landing.html"
 
     intro = RichTextField(blank=True)
-    thank_you_text = RichTextField(blank=True)
+    thank_you_text = models.CharField(max_length=250, null=True)
 
     content_panels = AbstractEmailForm.content_panels + [
         FieldPanel('intro', heading="Form intro text"),
@@ -54,6 +54,13 @@ class ContactForm(AbstractEmailForm):
             FieldPanel('subject'),
         ], heading="Email Settings"),
     ]
+
+    # Add placeholders to form fields
+    def get_form(self, *args, **kwargs):
+        form = super().get_form(*args, **kwargs)
+        for field in form.fields:
+            form.fields[field].widget.attrs['placeholder'] = form.fields[field].help_text
+        return form
 
     def render_landing_page(self, request, form_submission=None, *args, **kwargs):
         source_page_id = request.POST.get('source-page-id')

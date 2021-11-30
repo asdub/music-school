@@ -154,10 +154,6 @@ iframe {
     padding: 0;
 }
 
-.form-container > form > ul > li > label {
-    display: none;
-}
-
 .form-container > form > ul > li > input,
 .form-container > form > ul > li > textarea {
     border: 1px solid #c9c9c9;
@@ -174,6 +170,11 @@ iframe {
     border: 1px solid #c5c5c5;
     border-radius: 5px;
     padding: 1rem;
+}
+
+.form-success > i {
+    font-size: 30px;
+    color: #072660
 }
 
 .btn-container {

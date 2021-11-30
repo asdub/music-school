@@ -4,7 +4,8 @@
 {% get_subscribe_form as subscribe_form %}
 <div class="form-container subscribe-form">
     {% if request.session.subscribe_success %}
-    <div class="form-success">
+    <div class="form-success-footer">
+        <i class="fas fa-check-circle"></i>
         <p>{{ subscribe_form.page.confirmation_text|richtext }}</p>
     </div>
     {% else %}
@@ -13,8 +14,9 @@
         {% csrf_token %}
         <ul>
             {{ subscribe_form.form.as_ul }}
-            {% if page.pk != subscribe_form.pk %}
-            <input name="source-page-id" type="hidden" value="{{ page.pk }}">
+        {% if page.pk != subscribe_form.pk %}
+        <span> {{ page.pk }} </span>
+            <input name="subscribe-page-id" type="hidden" value="{{ page.pk }}">
           {% endif %}
         </ul>
         <div class="btn-container">
