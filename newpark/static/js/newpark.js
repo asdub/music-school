@@ -16,6 +16,36 @@ const config = {
     threshold: [0, 0.25, 0.75, 1]
   };
 
+// Progression Line
+line = new LeaderLine(document.getElementById('a1'),  document.getElementById('d'));
+bline = new LeaderLine(document.getElementById('a2'),  document.getElementById('b'));
+sline = new LeaderLine(document.getElementById('a3'),  document.getElementById('c'));
+line.setOptions({
+  startPlug: 'behind',
+  endPlug: 'behind',
+  color: 'white',
+  startSocket: 'right',
+});
+bline.setOptions({
+  startPlug: 'behind',
+  endPlug: 'behind',
+  color: 'white',
+  path: 'grid',
+});
+sline.setOptions({
+  startPlug: 'behind',
+  endPlug: 'behind',
+  color: 'white',
+});
+
+function lineupdate() {
+  timer = requestAnimationFrame(lineupdate);
+  line.position();
+  bline.position();
+  sline.position();
+}
+
+// Animations and Triggers
 observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0.5) {
@@ -44,14 +74,20 @@ observer = new IntersectionObserver(entries => {
         styles.forEach((k) => {
           style.insertAdjacentHTML('afterBegin', k);
         });
+        line.show('draw', {duration: 3000});
+        bline.show('draw', {duration: 3100});
+        sline.show('draw', {duration: 3200});
     } else {
+        line.hide('fade');
+        bline.hide('fade');
+        sline.hide('fade');
+        cancelAnimationFrame(timer);
         overlay.classList.remove('music-hero-active');
-        divs.forEach(div => {
-          
-        });
+        style.innerHTML = '';
     }
   });
   head.appendChild(style);
+  lineupdate()
 }, config);
 
 buttons.forEach(button => {

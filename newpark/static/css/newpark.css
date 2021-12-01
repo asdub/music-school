@@ -97,6 +97,7 @@ a.btn-path-inner:focus {
 
 .path-container {
     margin: 1rem; 
+    z-index: 2;
 }
 
 .path-container-inner {
@@ -109,6 +110,8 @@ a.btn-path-inner:focus {
 .btn-path-inner {
     margin: 0.5rem;
 }
+
+
 
 /* Content Padding/ Margins & Width Limits */
 .content-container {
