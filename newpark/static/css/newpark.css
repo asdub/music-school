@@ -5,6 +5,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
 
 /*CSS vars */
+:root {
+    --pathway-space: 20;
+}
+
+/***********/
+
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -53,17 +59,32 @@ a:link {
 }
 
 .btn-path {
-    background: white;
+    background: #5ec6bc;
+    color: white !important;
     width: fit-content;
-    padding: 0.25rem 0.5rem;
+    padding: 0.45rem 0.5rem;
     border-radius: 5px;
+    transition: all 0.1s ease-in-out;
+}
+
+a.btn-path:hover,
+a.btn-path:focus {
+    background: #5ab6ad;
+    padding: 0.55rem 0.65rem;
 }
 
 .btn-path-inner {
     background: white;
     width: fit-content;
-    padding: 0.25rem 0.5rem;
+    padding: 0.35rem 0.5rem;
     border-radius: 5px;
+    transition: all 0.1s ease-in-out;
+}
+
+a.btn-path-inner:hover,
+a.btn-path-inner:focus {
+    text-decoration: underline;
+    background: rgb(236, 235, 235);
 }
 
 /* Pathway */
@@ -76,6 +97,17 @@ a:link {
 
 .path-container {
     margin: 1rem; 
+}
+
+.path-container-inner {
+    display: flex;
+    flex-direction: column;
+    font-size: 90%;
+    margin: 1rem 0 -1rem 0;
+}
+
+.btn-path-inner {
+    margin: 0.5rem;
 }
 
 /* Content Padding/ Margins & Width Limits */
@@ -408,6 +440,10 @@ footer {
 /** SCREENS **/
 
 @media only screen and (min-width: 576px) {
+    :root {
+        --pathway-space: 50;
+    }
+
     .contact-item-container {
         display: flex;
         flex-direction: row;
@@ -424,6 +460,14 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
+    :root {
+        --pathway-space: 70;
+    }
+
+    .path-container-inner {
+        flex-direction: row;
+    }
+
     .footer {
         flex-direction: row;
     }
@@ -450,6 +494,7 @@ footer {
   
 /* Mobile */
 @media(max-width: 991px) {
+
     .navbar.fixed-top .navbar-collapse, 
     .navbar.sticky-top .navbar-collapse {
         overflow-y: auto;
@@ -507,6 +552,10 @@ footer {
         margin-top: 0;
     }
 
+    .pathway {
+        padding: 4rem 1rem 0rem 1rem
+    }
+
     .footer-container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: auto;
@@ -514,6 +563,7 @@ footer {
             "nav nav subscribe contact"
             "social . . terms";
     }
+
     .footer-logo > img {
         height: 8vw;
     }
