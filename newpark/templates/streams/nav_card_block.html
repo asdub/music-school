@@ -1,14 +1,17 @@
 {% load wagtailimages_tags %}
 
-<h2>{{ self.title }}</h2>
-
 {% for card in self.cards %}
-    {% image card.image fill-300x200 as img %}   
-    <div class="nav-box-container-inner" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.7)), url({{ img.url }}) center center;">
-        <a href="{{ card.button_page.url }}">
-            <div class="nav-box">
-                <h3>{{ card.title }}</h3>
+    {% image card.image fill-300x200 as img %} 
+    <a href="{{ card.button_page.url }}">
+        <div class="nav-box-wrapper">
+            <div class="nav-box-container box-shadow" style="background: url({{ img.url }}) center center;">
+                <div class="nav-box-overlay" style="background-color: {{ card.color }};"></div>
             </div>
-        </a>
-    </div>
+            <div class="nav-box-inner">
+                <div class="nav-box">
+                    <h3>{{ card.title }}</h3>
+                </div>
+            </div>
+        </div>
+    </a>
 {% endfor %}

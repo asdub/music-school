@@ -25,3 +25,61 @@ main {
     margin: 1rem 1rem 0.5rem 1rem;
     border-radius: 5px;
 }
+
+.content-section {
+    margin: 1rem 1rem 0.5rem 1rem;
+}
+
+.block-NavBox {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 200px;
+}
+
+.block-NavBox > a {
+}
+
+.nav-box-wrapper {
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.nav-box-container {
+    border-radius: 5px;
+    background-size: cover !important;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    z-index: -2;
+}
+
+.block-NavBox > a:hover > .nav-box-wrapper > .nav-box-container,
+.block-NavBox > a:focus > .nav-box-wrapper > .nav-box-container {
+    transform: scale(1.08);
+}
+
+.nav-box-overlay {
+    border-radius: 5px;
+    opacity: .75;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.nav-box h3 {
+    color: white;
+}

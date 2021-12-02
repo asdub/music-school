@@ -28,6 +28,24 @@ class SubscribeSettings(BaseSetting):
         PageChooserPanel('subscribe_form', ['subscribe.SubscribeForm']),
     ]
 
+@register_setting
+class SiteSettings(BaseSetting):
+    #Site Logo
+    logo = models.OneToOneField(Image, null=True, blank=True, on_delete=models.SET_NULL, related_name='+', verbose_name='Site logo')
+
+    #Contact Section
+    contact_phone = models.CharField(max_length=100, null=True)
+    contact_email = models.CharField(max_length=100, null=True)
+    contact_address = RichTextField(blank=True, null=True)
+    googlemaps_embed = models.CharField(max_length=350, null=True)
+    
+    panels = [
+        ImageChooserPanel('logo', heading="Site Logo"),
+        FieldPanel('contact_phone', heading='Contact Number'),
+        FieldPanel('contact_email', heading='Contact Email'),
+        FieldPanel('contact_address', heading='Contact Address'),
+        FieldPanel('googlemaps_embed', heading='Google Maps Embed Link')
+    ]
 
 class HomePage(Page):
     #About Section
@@ -88,12 +106,6 @@ class HomePage(Page):
     )
     support_button = models.CharField(max_length=100, null=True)
 
-    #Contact Section
-    contact_phone = models.CharField(max_length=100, null=True)
-    contact_email = models.CharField(max_length=100, null=True)
-    contact_address = RichTextField(blank=True, null=True)
-    googlemaps_embed = models.CharField(max_length=350, null=True)
-
     # Search
     search_fields = Page.search_fields + [
         index.SearchField('about_heading'),
@@ -115,11 +127,4 @@ class HomePage(Page):
         FieldPanel('support_heading', heading='Support Section Heading',),
         PageChooserPanel('support_page'),
         FieldPanel('support_button', heading='Support Button Text', classname='full'),
-        FieldPanel('contact_phone', heading='Contact Number'),
-        FieldPanel('contact_email', heading='Contact Email'),
-        FieldPanel('contact_address', heading='Contact Address'),
-        FieldPanel('googlemaps_embed', heading='Google Maps Embed Link')
     ]
-
-
-

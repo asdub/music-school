@@ -1,3 +1,5 @@
+{% load static %}
+{% load wagtailcore_tags %}
 {% load static wagtailcore_tags wagtailuserbar %}
 {% load i18n wagtailcore_tags %}
 
@@ -116,27 +118,26 @@
         {% endblock %}
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/leader-line.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/newpark.js' %}"></script>
         {% block extra_js %}
           
         {% endblock %}
+
         <footer id="footer" class="footer" role="contentinfo">
             <div id="subscribe" class="footer-container">
                 <div class="footer-contact white">
                     <div class="contact-item-container">
                         <div class="contact-item">
                             <span><i class="fas fa-map-marker"></i> Address</span>
-                            {{ page.contact_address|richtext }}
+                            {{ settings.home.SiteSettings.contact_address|richtext }}
                         </div>
                         <div class="contact-item">
                         <div class="contact-item-inner">
                             <span><i class="fas fa-phone"></i></span>
-                            <a href="tel:{{ page.contact_phone}}">{{ page.contact_phone}}</a>
+                            <a href="tel:{{ settings.home.SiteSettings.contact_phone}}">{{ settings.home.SiteSettings.contact_phone}}</a>
                         </div>
                         <div class="contact-item-inner">
                             <span><i class="far fa-envelope"></i></span>
-                            <a href="mailto:{{ page.contact_email}}">{{ page.contact_email}}</a>
+                            <a href="mailto:{{ settings.home.SiteSettings.contact_email}}">{{ settings.home.SiteSettings.contact_email}}</a>
                         </div>
                         </div>
                     </div>
