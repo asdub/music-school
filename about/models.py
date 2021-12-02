@@ -1,13 +1,42 @@
 from django.db import models
 from wagtail.search import index
 from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.images.models import Image
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+from newpark.streams import blocks
+
+
 
 class AboutIndexPage(Page):
-    pass
+    cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    body = RichTextField(blank=True, null=True)
+
+    box = StreamField(
+        [
+            ('NavBox', blocks.NavBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
+    search_fields = Page.search_fields + [
+        index.SearchField('box'),
+        index.SearchField('body'),
+    ]
+
+    content_panels = [
+        FieldPanel('title'),
+        ImageChooserPanel('cover', heading='Cover Image',),
+        FieldPanel('body', heading='About Blurb'),
+        StreamFieldPanel('box', heading='Navigation Boxes',),
+    ]
 
 class About(Page):
     cover = models.ForeignKey(
@@ -17,7 +46,7 @@ class About(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    heading = models.CharField(max_length=250)
+    heading = models.CharField(max_length=250, null=True)
     body = RichTextField(blank=True)
 
     search_fields = Page.search_fields + [
