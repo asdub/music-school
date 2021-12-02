@@ -67,7 +67,6 @@ observer = new IntersectionObserver(entries => {
             from { transform: translateX(0px); }
             to { transform: translateX(`+ (i * 0.4) * space +`px);}}`;
           styles.push(innerframe)
-          console.log(i)
           inner.style.animation = 'inner'+ i +' 0.5s'
           inner.style.animationFillMode = 'forwards'
         });
@@ -81,7 +80,6 @@ observer = new IntersectionObserver(entries => {
         line.hide('fade');
         bline.hide('fade');
         sline.hide('fade');
-        cancelAnimationFrame(timer);
         overlay.classList.remove('music-hero-active');
         style.innerHTML = '';
     }
