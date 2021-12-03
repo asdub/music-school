@@ -5,14 +5,18 @@
 
 {% block body_class %}template-about{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
     {% image page.cover fill-80x80 %}
     <h1>{{ page.title }}</h1>
 
     <div class="short_description">{{ page.heading }}</div>
 
-    {{ page.body|richtext }}
+        {% include_block page.body %}
 
-    <p><a href="{{ page.get_parent.url }}">Retrun to About</a></p>
+    <p><a href="{{ page.get_parent.url }}">Return to About</a></p>
 
 {% endblock %}

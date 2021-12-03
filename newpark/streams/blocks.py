@@ -1,4 +1,5 @@
 # Flex Block
+from typing_extensions import Required
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail_color_panel.blocks import NativeColorBlock
@@ -21,4 +22,26 @@ class NavBlock(blocks.StructBlock):
         template = "streams/nav_card_block.html"
         icon = "placeholder"
         label = "Navigation Block"
+
+
+class ListBlock(blocks.StructBlock):
+    """ Block for About Page Lists """
+
+    list = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("heading", blocks.CharBlock(required=True, max_length=100)),
+                ("subtext", blocks.TextBlock(required=False)),
+                ("list", blocks.ListBlock(blocks.StructBlock(
+                    [
+                        ("text", blocks.RichTextBlock(Required=False)),
+                    ]
+                ))),
+            ]
+        )
+    )
+    class Meta:
+        template = "streams/about_list_block.html"
+        icon = "placeholder"
+        label = "About List Block"
     

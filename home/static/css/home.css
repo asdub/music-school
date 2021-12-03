@@ -67,6 +67,10 @@ main {
     height: 100%;
     width: 100%;
     transition: top 1s ease-in-out;
+    overflow: hidden;
+    /* Safari */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
 }
 
 .music-hero-overlay {
@@ -134,10 +138,10 @@ main {
 iframe {
     display: block;
     max-width: 100%;
-    max-height: 450px;
+    height: 100%;
     border-radius: 5px;
     float: right;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
 }
 
 .map-container-content {
