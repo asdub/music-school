@@ -9,7 +9,12 @@
         <p>{{ subscribe_form.page.confirmation_text|richtext }}</p>
     </div>
     {% else %}
-    <p>{{ subscribe_form.page.intro_text|richtext }}</p>
+    <div class="form-footer-content">
+        <p>
+            <i class="far fa-paper-plane"></i> 
+            {{ subscribe_form.page.intro_text|richtext }}
+        </p>
+    </div>
     <form action="{% pageurl subscribe_form.page %}" method="POST" role="form">
         {% csrf_token %}
         <ul>

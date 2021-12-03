@@ -379,6 +379,7 @@ footer {
 
 .form-container > form > ul {
     list-style: none;
+    padding: 0;
 }
 
 .form-container.subscribe-form > form > ul > li > input {
@@ -392,9 +393,23 @@ footer {
     padding: 0.25rem;
 }
 
-.form-container.subscribe-form > p {
+.form-container.subscribe-form > .form-footer-content > p {
     color: white;
 }
+
+.form-footer-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-footer-content > p {
+    margin-bottom: 0.25rem;
+}
+
+.form-footer-content > p > i {
+    padding-right: 5px;
+}
+
 .form-container.subscribe-form > form > ul > li:nth-child(2) {
     display: flex;
 }
