@@ -12,13 +12,18 @@
 
 {% block content %}
 <main>
-    <div class="heading-section content-container box-shadow">
+    <div class="heading-section box-shadow">
         <div class="heading-container">
-            <div class="heading">
-                <h1>{{ page.title }}</h1>
+            <div class="heading-main-content">
+                <div class="heading">
+                    <h1>{{ page.title }}</h1>
+                </div>
+                <div class="heading-blurb">
+                    {{ page.body|richtext }}
+                </div>
             </div>
-            <div class="heading-blurb">
-                {{ page.body|richtext }}
+            {% image page.cover original as cover %}
+            <div class="heading-cover" style="background: url({{ cover.url }}) center bottom no-repeat;">
             </div>
         </div>
     </div>
