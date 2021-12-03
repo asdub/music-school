@@ -50,7 +50,7 @@ class About(Page):
         related_name='+'
     )
     color = ColorField(blank=True, null=True)
-    heading = models.CharField(max_length=250, null=True)
+    heading = models.TextField(max_length=250, null=True)
     body = StreamField(
         [
             ('ListBox', blocks.ListBlock()),
@@ -59,14 +59,24 @@ class About(Page):
         blank=True,
     )
 
+    singlebody = StreamField(
+        [
+            ('SingleBox', blocks.SingleBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
     search_fields = Page.search_fields + [
         index.SearchField('heading'),
         index.SearchField('body'),
+        index.SearchField('singlebody'),
     ]
 
     content_panels =  Page.content_panels + [
-        FieldPanel('heading', heading='Page Heading'),
+        FieldPanel('heading', heading='Page Intro Text'),
         ImageChooserPanel('cover', heading='Cover Image',),
         NativeColorPanel('color', heading='Color Overlay'),
         StreamFieldPanel('body', heading='List Content',),
+        StreamFieldPanel('singlebody', heading='Single Item Content',),
     ]

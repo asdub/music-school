@@ -1,16 +1,12 @@
 {% load wagtailimages_tags %}
 
-{% for listitem in self.list %}
+{% for item in self.single %}
     <div class="about-box-wrapper">
         <div class="about-box-inner">
             <div class="about-box">
-                <h3>{{ listitem.heading }}</h3>
-                <p>{{ listitem.subtext}}</p>
-                {% if listitem.list %}
-                    {% for list in listitem.list %}
-                        <p>{{ list.text}}</p>
-                    {% endfor %}
-                {% endif %}
+                <h3>{{ item.heading }}</h3>
+                <p>{{ item.subtext }}</p>
+                <p>{{ item.text }}</p>
             </div>
         </div>
     </div>

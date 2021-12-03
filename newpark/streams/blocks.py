@@ -44,4 +44,23 @@ class ListBlock(blocks.StructBlock):
         template = "streams/about_list_block.html"
         icon = "placeholder"
         label = "About List Block"
+
+
+class SingleBlock(blocks.StructBlock):
+    """ Block for About Page Single Items """
+
+    single = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("heading", blocks.CharBlock(required=True, max_length=100)),
+                ("subtext", blocks.TextBlock(required=False)),
+                ("text", blocks.RichTextBlock(Required=False)),
+
+            ]
+        )
+    )
+    class Meta:
+        template = "streams/about_single_block.html"
+        icon = "placeholder"
+        label = "About Signle Block"
     

@@ -10,13 +10,31 @@
 {% endblock extra_css %}
 
 {% block content %}
-    {% image page.cover fill-80x80 %}
-    <h1>{{ page.title }}</h1>
-
-    <div class="short_description">{{ page.heading }}</div>
-
-        {% include_block page.body %}
-
-    <p><a href="{{ page.get_parent.url }}">Return to About</a></p>
-
+<main>
+    <div class="about-heading-section heading-section">
+        <div class="heading-container">
+            <div class="heading-main-content">
+                <div class="heading">
+                    <h1>{{ page.title }}</h1>
+                </div>
+                <div class="heading-blurb">
+                    {{ page.heading }}
+                </div>
+            </div>
+            {% image page.cover original as cover %}
+            <div class="heading-cover" style="background: url({{ cover.url }}) center bottom no-repeat;">
+                <div class="nav-box-overlay" style="background-color: {{ page.color }};"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content-section">
+        <div class="box-container">
+            {% if page.body %}
+                {% include_block page.body %}
+            {% elif page.singlebody %}
+                {% include_block page.singlebody %}
+            {% endif %}
+        </div>
+    </div>
+</main>
 {% endblock %}

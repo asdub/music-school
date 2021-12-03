@@ -3,7 +3,6 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
-
 {% block body_class %}template-aboutindexpage{% endblock %}
 
 {% block extra_css %}
@@ -23,7 +22,7 @@
                 </div>
             </div>
             {% image page.cover original as cover %}
-            <div class="heading-cover" style="background: url({{ cover.url }}) center bottom no-repeat;">
+            <div class="heading-cover" style="background: url({{ cover.url }}) center center no-repeat;">
             </div>
         </div>
     </div>
