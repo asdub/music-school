@@ -1,11 +1,15 @@
 {% load wagtailimages_tags %}
 
 {% for listitem in self.list %}
-    <div class="about-box-wrapper">
+    <div class="about-box-wrapper" style="background: {{ page.color }}">
         <div class="about-box-inner">
             <div class="about-box">
-                <h3>{{ listitem.heading }}</h3>
-                <p>{{ listitem.subtext}}</p>
+                {% if listitem.heading%}
+                    <h3>{{ listitem.heading }}</h3>
+                {% endif %}
+                {% if listitem.subtext %}
+                    <p>{{ listitem.subtext}}</p>
+                {% endif %}
                 {% if listitem.list %}
                     {% for list in listitem.list %}
                         <p>{{ list.text}}</p>
@@ -15,6 +19,3 @@
         </div>
     </div>
 {% endfor %}
-<div class="about-nav-container">
-    <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Return to About</a>
-</div>

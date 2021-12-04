@@ -37,6 +37,7 @@ class ListBlock(blocks.StructBlock):
                         ("text", blocks.RichTextBlock(Required=False)),
                     ]
                 ))),
+                ("image", ImageChooserBlock(required=False)),
             ]
         )
     )
@@ -52,9 +53,10 @@ class SingleBlock(blocks.StructBlock):
     single = blocks.ListBlock(
         blocks.StructBlock(
             [
-                ("heading", blocks.CharBlock(required=True, max_length=100)),
+                ("heading", blocks.CharBlock(required=False, max_length=100)),
                 ("subtext", blocks.TextBlock(required=False)),
                 ("text", blocks.RichTextBlock(Required=False)),
+                ("image", ImageChooserBlock(required=False)),
 
             ]
         )

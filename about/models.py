@@ -76,7 +76,7 @@ class About(Page):
     content_panels =  Page.content_panels + [
         FieldPanel('heading', heading='Page Intro Text'),
         ImageChooserPanel('cover', heading='Cover Image',),
-        NativeColorPanel('color', heading='Color Overlay'),
+        NativeColorPanel('color', heading='Color Accent'),
         StreamFieldPanel('body', heading='List Content',),
         StreamFieldPanel('singlebody', heading='Single Item Content',),
     ]

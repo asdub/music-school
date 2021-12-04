@@ -23,7 +23,7 @@
             </div>
             {% image page.cover original as cover %}
             <div class="heading-cover" style="background: url({{ cover.url }}) center bottom no-repeat;">
-                <div class="nav-box-overlay" style="background-color: {{ page.color }};"></div>
+                
             </div>
         </div>
     </div>
@@ -35,6 +35,9 @@
                 {% include_block page.singlebody %}
             {% endif %}
         </div>
+    </div>
+    <div class="about-nav-container">
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Return to About</a>
     </div>
 </main>
 {% endblock %}
