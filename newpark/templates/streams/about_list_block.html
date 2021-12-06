@@ -19,7 +19,8 @@
                     <div class="image-single">
 
                     </div>
-                    {% elif listitem.image_gallery %}
+                {% endif %}
+                    {% if listitem.image_gallery %}
                         <div class="image-gallery">
                             {% for item in listitem.image_gallery %}
                             <div class="image-container">

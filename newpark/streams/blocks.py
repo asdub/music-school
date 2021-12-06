@@ -15,6 +15,8 @@ class NavBlock(blocks.StructBlock):
                 ('color', NativeColorBlock(default="#000000")),
                 ("title", blocks.CharBlock(required=True, max_length=60)),
                 ("button_page", blocks.PageChooserBlock(required=False)),
+                ("button_url", blocks.URLBlock(required=False)),
+
             ]
         )
     )

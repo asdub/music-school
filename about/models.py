@@ -82,3 +82,36 @@ class About(Page):
         StreamFieldPanel('body', heading='List Content',),
         StreamFieldPanel('singlebody', heading='Single Item Content',),
     ]
+
+
+class AboutLocationPage(Page):
+    cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    color = ColorField(blank=True, null=True)
+    heading = models.TextField(max_length=250, null=True)
+    body = StreamField(
+        [
+            ('ListBox', blocks.ListBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
+    search_fields = Page.search_fields + [
+        index.SearchField('heading'),
+    ]
+
+    content_panels =  Page.content_panels + [
+        FieldPanel('heading', heading='Page Intro Text'),
+        ImageChooserPanel('cover', heading='Cover Image',),
+        NativeColorPanel('color', heading='Color Accent'),
+        StreamFieldPanel('body', heading='List Content',),
+    ]
+
+
+

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-aboutindexpage{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <div class="heading-section">
+        <div class="heading-container">
+            <div class="heading-main-content">
+                <div class="heading">
+                    <h1>{{ page.title }}</h1>
+                </div>
+                <div class="heading-blurb">
+                    {{ page.heading }}
+                </div>
+            </div>
+            {% image page.cover original as cover %}
+            <div class="heading-cover" style="background: url({{ cover.url }}) center bottom no-repeat;">
+            </div>
+        </div>
+    </div>
+    <div class="content-section">
+        <div class="location-map-container">
+            <div class="map-container-content">
+                <iframe loading="lazy" src="{{  settings.home.SiteSettings.googlemaps_embed }}" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0" data-rocket-lazyload="fitvidscompatible" data-origwidth="600" data-origheight="400" class="lazyloaded" data-ll-status="loaded"></iframe>
+            </div>
+            <div class="map-box-container">
+                {% include_block page.body %}
+            </div>
+        </div>
+    </div>
+    <div class="about-nav-container">
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Return to About</a>
+    </div>
+</main>
+{% endblock %}
