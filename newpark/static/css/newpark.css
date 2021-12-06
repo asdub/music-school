@@ -87,10 +87,30 @@ a:link {
     background-color: #072660 !important;
     border-color: #072660 !important;
     width: 100%;
+    border-radius: 2rem !important;
+}
+
+.span-navy {
+    padding: 1.5rem 1rem;
+    background: rgb(7 38 96 / 80%);
+    color: white;
+    width: 100%;
+    font-size: 115%;
+    text-align: center;
 }
 
 .btn {
     transition: all 0.2s ease-in-out !important;
+}
+
+.btn.btn-light.btn-sml {
+    padding: .25rem 1rem;
+    border-radius: 2rem;
+}
+
+.btn.btn-navy.btn-lg.btn-block {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
 }
 
 .btn:hover {

@@ -30,14 +30,20 @@ class ListBlock(blocks.StructBlock):
     list = blocks.ListBlock(
         blocks.StructBlock(
             [
-                ("heading", blocks.CharBlock(required=True, max_length=100)),
+                ("heading", blocks.CharBlock(required=False, max_length=100)),
                 ("subtext", blocks.TextBlock(required=False)),
                 ("list", blocks.ListBlock(blocks.StructBlock(
                     [
-                        ("text", blocks.RichTextBlock(Required=False)),
+                        ("text", blocks.RichTextBlock(required=False)),
                     ]
                 ))),
-                ("image", ImageChooserBlock(required=False)),
+                ("single_image", ImageChooserBlock(required=False)),
+                ("image_gallery", blocks.ListBlock(blocks.StructBlock(
+                    [
+                        ("gallery_image", ImageChooserBlock(required=False)),
+                        ("caption", blocks.CharBlock(required=False)),
+                    ]
+                )))
             ]
         )
     )
@@ -64,5 +70,5 @@ class SingleBlock(blocks.StructBlock):
     class Meta:
         template = "streams/about_single_block.html"
         icon = "placeholder"
-        label = "About Signle Block"
+        label = "About Single Block"
     

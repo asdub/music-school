@@ -30,15 +30,15 @@ main {
     grid-template-areas: "image content";
     background: #fafafa;
     margin: 1rem 1rem 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .about-hero {
     grid-area: image;
     height: 45vh;
     background-size: cover !important;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
 .about-content-container {
@@ -62,7 +62,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 5px;
+    border-radius: 3px;
     background-size: cover !important;
     height: 100%;
     width: 100%;
@@ -122,7 +122,7 @@ main {
     grid-template-areas: "contactinfo map";
     background: #fafafa;
     margin: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .contact-container {
@@ -139,7 +139,7 @@ iframe {
     display: block;
     max-width: 100%;
     height: 100%;
-    border-radius: 5px;
+    border-radius: 3px;
     float: right;
     padding-bottom: 1rem;
 }
@@ -180,7 +180,7 @@ iframe {
 
 .form-success {
     border: 1px solid #c5c5c5;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 1rem;
 }
 
@@ -219,8 +219,8 @@ iframe {
     .about-hero {
         height: 100%;
         background-size: cover !important;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
     }

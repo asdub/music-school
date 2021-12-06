@@ -1,10 +1,10 @@
 {% load wagtailimages_tags %}
 
 {% for listitem in self.list %}
-    <div class="about-box-wrapper" style="background: {{ page.color }}">
+    <div class="about-box-wrapper" style="background: {{ page.color }}; color: {% if page.color == '#072660' %}white{% else %}inherit{% endif %}">
         <div class="about-box-inner">
             <div class="about-box">
-                {% if listitem.heading%}
+                {% if listitem.heading %}
                     <h3>{{ listitem.heading }}</h3>
                 {% endif %}
                 {% if listitem.subtext %}
@@ -14,6 +14,20 @@
                     {% for list in listitem.list %}
                         <p>{{ list.text}}</p>
                     {% endfor %}
+                {% endif %}
+                {% if listitem.single_image %}
+                    <div class="image-single">
+
+                    </div>
+                    {% elif listitem.image_gallery %}
+                        <div class="image-gallery">
+                            {% for item in listitem.image_gallery %}
+                            <div class="image-container">
+                                {% image item.gallery_image max-500x500 %}
+                                <span>{{ item.caption }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
                 {% endif %}
             </div>
         </div>
