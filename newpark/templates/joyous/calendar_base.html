@@ -45,7 +45,10 @@
         {% endblock cal_all %}
     </div>
     <div class="about-nav-container">
-        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Return to {{ page.get_parent.title }}</a>
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block">
+            <i class="fas fa-chevron-left"></i> 
+            Return to {{ page.get_parent.title }}
+        </a>
     </div>
 </main>
 {% endblock %}

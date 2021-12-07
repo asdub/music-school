@@ -134,13 +134,13 @@ a:link {
     font-size: .795rem;
     border-radius: 2rem !important;
     background-color: #e9f0ea;
-    color:rgba(99, 99, 99, 1);
+    color:rgb(36, 36, 36);
 }
 
 .btn-smm:hover,
 .btn-smm:focus {
    opacity: 0.75;
-   color: black;
+   color:rgba(99, 99, 99, 1);
 
 }
 
@@ -577,10 +577,12 @@ footer {
     }
 }
 
-/* Custom Calendar CSS */
+/* Events Section CSS */
 
 .events.content-section {
     margin: 1rem 2rem 0.5rem 2rem;
+    border-bottom: 1px solid #e9f0ea;
+    padding: 0 0 1rem 0;
 }
 
 .joy-title {
@@ -612,8 +614,10 @@ footer {
     justify-content: center;
 }
 
-.joy-img-container img {
+.joy-img-container img,
+.event-detail-joy-img img {
     border-radius: 3px;
+    max-width: 100%;
 }
 
 .joy-title h3 a {
@@ -640,6 +644,59 @@ footer {
     padding: 0 0 1rem 1rem;
 }
 
+.events.box-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    border-top: 1px solid #e9f0ea;
+    padding: 1rem 0 0 0;
+}
+
+.event-detail-joy-img {
+    grid-area: img;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+
+.event-detail-joy-date-time {
+    grid-area: date;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background: #e9f0ea;
+    padding: 1rem;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    max-width: 500px
+}
+
+.event-detail-joy-date-time > div {
+    padding: 0;
+    font-size: 85%;
+}
+
+.event-detail-joy-ev-details {
+    grid-area: details;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    padding: 1rem;
+}
+
+.event-detail-joy-export {
+    grid-area: export;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    padding: 1rem;
+}
+
+/* Screens */
 
 @media only screen and (min-width: 768px) {
     :root {
@@ -672,9 +729,46 @@ footer {
     .subscribe-container {
         max-width: 100%;
     }
+    .events.box-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .event-detail-joy-img {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+    .event-detail-joy-date-time {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 3px;
+    }
+    .event-detail-joy-ev-details {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        padding: 1rem 0;
+    }
+    
+    .event-detail-joy-export {
+        grid-area: export;
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        align-self: flex-end;
+        padding: 0 1rem;
+    }
+    
+    
 }	
   
-/* Mobile */
 @media(max-width: 991px) {
 
     .navbar.fixed-top .navbar-collapse, 
@@ -719,6 +813,43 @@ footer {
         "nav nav subscribe"
         "contact contact logo"
         "social . terms";
+    }
+
+    .events.box-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .event-detail-joy-img img {
+        min-width: 100%;
+        object-fit: cover;
+        min-height: 100%;
+    }
+    .event-detail-joy-img {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+    .event-detail-joy-date-time {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    .event-detail-joy-ev-details {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 4;
+        padding: 1rem;
+    }
+    
+    .event-detail-joy-export {
+        grid-area: export;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        grid-column-start: 3;
+        grid-column-end: 4;
     }
 }
 

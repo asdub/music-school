@@ -1,7 +1,16 @@
 {% load wagtailcore_tags i18n %}
 <div class="joy-view-choices">
-  {% if 'L' in page.view_choices %}<a class="btn-smm joy-view-choices__link"
-     href="{{ listUrl }}">{{ listLink|default:_("List View") }}</a>
+  {% if 'L' in page.view_choices %}
+   <a class="btn-smm joy-view-choices__link"
+     href="{{ listUrl }}">
+     {% if 'Upcoming Events' in listLink|default:_("List View") %}
+      {{ listLink|default:_("List View") }}
+      <i class="fas fa-chevron-right"></i>
+     {% else %} 
+      <i class="fas fa-chevron-left"></i>
+      {{ listLink|default:_("List View") }}
+     {% endif %}
+   </a>
   {% if page.view_choices|length > 1 %} | {% endif %}{% endif %}
   {% if 'W' in page.view_choices %}<a class=" btn-navy btn-smm joy-view-choices__link"
      href="{{ weeklyUrl }}">{{ weeklyLink|default:_("Weekly View") }}</a>
