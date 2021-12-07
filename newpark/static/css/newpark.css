@@ -111,7 +111,7 @@ a:link {
 }
 
 .span-navy {
-    padding: 1.5rem 1rem;
+    padding: 0.875rem;
     background: rgb(7 38 96 / 80%);
     color: white;
     width: 100%;
@@ -128,9 +128,25 @@ a:link {
     border-radius: 2rem;
 }
 
+.btn-smm {
+    text-decoration: none;
+    padding: 0.35rem 0.5rem;
+    font-size: .795rem;
+    border-radius: 2rem !important;
+    background-color: #e9f0ea;
+    color:rgba(99, 99, 99, 1);
+}
+
+.btn-smm:hover,
+.btn-smm:focus {
+   opacity: 0.75;
+   color: black;
+
+}
+
 .btn.btn-navy.btn-lg.btn-block {
     padding: 0.5rem 1rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .btn:hover {
@@ -563,6 +579,14 @@ footer {
 
 /* Custom Calendar CSS */
 
+.events.content-section {
+    margin: 1rem 2rem 0.5rem 2rem;
+}
+
+.joy-title {
+    padding: 1rem 0;
+}
+
 .joy-cal-list {
     display: grid;
     grid-gap: 1rem;
@@ -609,6 +633,11 @@ footer {
 
 .joy-ev-when span {
     font-size: 12px;
+}
+
+.joy-view-choices {
+    border-bottom: 1px solid #e9f0ea;
+    padding: 0 0 1rem 1rem;
 }
 
 

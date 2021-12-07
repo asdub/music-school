@@ -1,49 +1,60 @@
 {% extends "joyous/event_base.html" %}
+{% load static wagtailcore_tags i18n %}
 {% load wagtailcore_tags wagtailimages_tags i18n %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
-<div class="content joy-content">
-    {% block event_status %}
-        {% if page.status %}
-            <div class="joy-ev-status">
-            {{ page.status_text }}
+<main>
+    <div class="about-heading-section heading-section">
+        <div class="events heading-container">
+            <div class="heading-main-content">
+                <div class="heading">
+                {% block event_title %}
+                    <h1>{{ page.title }}</h1>
+                {% endblock event_title %}
+                </div>
             </div>
-        {% endif %}
-    {% endblock event_status %}
-    
-    {% block event_title %}
-    <div class="joy-title joy-title--page">
-        <h1>{{ page.title }}</h1>
-    </div>
-    {% endblock event_title %}
-
-    {% block event_image %}
-        {% if page.image %}
-            <div class="joy-img">
-                {% image page.image height-250 class="joy-img__img" %}
+            {% image settings.home.SiteSettings.events_image width-300 as event_img %}
+            <div class="heading-cover" style="background: url({{ event_img.url }}) center bottom no-repeat;">         
             </div>
-        {% endif %}
-    {% endblock event_image %}
-
-    {% block event_who %}{% include "joyous/includes/who.html" with event=page %}{% endblock event_who %}
-    {% block event_when %}{% include "joyous/includes/when.html" with event=page %}{% endblock event_when %}
-    {% block event_where %}{% include "joyous/includes/where.html" with event=page %}{% endblock event_where %}
-
-    {% block event_details %}
-        <div class="joy-ev-details joy-field">
-            {{ page.details|richtext }}
         </div>
-    {% endblock event_details %}
-    {% block event_footer %}
-    <div class="joy-export">
-        <a href="{{ request.path }}?format=google" target="_blank">{% trans "Google Calendar" %}</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="{{ request.path }}?format=ical">{% trans "Export iCal" %}</a>
     </div>
+    <div class="events content-section">
+        <div class="box-container">
+            {% block event_image %}
+            {% if page.image %}
+                <div class="joy-img">
+                    {% image page.image height-250 class="joy-img__img" %}
+                </div>
+            {% endif %}
+            {% endblock event_image %}
+
+            {% block event_who %}{% include "joyous/includes/who.html" with event=page %}{% endblock event_who %}
+            {% block event_when %}{% include "joyous/includes/when.html" with event=page %}{% endblock event_when %}
+            {% block event_where %}{% include "joyous/includes/where.html" with event=page %}{% endblock event_where %}
+
+            {% block event_details %}
+                <div class="joy-ev-details joy-field">
+                    {{ page.details|richtext }}
+                </div>
+            {% endblock event_details %}
+            <div class="joy-export">
+                <a class="btn-smm" href="{{ request.path }}?format=google" target="_blank">
+                    <i class="fas fa-plus"></i> {% trans "Google Calendar" %}</a>
+                &nbsp;&nbsp;&nbsp;
+                <a class="btn-smm" href="{{ request.path }}?format=ical"><i class="fas fa-plus"></i> 
+                    {% trans "iCal" %}</a>
+            </div>
+        </div>
+    </div>
+    {% block event_footer %}
     <div class="about-nav-container">
         <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i>
-            Return to About</a>
+            Return to {{ page.get_parent.title }}</a>
     </div>
     {% endblock event_footer %}
-</div>
+</main>
 {% endblock content %}

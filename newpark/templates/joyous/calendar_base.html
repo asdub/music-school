@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="content-section">
+    <div class="events content-section">
         <div class="box-container">
             {% block view_choices %}
             {% endblock view_choices %}
@@ -39,9 +39,8 @@
                 <div data-version="{{ version }}"></div>
             {% endblock cal_events %}
 
-            {% block cal_footer %}<div class="joy-export">
-                <a href="{{ request.path }}?format=ical">{% trans "Export iCal" %}</a>
-            </div>{% endblock cal_footer %}
+            {% block cal_footer %}
+            {% endblock cal_footer %}
         </div>
         {% endblock cal_all %}
     </div>
