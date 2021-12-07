@@ -1,0 +1,242 @@
+/* Generic Settings */
+a:link {
+    color: rgba(7, 38, 96, 1);
+    text-decoration: none;
+}
+
+/* Home - Layout Main */
+main {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 82px minmax(250px, auto) minmax(400px, auto) minmax(200px, auto) auto auto auto;
+    grid-template-areas:
+        " . "
+        "about"
+        "music"
+        "support"
+        "contact"
+        "social";
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* Home - About Section */
+
+.about-section {
+    grid-area: about;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: "image content";
+    background: #fafafa;
+    margin: 1rem 1rem 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+.about-hero {
+    grid-area: image;
+    height: 45vh;
+    background-size: cover !important;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.about-content-container {
+    grid-area: content;
+}
+
+/* Home - Music Secion */
+.music-section {
+    grid-area: music;
+    margin: 0.5rem 1rem;
+    overflow: hidden;
+}
+
+.support-section {
+    grid-area: support;
+    margin: 0.5rem 1rem;
+    overflow: hidden;
+}
+
+.music-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 3px;
+    background-size: cover !important;
+    height: 100%;
+    width: 100%;
+    transition: top 1s ease-in-out;
+    overflow: hidden;
+    /* Safari */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+
+.music-hero-overlay {
+    height: 100%;
+    width: 100%;
+}
+
+.music-hero-overlay {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+}
+
+.music-hero-active {
+    background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(7, 38, 96, 0.4));
+    opacity: 1;
+}
+
+.music-hero span {
+    transition: all 0.3s ease-out;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.music-hero:hover > span {
+    transform: scale(1.1);
+}
+
+.heading-container {
+    position: absolute;
+    margin: 0 1rem;
+    opacity: 1;
+}
+
+.heading-container-blk {
+    margin: 0 1rem;
+}
+
+.heading-container > h1 {
+    color: white;
+}
+
+/* Home - Contect Secton */
+.contact-section {
+    grid-area: contact;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: "contactinfo map";
+    background: #fafafa;
+    margin: 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+.contact-container {
+    grid-area: contactinfo;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-container {
+    grid-area: map;
+}
+
+/* Contact Form */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 2rem;
+    height: calc(100% - 8rem);
+}
+
+.form-container > p {
+    margin: 0.5rem 0 0 0;
+}
+
+.form-container > form > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.form-container > form > ul > li > input,
+.form-container > form > ul > li > textarea {
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
+    width: 100%;
+    margin: 0.25rem 0;
+    background: #fafafa;
+    color: #5c5c5c;
+    font-size: 90%;
+    padding: 0.25rem;
+}
+
+.form-success {
+    border: 1px solid #c5c5c5;
+    border-radius: 3px;
+    padding: 1rem;
+}
+
+.form-success > i {
+    font-size: 30px;
+    color: #072660
+}
+
+.btn-container {
+    margin: 0 0 1rem 0;
+}
+
+/* Social Section */
+.social-section {
+    grid-area: social;
+}
+
+@media only screen and (min-width: 768px) { 
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 82px minmax(250px, auto) minmax(400px, auto) minmax(200px, auto) auto auto auto;
+        grid-template-areas:
+            " . . "
+            "about about"
+            "music music"
+            "support support"
+            "contact contact"
+            "social social";
+    }
+    .about-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 100%;
+    }
+    .about-hero {
+        height: 100%;
+        background-size: cover !important;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .contact-section {
+        display: grid;
+        grid-template-columns: 45% 55%;
+    }
+}
+
+@media only screen and (min-width: 1200px) { 
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 82px minmax(250px, auto) minmax(400px, auto) auto auto auto auto;
+        grid-template-areas:
+            " . . . "
+            "about about about"
+            "music music support"
+            "contact contact contact"
+            "social social social"
+    }
+    .contact-section {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "contactinfo map map";
+    }
+    .music-section {
+        margin: 0.5rem 0.5rem 0.5rem 1rem;
+    }
+    .support-section {
+        margin: 0.5rem 1rem 0.5rem 0.5rem;
+    }
+}

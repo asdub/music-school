@@ -1,0 +1,52 @@
+{% extends "joyous/joyous_base.html" %}
+{% load static wagtailcore_tags i18n %}
+{% load wagtailimages_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <div class="about-heading-section heading-section">
+        <div class="events heading-container">
+            <div class="heading-main-content">
+                <div class="heading">
+                    <h1>{{ page.title }}</h1>
+                </div>
+                {% block cal_all %}
+                <div class="heading-blurb">
+                    {% block cal_intro %}
+                        {{ page.intro|richtext }}
+                    {% endblock cal_intro %}
+                </div>
+            </div>
+            {% image settings.home.SiteSettings.events_image width-300 as event_img %}
+            <div class="heading-cover" style="background: url({{ event_img.url }}) center bottom no-repeat;">
+                
+            </div>
+        </div>
+    </div>
+    <div class="content-section">
+        <div class="box-container">
+            {% block view_choices %}
+            {% endblock view_choices %}
+
+            {% block cal_subtitle %}
+            {% endblock cal_subtitle %}
+
+            {% block cal_events %}
+                <div data-version="{{ version }}"></div>
+            {% endblock cal_events %}
+
+            {% block cal_footer %}<div class="joy-export">
+                <a href="{{ request.path }}?format=ical">{% trans "Export iCal" %}</a>
+            </div>{% endblock cal_footer %}
+        </div>
+        {% endblock cal_all %}
+    </div>
+    <div class="about-nav-container">
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Return to {{ page.get_parent.title }}</a>
+    </div>
+</main>
+{% endblock %}

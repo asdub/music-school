@@ -49,9 +49,11 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail_color_panel',
+    'wagtail.contrib.modeladmin',
 
     'modelcluster',
     'taggit',
+    'ls.joyous',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -133,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "Europe/Dublin"
 
 USE_I18N = True
 
@@ -197,3 +199,8 @@ MAILCHIMP_PREFIX = env('MAILCHIMP_PREFIX')
 
 #DB Defaults 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
+
+#Events Calandar
+JOYOUS_THEME_CSS = "/static/joyous/css/joyous_forest_theme.css"
+JOYOUS_HOLIDAYS = "Ireland"
+JOYOUS_TIME_FORMAT = "fq"

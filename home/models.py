@@ -38,13 +38,22 @@ class SiteSettings(BaseSetting):
     contact_email = models.CharField(max_length=100, null=True)
     contact_address = RichTextField(blank=True, null=True)
     googlemaps_embed = models.CharField(max_length=350, null=True)
+    events_image = models.OneToOneField(
+        Image, 
+        null=True, 
+        blank=True, 
+        on_delete=models.SET_NULL,
+         related_name='+', 
+         verbose_name='Event Image'
+    )
     
     panels = [
         ImageChooserPanel('logo', heading="Site Logo"),
         FieldPanel('contact_phone', heading='Contact Number'),
         FieldPanel('contact_email', heading='Contact Email'),
         FieldPanel('contact_address', heading='Contact Address'),
-        FieldPanel('googlemaps_embed', heading='Google Maps Embed Link')
+        FieldPanel('googlemaps_embed', heading='Google Maps Embed Link'),
+        ImageChooserPanel('events_image', heading="Events Page Image"),
     ]
 
 class HomePage(Page):
