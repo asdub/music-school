@@ -204,3 +204,8 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 JOYOUS_THEME_CSS = "/static/joyous/css/joyous_forest_theme.css"
 JOYOUS_HOLIDAYS = "Ireland"
 JOYOUS_TIME_FORMAT = "fq"
+
+# Stripe
+STRIPE_CURRENCY = 'eur'
+STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')

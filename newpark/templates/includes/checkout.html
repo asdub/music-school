@@ -1,0 +1,55 @@
+{% load wagtailcore_tags %}
+{% load static%}
+
+{% block extra_js %}
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock extra_js %}
+
+<form action="" method="post" id="payment-form">
+  {% csrf_token %}
+  <div class="support-form-container">
+    <span for="amount">Amount €</span>
+    <input class="support-text-input" id="support-amount" name="support-amount" type="tel" placeholder="" value="10,00" autocomplete="off" data-amount="25">
+    <div class="support-form-options-container">
+      <ul id="support-donation-level-button-wrap" class="support-donation-levels-wrap">
+        <li><button type="button" data-price-id="0" class="btn btn-light btn-sml btn-block btn-donate" value="10,00" data-default="1">€25,00</button></li>
+        <li><button type="button" data-price-id="1" class="btn btn-light btn-sml btn-block btn-donate" value="50,00" data-default="0">€50,00</button></li>
+        <li><button type="button" data-price-id="2" class="btn btn-light btn-sml btn-block btn-donate" value="100,00" data-default="0">€100,00</button></li>
+        <li><button type="button" data-price-id="3" class="btn btn-light btn-sml btn-block btn-donate" value="200,00" data-default="0">€200,00</button></li>
+        <li><button type="button" data-price-id="5" class="btn btn-light btn-sml btn-block btn-donate" value="850,00" data-default="0">€850,00</button></li>
+        <li><button type="button" data-price-id="5" class="btn btn-light btn-sml btn-block btn-donate" value="1000,00" data-default="0">€1000,00</button></li>
+        <li><button type="button" data-price-id="custom" class="btn btn-light btn-sml btn-block btn-donate" value="custom">Custom Amount</button></li>
+      </ul>
+    </div>
+    <div class="support-form-inputs">
+      <div class="form-row">
+        <input required type="text" name="email" placeholder="Email Adress">
+      </div>
+
+      <div class="form-row">
+        <input required type="text" name="fisrtname" placeholder="First Name">
+        <input required type="text" name="lastname" placeholder="Last Name">
+      </div>
+
+      <div class="form-row">
+        <label for="card-element">
+          Credit or debit card
+        </label>
+        <div id="card-element">
+          <!-- A Stripe Element will be inserted here. -->
+        </div>
+
+        <!-- Used to display form errors. -->
+        <div id="card-errors" role="alert"></div>
+      </div>
+
+      <div style="clear:left"></div>
+
+      <input class="btn btn-navy btn-lg btn-block" type="submit" value="Submit Payment" name="submit">
+    </div>
+  </div>
+</form>
+
+{% block pl_js %}
+  <script src="{% static 'js/support_helper.js' %}"></script>
+{% endblock pl_js %}

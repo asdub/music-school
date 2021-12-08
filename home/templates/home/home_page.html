@@ -63,15 +63,18 @@
     </div>
     <div class="support-section">
         {% image page.support_cover original as support_photo %}
-        <a href="{{ page.support_page }}">
-            <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.6)), url({{ support_photo.url }}) center center;">
-                <div class="music-hero-overlay"></div>
-                    <div class="heading-container">
-                        <h1>{{ page.support_heading }}</h1>
-                    </div>
-                <span class="span-navy">{{ page.support_button }} <i class="fas fa-chevron-right"></i></span>
-            </div>
-        </a>
+        <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.6)), url({{ support_photo.url }}) center center;">
+            <div class="music-hero-overlay"></div>
+                <div class="support-heading heading-container">
+                    <h1>{{ page.support_heading }}</h1>
+                </div>
+                <div class="support-content">
+                    {% block checkout %}
+                        {% include "includes/checkout.html" %}
+                    {% endblock checkout %}
+                </div>
+            <span class="span-navy">{{ page.support_button }} <i class="fas fa-chevron-right"></i></span>
+        </div>
     </div>
     <div id="contact-us" class="contact-section">
         <div class="contact-container">
