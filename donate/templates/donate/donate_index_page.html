@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-donate-index-page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/donate.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+{% image page.background original as image %}
+<main>
+    <div class="donate-heading heading-section">
+        <div class="heading-container">
+            <div class="heading-main-content">
+                <div class="heading">
+                    <h1>{{ page.title }}</h1>
+                </div>
+                <div class="heading-blurb">
+                    {{ page.body|richtext }}
+                </div>
+            </div>
+            {% image page.cover original as cover %}
+            <div class="heading-cover" style="background: url({{ cover.url }}) center center no-repeat;">
+            </div>
+        </div>
+    </div>
+    <div class="content-section">
+        <div class="block-ListBox">
+            <div class="about-box-wrapper" style="background: #fafafa">
+                {% if request.session.charge_success %}
+                    <div class="charge-success">
+                        <p> Thank you {{ request.session.charge.customer }} for {{ request.session.charge.amount }}</p>
+                    </div>
+                {% else %}
+                    {% block donate %}
+                        {% include "includes/checkout.html" %}
+                    {% endblock donate %}
+                {% endif %}
+            </div>
+            <div class="about-box-wrapper" style="background: {{ page.color }}; color: {% if page.color == '#072660' %}white{% else %}inherit{% endif %}">
+                {{ page.box|richtext }}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

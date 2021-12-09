@@ -1,7 +1,5 @@
 from django.db import models
 
-from modelcluster.fields import ParentalKey
-
 from wagtail.search import index
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField, StreamField

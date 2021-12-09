@@ -7,12 +7,14 @@
 
 <form action="{% url 'charge' %}" method="post" id="payment-form">
   {% csrf_token %}
+  <input name="source-page-id" type="hidden" value="{{ page.pk }}">
+  <h3>Make a Donation</h3>
   <div class="support-form-container">
     <span for="amount">Amount €</span>
-    <input class="support-text-input" id="support-amount" name="support-amount" type="tel" placeholder="" value="10,00" autocomplete="off" data-amount="25">
+    <input class="support-text-input" id="support-amount" name="support-amount" type="tel" placeholder="" value="25,00" autocomplete="off" data-amount="25">
     <div class="support-form-options-container">
       <ul id="support-donation-level-button-wrap" class="support-donation-levels-wrap">
-        <li><button type="button" data-price-id="0" class="btn btn-light btn-sml btn-block btn-donate" value="10,00" data-default="1">€25,00</button></li>
+        <li><button type="button" data-price-id="0" class="btn btn-light btn-sml btn-block btn-donate" value="25,00" data-default="1">€25,00</button></li>
         <li><button type="button" data-price-id="1" class="btn btn-light btn-sml btn-block btn-donate" value="50,00" data-default="0">€50,00</button></li>
         <li><button type="button" data-price-id="2" class="btn btn-light btn-sml btn-block btn-donate" value="100,00" data-default="0">€100,00</button></li>
         <li><button type="button" data-price-id="3" class="btn btn-light btn-sml btn-block btn-donate" value="200,00" data-default="0">€200,00</button></li>
@@ -37,7 +39,7 @@
         </div>
 
         <!-- Used to display form errors. -->
-        <div id="error-message" role="alert"></div>
+        <div id="card-errors" class="" role="alert"></div>
       </div>
 
       <div style="clear:left"></div>

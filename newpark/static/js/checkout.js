@@ -36,9 +36,10 @@ card.mount('#card-element');
 card.addEventListener('change', function (event) {
   var displayError = document.getElementById('card-errors');
   if (event.error) {
+    displayError.classList.add('alert', 'alert-danger');
     displayError.textContent = event.error.message;
   } else {
-    displayError.textContent = 'Error processing payment. Please try again.';
+    displayError.textContent = '';
   }
 });
 

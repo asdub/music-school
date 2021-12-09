@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import JsonResponse
 
+from wagtail.core.models import Page
+
 import stripe
 
 
@@ -11,11 +13,12 @@ def charge(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     
     if request.method == 'POST':
-        print('Data:', request.POST)
-        
+        source_page_id =request.POST.get('source-page-id')
+        source_page = Page.objects.get(pk=source_page_id)
+
         supportamount = request.POST['support-amount']
         amount = int(supportamount.replace(',', ''))
-        name=request.POST['firstname'] + ' ' + request.POST['lastname']
+        name = request.POST['firstname'] + ' ' + request.POST['lastname']
         customer = stripe.Customer.create(
             email=request.POST['email'],
             name=name,
@@ -29,12 +32,16 @@ def charge(request):
 			description=f"Donation from {name}"
 			)
 
+        hr_amount = "€{:,.2f}".format(amount)
+
         context = {
-            'amount': amount,
+            'amount': hr_amount,
             'customer': name,
             }
-            
-    return redirect(reverse('success'))
+
+        request.session['charge_success'] = True
+        request.session['charge'] = context
+        return redirect(source_page.url, permanent=False)
 
 
 

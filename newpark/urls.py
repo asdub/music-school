@@ -17,7 +17,7 @@ urlpatterns = [
     path('search/', search_views.search, name='search'),
 
     path('new_message/', include('contact.urls')),
-    path('charge/', include('home.urls'))
+    path('charge/', include('donate.urls'))
 
 ]
 
