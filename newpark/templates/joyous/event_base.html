@@ -9,7 +9,7 @@
 {% block content %}
 <main>
     <div class="about-heading-section heading-section">
-        <div class="events heading-container">
+        <div class="event heading-container">
             <div class="heading-main-content">
                 <div class="heading">
                 {% block event_title %}
@@ -37,7 +37,9 @@
                 {% block event_where %}{% include "joyous/includes/where.html" with event=page %}{% endblock event_where %}
             </div>
             {% block event_details %}
+                
                 <div class="event-detail-joy-ev-details joy-field">
+                    <span>Event Details:</span>
                     {{ page.details|richtext }}
                 </div>
             {% endblock event_details %}
