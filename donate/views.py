@@ -32,7 +32,7 @@ def charge(request):
 			description=f"Donation from {name}"
 			)
 
-        hr_amount = "€{:,.2f}".format(amount)
+        hr_amount = "€{:,.2f}".format(amount / 100)
 
         context = {
             'amount': hr_amount,
@@ -45,7 +45,10 @@ def charge(request):
 
 
 
-def successMsg(request, args):
-    """ Return success message """
-    amount = args
-    return render(request, 'base/success.html', {'amount':amount})
+def new_donation(request):
+    """ Set session var charge_success to false """
+    source_page_id =request.POST.get('source-page-id')
+    source_page = Page.objects.get(pk=source_page_id)
+
+    request.session['charge_success'] = False
+    return redirect(source_page.url , permanent=False)

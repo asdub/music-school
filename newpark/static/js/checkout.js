@@ -36,15 +36,17 @@ card.mount('#card-element');
 card.addEventListener('change', function (event) {
   var displayError = document.getElementById('card-errors');
   if (event.error) {
-    displayError.classList.add('alert', 'alert-danger');
+    displayError.classList.add('alert-error', 'alert-danger');
     displayError.textContent = event.error.message;
   } else {
     displayError.textContent = '';
-  }
+    displayError.classList.remove('alert-error', 'alert-danger');
+  } 
 });
 
 // Handle form submission.
 var form = document.getElementById('payment-form');
+var loading = document.getElementById('loading-icon');
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -52,9 +54,11 @@ form.addEventListener('submit', function (event) {
     if (result.error) {
       // Inform the user if there was an error.
       var errorElement = document.getElementById('card-errors');
+      loading.classList.remove('visable'); 
       errorElement.textContent = result.error.message;
     } else {
       // Send the token to your server.
+      loading.classList.add('visable'); 
       stripeTokenHandler(result.token);
     }
   });

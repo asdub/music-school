@@ -5,50 +5,66 @@
 <script src="https://js.stripe.com/v3/"></script>
 {% endblock extra_js %}
 
-<form action="{% url 'charge' %}" method="post" id="payment-form">
-  {% csrf_token %}
-  <input name="source-page-id" type="hidden" value="{{ page.pk }}">
-  <h3>Make a Donation</h3>
-  <div class="support-form-container">
-    <span for="amount">Amount €</span>
-    <input class="support-text-input" id="support-amount" name="support-amount" type="tel" placeholder="" value="25,00" autocomplete="off" data-amount="25">
-    <div class="support-form-options-container">
-      <ul id="support-donation-level-button-wrap" class="support-donation-levels-wrap">
-        <li><button type="button" data-price-id="0" class="btn btn-light btn-sml btn-block btn-donate" value="25,00" data-default="1">€25,00</button></li>
-        <li><button type="button" data-price-id="1" class="btn btn-light btn-sml btn-block btn-donate" value="50,00" data-default="0">€50,00</button></li>
-        <li><button type="button" data-price-id="2" class="btn btn-light btn-sml btn-block btn-donate" value="100,00" data-default="0">€100,00</button></li>
-        <li><button type="button" data-price-id="3" class="btn btn-light btn-sml btn-block btn-donate" value="200,00" data-default="0">€200,00</button></li>
-        <li><button type="button" data-price-id="5" class="btn btn-light btn-sml btn-block btn-donate" value="850,00" data-default="0">€850,00</button></li>
-        <li><button type="button" data-price-id="5" class="btn btn-light btn-sml btn-block btn-donate" value="1000,00" data-default="0">€1000,00</button></li>
-        <li><button type="button" data-price-id="custom" class="btn btn-light btn-sml btn-block btn-donate" value="custom">Custom Amount</button></li>
-      </ul>
-    </div>
-    <div class="support-form-inputs">
-      <div class="form-row">
-        <input required type="text" name="email" placeholder="Email Adress">
+{% if request.session.charge_success %}
+  <div class="charge-success">
+    <i class="fas fa-check-circle"></i>
+    <h3>Thank you!</h3>
+      <p> {{ request.session.charge.customer }} for your {{ request.session.charge.amount }} donation.</p>
+      <form action="{% url 'new_donation' %}" method="post" id="new-donation">
+        {% csrf_token %}
+        <input name="source-page-id" type="hidden" value="{{ page.pk }}">
+          <button class="btn btn-navy btn-lg btn-block" type="submit">
+            Make another donation <i class="fas fa-chevron-right"></i>
+          </button>
+      </form>
+  </div>
+{% else %}
+  <form action="{% url 'charge' %}" method="post" id="payment-form">
+    {% csrf_token %}
+    <input name="source-page-id" type="hidden" value="{{ page.pk }}">
+    <h3>Make a Donation</h3>
+    <div class="support-form-container">
+      <span for="amount">Amount €</span>
+      <input class="support-text-input" id="support-amount" name="support-amount" type="tel" placeholder="" value="25,00" autocomplete="off" data-amount="25">
+      <div class="support-form-options-container">
+        <ul id="support-donation-level-button-wrap" class="support-donation-levels-wrap">
+          <li><button type="button" data-price-id="0" class="btn btn-light btn-sml btn-block btn-donate" value="25,00" data-default="1">€25,00</button></li>
+          <li><button type="button" data-price-id="1" class="btn btn-light btn-sml btn-block btn-donate" value="50,00" data-default="0">€50,00</button></li>
+          <li><button type="button" data-price-id="2" class="btn btn-light btn-sml btn-block btn-donate" value="100,00" data-default="0">€100,00</button></li>
+          <li><button type="button" data-price-id="3" class="btn btn-light btn-sml btn-block btn-donate" value="200,00" data-default="0">€200,00</button></li>
+          <li><button type="button" data-price-id="5" class="btn btn-light btn-sml btn-block btn-donate" value="850,00" data-default="0">€850,00</button></li>
+          <li><button type="button" data-price-id="5" class="btn btn-light btn-sml btn-block btn-donate" value="1000,00" data-default="0">€1000,00</button></li>
+          <li><button type="button" data-price-id="custom" class="btn btn-light btn-sml btn-block btn-donate" value="custom">Custom Amount</button></li>
+        </ul>
       </div>
-
-      <div class="form-row">
-        <input required type="text" name="firstname" placeholder="First Name">
-        <input required type="text" name="lastname" placeholder="Last Name">
-      </div>
-
-      <div class="form-row-cc">
-        <div id="card-element">
-          <!-- A Stripe Element will be inserted here. -->
+      <div class="support-form-inputs">
+        <div class="form-row">
+          <input required type="text" name="email" placeholder="Email Adress">
         </div>
 
-        <!-- Used to display form errors. -->
-        <div id="card-errors" class="" role="alert"></div>
+        <div class="form-row">
+          <input required type="text" name="firstname" placeholder="First Name">
+          <input required type="text" name="lastname" placeholder="Last Name">
+        </div>
+
+        <div class="form-row-cc">
+          <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+          </div>
+
+          <!-- Used to display form errors. -->
+          <div id="card-errors" class="" role="alert"></div>
+        </div>
+
+        <div style="clear:left"></div>
+
+        <button class="btn btn-navy btn-lg btn-block" type="submit" name="">
+          <i id="loading-icon" class="fas fa-circle-notch fa-spin"></i> </i> Submit Payment
+        </button>
       </div>
-
-      <div style="clear:left"></div>
-
-      <input class="btn btn-navy btn-lg btn-block" type="submit" value="Submit Payment" name="">
     </div>
-  </div>
-</form>
-
+  </form>
+{% endif %}
 {% block pl_js %}
   <script src="{% static 'js/support_helper.js' %}"></script>
   <script src="{% static 'js/checkout.js' %}"></script>

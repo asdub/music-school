@@ -30,15 +30,9 @@
     <div class="content-section">
         <div class="block-ListBox">
             <div class="about-box-wrapper" style="background: #fafafa">
-                {% if request.session.charge_success %}
-                    <div class="charge-success">
-                        <p> Thank you {{ request.session.charge.customer }} for {{ request.session.charge.amount }}</p>
-                    </div>
-                {% else %}
-                    {% block donate %}
-                        {% include "includes/checkout.html" %}
-                    {% endblock donate %}
-                {% endif %}
+                {% block donate %}
+                    {% include "includes/checkout.html" %}
+                {% endblock donate %}
             </div>
             <div class="about-box-wrapper" style="background: {{ page.color }}; color: {% if page.color == '#072660' %}white{% else %}inherit{% endif %}">
                 {{ page.box|richtext }}

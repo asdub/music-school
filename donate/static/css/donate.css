@@ -207,8 +207,7 @@ main {
     font-size: 90%;
     padding: 0.25rem;
 }
-
-.support-form-container input[type=submit] {
+#payment-form > div > div.support-form-inputs > button {
     margin: 1rem 0 0 0;
 }
 
@@ -269,8 +268,30 @@ main {
     float: revert;
 }
 
-.alert {
+.alert-danger {
+    font-size: 70%;
+    font-weight: 600;
     padding: 0.1rem 0.25rem;
+}
+
+.fas.fa-circle-notch.fa-spin {
+    display: none;
+}
+
+.fas.fa-circle-notch.fa-spin.visable {
+    display: inline-block;
+}
+
+.charge-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.charge-success > i {
+    font-size: 3rem;
+    color: #076008;
+    padding: 1rem;
 }
 
 @media only screen and (min-width: 768px) { 
