@@ -1,11 +1,15 @@
 from django.conf import settings
-from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.http import JsonResponse
+from django.utils.timezone import make_aware
+
+from django.shortcuts import redirect
+from django.http.response import JsonResponse, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import Donation
 
 from wagtail.core.models import Page
 
 import stripe
+import datetime
 
 
 def charge(request):
@@ -43,6 +47,44 @@ def charge(request):
         request.session['charge'] = context
         return redirect(source_page.url, permanent=False)
 
+
+@csrf_exempt
+def stripe_webhook(request):
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    endpoint_secret = 'whsec_Vqw1seS0XapB0VbPOgPBgJqE6aPqYSxY'
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
+
+    # Handle the checkout.session.completed event
+    if event['type'] == 'charge.succeeded':
+        print("Payment was successful.")
+        customer = stripe.Customer.retrieve(event.data.object.customer)
+
+        donation = Donation.objects.create(
+            donation_id=event.data.object.id,
+            date=make_aware(datetime.datetime.fromtimestamp(event.data.object.created)),
+            status=event.data.object.status,
+            customer_name=customer.name,
+            customer_email=customer.email,
+            donation_amount=event.data.object.amount,
+            receipt_url=event.data.object.receipt_url,
+            )
+
+        test = Donation.objects.get(donation_id=event.data.object.id)
+        print(vars(test))
+    return HttpResponse(status=200)
 
 
 def new_donation(request):

@@ -59,13 +59,13 @@
         <div style="clear:left"></div>
 
         <button class="btn btn-navy btn-lg btn-block" type="submit" name="">
-          <i id="loading-icon" class="fas fa-circle-notch fa-spin"></i> </i> Submit Payment
+          <i id="loading-icon" class="fas fa-circle-notch fa-spin"></i> </i> Make Payment
         </button>
       </div>
     </div>
   </form>
+  {% block pl_js %}
+    <script src="{% static 'js/support_helper.js' %}"></script>
+    <script src="{% static 'js/checkout.js' %}"></script>
+  {% endblock pl_js %}
 {% endif %}
-{% block pl_js %}
-  <script src="{% static 'js/support_helper.js' %}"></script>
-  <script src="{% static 'js/checkout.js' %}"></script>
-{% endblock pl_js %}

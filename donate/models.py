@@ -11,6 +11,18 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 from newpark.streams import blocks
 
+class Donation(models.Model):
+    """ Model to store donations made via Stripe"""
+    donation_id = models.CharField(max_length=32, null=False, editable=False)
+    date = models.DateTimeField(null=True, editable=False)
+    status = models.CharField(max_length=32, null=False, editable=False)
+    customer_name = models.CharField(max_length=50, null=False, blank=False)
+    customer_email = models.EmailField(max_length=254, null=False, blank=False)
+    donation_amount = models.DecimalField(max_digits=6,
+                                        decimal_places=0, null=False,
+                                        default=0)
+    receipt_url = models.URLField(max_length=200, null=False, blank=False, editable=False)
+
 
 class DonateIndexPage(Page):
     """ Donation Page Index for Stripe Element """
