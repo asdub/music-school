@@ -51,7 +51,7 @@ def charge(request):
 @csrf_exempt
 def stripe_webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    endpoint_secret = 'whsec_Vqw1seS0XapB0VbPOgPBgJqE6aPqYSxY'
+    endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
@@ -78,12 +78,9 @@ def stripe_webhook(request):
             status=event.data.object.status,
             customer_name=customer.name,
             customer_email=customer.email,
-            donation_amount=event.data.object.amount,
+            donation_amount="€{:,.2f}".format(event.data.object.amount / 100),
             receipt_url=event.data.object.receipt_url,
             )
-
-        test = Donation.objects.get(donation_id=event.data.object.id)
-        print(vars(test))
     return HttpResponse(status=200)
 
 

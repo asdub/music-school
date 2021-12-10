@@ -16,11 +16,9 @@ class Donation(models.Model):
     donation_id = models.CharField(max_length=32, null=False, editable=False)
     date = models.DateTimeField(null=True, editable=False)
     status = models.CharField(max_length=32, null=False, editable=False)
-    customer_name = models.CharField(max_length=50, null=False, blank=False)
-    customer_email = models.EmailField(max_length=254, null=False, blank=False)
-    donation_amount = models.DecimalField(max_digits=6,
-                                        decimal_places=0, null=False,
-                                        default=0)
+    customer_name = models.CharField(max_length=50, null=False, blank=False, editable=False)
+    customer_email = models.EmailField(max_length=254, null=False, blank=False, editable=False)
+    donation_amount = models.CharField(max_length=12, null=False, default=0, editable=False)
     receipt_url = models.URLField(max_length=200, null=False, blank=False, editable=False)
 
 
