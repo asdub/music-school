@@ -174,10 +174,6 @@ span.workshop-card-times {
     font-size: 0.8rem;
 }
 
-.workshop-card-price span {
-    font-weight: 400;
-}
-
 .workshop-card-body {
     margin: 0 0.5rem;
     font-size: 95%;
@@ -266,9 +262,7 @@ span.workshop-card-times {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
-}
 
-@media only screen and (min-width: 992px) { 
     .event-item.content-section {
         grid-template-columns: 1fr 1fr;
     }
@@ -284,5 +278,5 @@ span.workshop-card-times {
         border-bottom-right-radius: 3px;
         border-top-right-radius: 3px;
     }
-
 }
+

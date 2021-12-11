@@ -155,7 +155,7 @@ a:link {
 .btn-smm.btn-black {
     background: black;
     text-transform: uppercase;
-    font-size: 95%;
+    font-size: 80%;
 }
 
 .btn-smm.btn-black a {
@@ -603,15 +603,15 @@ footer {
 }
 
 .events.content-section {
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-self: flex-start;
-    margin: 1rem 2rem 0.5rem 2rem;
-    background: #fafafa;
-    border-radius: 3px;
-    height: fit-content;
-    width: fit-content;
+    display: grid;
+    grid-template-columns: minmax(auto, 1400px);
+    grid-auto-rows: minmax(200px, auto) auto;
+}
+
+.event-detail-cover {
+    background-size: cover !important;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
 .events-main.content-section {
@@ -640,6 +640,10 @@ footer {
 .joy-ev-item:focus {
     transform: scale(1.02);
     opacity: 1;
+}
+
+.event-details-container > .joy-ev-when.joy-field {
+    font-size: 60%;
 }
 
 .joy-ev-item:hover > a > .event-details-container > .event-details-where-container > .btn-smm.btn-smaller,
@@ -683,7 +687,6 @@ footer {
     background: #072660;
     padding: 0.5rem;
     text-transform: uppercase;
-    font-size: 80%;
     font-weight: 600;
     color: white;
 }
@@ -699,8 +702,7 @@ footer {
 }
 
 .joy-ev-where {
-    font-size: 96%;
-    color: #072660;
+    color: white;
 }
 
 .btn-smm.btn-smaller {
@@ -726,60 +728,69 @@ footer {
 }
 
 .events.box-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-}
-
-.event-detail-joy-img {
-    grid-area: img;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 4;
+    background: #fafafa;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .event-detail-joy-date-time {
-    grid-area: date;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 80%;
+    font-weight: 600;
     background: #072660;
-    padding: 1rem;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    max-width: 500px
-}
-
-.event-detail-joy-date-time > div {
-    padding: 0;
-    font-size: 85%;
+    padding: 0.5rem;
 }
 
 .event-detail-joy-ev-details {
-    grid-area: details;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 4;
-    grid-row-end: 5;
-    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    font-size: 95%;
+    color: black;
+    padding: 0.5rem 0;
 }
 
 .event-detail-joy-ev-details.joy-field span {
     font-weight: 600;
 }
 
+.event-detail-heading-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid;
+    margin: 0rem 0.5rem;
+    font-size: 95%;
+    color: #072660;
+    font-weight: 600;
+}
+
 .event-detail-joy-export {
-    grid-area: export;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 5;
-    grid-row-end: 6;
-    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 85%;
 }
 
 /* Screens */
+
+@media only screen and (min-width: 576px) {
+    .event-details-container > .joy-ev-when.joy-field {
+        font-size: 80%;
+    }
+}
+
+@media only screen and (min-width: 639px) {
+    .event-details-container > .joy-ev-when.joy-field {
+        font-size: 70%;
+    }
+}
 
 @media only screen and (min-width: 768px) {
     :root {
@@ -812,45 +823,36 @@ footer {
     .subscribe-container {
         max-width: 100%;
     }
-    .events.box-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+
+    .events.content-section {
+        grid-template-columns: 1fr 1fr 1fr;
     }
-    .event-detail-joy-img {
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 1;
-        grid-row-end: 3;
-    }
-    .event-detail-joy-date-time {
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
+
+    .event-detail-cover {
+        border-top-right-radius: 0;
         border-top-left-radius: 3px;
-        border-top-right-radius: 0px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .events.box-container {
+        grid-column-start: 2;
+        grid-column-end: 4;
+        border-bottom-left-radius: 0;
         border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
     }
-    .event-detail-joy-ev-details {
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 3;
-        grid-row-end: 4;
-        padding: 1rem;
+
+    .event-details-container > .joy-ev-when.joy-field {
+        font-size: 80%;
     }
-    
-    .event-detail-joy-export {
-        grid-area: export;
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 4;
-        grid-row-end: 5;
-        align-self: flex-end;
-        padding: 1rem;
-    }
-    
     
 }	
+
+@media only screen and (min-width: 936px) {
+    .event-details-container > .joy-ev-when.joy-field {
+        font-size: 70%;
+    }
+}
   
 @media(max-width: 991px) {
 
@@ -898,44 +900,6 @@ footer {
         "social . terms";
     }
 
-    .events.box-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    .event-detail-joy-img img {
-        min-width: 100%;
-        object-fit: cover;
-        min-height: 100%;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 3px;
-    }
-    .event-detail-joy-img {
-        grid-row-start: 1;
-        grid-row-end: 4;
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
-    .event-detail-joy-date-time {
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
-    }
-    .event-detail-joy-ev-details {
-        grid-column-start: 3;
-        grid-column-end: 5;
-        grid-row-start: 1;
-        grid-row-end: 4;
-        padding: 1rem;
-    }
-    
-    .event-detail-joy-export {
-        grid-area: export;
-        grid-row-start: 3;
-        grid-row-end: 4;
-        grid-column-start: 3;
-        grid-column-end: 5;
-    }
 }
 
 @media all and (min-width: 1200px) {

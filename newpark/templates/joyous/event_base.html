@@ -23,33 +23,33 @@
         </div>
     </div>
     <div class="events content-section">
-        <div class="events box-container">
             {% block event_image %}
             {% if page.image %}
-                <div class="event-detail-joy-img">
-                    {% image page.image fill-500x250 class="joy-img__img" %}
-                </div>
+                {% image page.image fill-800x250 as event_item_img %}
+                <div class="event-detail-cover" style="background: url({{ event_item_img.url }}) center center no-repeat;"></div>
             {% endif %}
             {% endblock event_image %}
+        <div class="events box-container">
             <div class="event-detail-joy-date-time">
                 {% block event_who %}{% include "joyous/includes/who.html" with event=page %}{% endblock event_who %}
                 {% block event_when %}{% include "joyous/includes/when.html" with event=page %}{% endblock event_when %}
                 {% block event_where %}{% include "joyous/includes/where.html" with event=page %}{% endblock event_where %}
             </div>
             {% block event_details %}
-                
-                <div class="event-detail-joy-ev-details joy-field">
-                    <span>Event Details:</span>
-                    {{ page.details|richtext }}
+            <div class="event-detail-heading-container">
+                <span>Event Details</span>
+                <div class="event-detail-joy-export">
+                    <a class="btn-smm btn-black" href="{{ request.path }}?format=google" target="_blank">
+                        <i class="fas fa-plus"></i> {% trans "Google Calendar" %}</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="btn-smm btn-black" href="{{ request.path }}?format=ical"><i class="fas fa-plus"></i> 
+                        {% trans "iCal " %}</a>
                 </div>
-            {% endblock event_details %}
-            <div class="event-detail-joy-export">
-                <a class="btn-smm" href="{{ request.path }}?format=google" target="_blank">
-                    <i class="fas fa-plus"></i> {% trans "Google Calendar" %}</a>
-                &nbsp;&nbsp;&nbsp;
-                <a class="btn-smm" href="{{ request.path }}?format=ical"><i class="fas fa-plus"></i> 
-                    {% trans "iCal " %}</a>
             </div>
+            <div class="event-detail-joy-ev-details joy-field">
+                {{ page.details|richtext }}
+            </div>
+            {% endblock event_details %}
         </div>
     </div>
     {% block event_footer %}

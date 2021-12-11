@@ -130,8 +130,9 @@ main {
 .about-nav-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    margin: 1rem 1rem 0.5rem auto;
+    justify-content: center;
+    margin: 1rem 2rem;
+    margin-left: auto
 }
 
 .image-gallery {
