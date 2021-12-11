@@ -41,6 +41,7 @@ class AboutIndexPage(Page):
         StreamFieldPanel('box', heading='Navigation Boxes',),
     ]
 
+
 class About(Page):
     cover = models.ForeignKey(
         'wagtailimages.Image',

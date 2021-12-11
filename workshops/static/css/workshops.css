@@ -1,0 +1,185 @@
+/* Workshops CSS */
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 82px auto auto auto;
+    grid-template-areas:
+        " . "
+        "heading"
+        "content"
+        "prevcontent"
+        "nav";
+    max-width: 1400px;
+    margin: auto;
+}
+
+.heading-section {
+    grid-area: heading;
+    margin: 1rem 1rem 0.5rem 1rem;
+    border-bottom: 1px solid #072660;
+}
+
+.heading-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-template-areas: "head head image";
+}
+
+.content-section {
+    grid-area: content;
+    margin: 1rem 2rem;
+}
+
+.previous-content-section {
+    grid-area: prevcontent;
+    margin: 1rem 2rem;
+}
+
+.nav-container {
+    grid-area: nav;
+}
+
+.heading-main-content {
+    padding: 1rem 2rem;
+}
+
+.heading-cover {
+    grid-area: image;
+    display: none;
+    background-size: contain !important;
+    image-rendering: -moz-crisp-edges; /* Firefox */
+    image-rendering: -o-crisp-edges; /* Opera */
+    image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+}
+
+.box-container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.box-content-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+    margin: auto;
+}
+
+.box {
+    background: linear-gradient(#fafafa, #0726603d);
+    border-radius: 3px;
+    color: black;
+    padding: 1rem 2rem;
+    margin: 1rem;
+}
+
+.box i {
+    color: #072660;
+}
+
+.workshop-item-container {
+    background: #fafafa;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    max-width: 440px;
+    opacity: 0.9;
+    transition: all 0.2s ease-in-out;
+}
+
+.workshop-item-container:hover {
+    transform: scale(1.02);
+    opacity: 1;
+}
+
+.workshop-item-container:hover > .worshop-details > .workshop-card-date  {
+    transition: all 0.2s ease-in-out;
+}
+
+.workshop-item-container:hover > .worshop-details > .workshop-card-date {
+    background: #e0bdbd;
+    color: black;
+}
+
+.workshop-item-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-size: cover;
+    height: 150px;
+    color: white;
+    padding: 0.25rem;
+}
+
+.workshop-item-cover h2 {
+    margin: 0;
+}
+
+.workshop-card-date {
+    color: white;
+    text-transform: uppercase;
+    font-size: 85%;
+    font-weight: 600;
+    background: #072660;
+    padding: 0.25rem;
+}
+
+.workshop-card-price {
+    margin: 0rem 0.25rem;
+    font-size: 85%;
+    color: #072660;
+    font-weight: 600;
+    border-bottom: 1px solid;
+    padding: 0.25rem 0;
+}
+
+.workshop-card-price i {
+    font-size: 0.8rem;
+}
+
+.workshop-card-price span {
+    font-weight: 400;
+}
+
+.workshop-card-body {
+    margin: 0 0.25rem;
+    font-size: 95%;
+    color: black;
+    padding: 0.5rem 0;
+}
+
+.workshop-card-body p {
+    margin: 0;
+}
+
+.content-nav-container {
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 1rem 1rem 0.5rem auto;
+}
+
+@media only screen and (min-width: 768px) { 
+    .heading-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: auto;
+        grid-template-areas:
+            "head head image";
+    }
+
+    .heading-cover {
+        display: block;
+    }
+
+    .box-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}

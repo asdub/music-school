@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load tz %}
+
+{% block body_class %}template-about{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/workshops.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<main>
+    <div class="heading-section">
+        <div class="heading-container">
+            <div class="heading-main-content">
+                <div class="heading">
+                    <h1>{{ page.title }}</h1>
+                </div>
+            </div>
+            {% image page.cover original as cover %}
+            <div class="heading-cover" style="background: url({{ cover.url }}) center center no-repeat;">
+            </div>
+        </div>
+        <div class="box-container">
+            <div class="box">
+                <i class="{{ page.box1_icon}}"></i>
+                {{ page.box1|richtext }}
+            </div>
+            <div class="box">
+                <i class="{{ page.box2_icon}}"></i>
+                {{ page.box2|richtext }}
+            </div>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Latest Workshops</h2> 
+        <div class="box-content-container"> 
+            {% for post in page.get_children %}
+                {% now "Y-m-d" as todays_date %}
+                {% if todays_date < post.specific.date|date:"Y-m-d" %}
+                <a href="{% pageurl post %}">
+                    <div class="workshop-item-container">
+                        {% image post.specific.cover fill-450x200 as workshop_cover %}
+                        <div class="workshop-item-cover" style="background: url({{ workshop_cover.url }}) center center no-repeat;">
+                            <h2>{{ post.title }}</h2>
+                        </div>
+                        <div class="worshop-details">
+                            <div class="workshop-card-date">
+                                {{ post.specific.date|date:"l d, F Y" }}
+                            </div>
+                            <div class="workshop-card-price">
+                                <i class="fas fa-euro-sign"></i>
+                                {{ post.specific.price }}
+                                <span> Admission</span>
+                            </div>
+                            <div class="workshop-card-body">
+                                {{ post.specific.body|richtext|truncatewords_html:20 }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="previous-content-section">
+        <h2>Previous Workshops</h2> 
+        <div class="box-content-container"> 
+            {% for post in page.get_children %}
+                {% now "Y-m-d" as todays_date %}
+                {% if todays_date > post.specific.date|date:"Y-m-d" %}
+                <a href="{% pageurl post %}">
+                    <div class="workshop-item-container">
+                        {% image post.specific.cover fill-450x200 as workshop_cover %}
+                        <div class="workshop-item-cover" style="background: url({{ workshop_cover.url }}) center center no-repeat;">
+                            <h2>{{ post.title }}</h2>
+                        </div>
+                        <div class="worshop-details">
+                            <div class="workshop-card-date">
+                                {{ post.specific.date|date:"l d, F Y" }}
+                            </div>
+                            <div class="workshop-card-price">
+                                <span>Admission /</span>
+                                € {{ post.specific.price }}
+                            </div>
+                            <div class="workshop-card-body">
+                                {{ post.specific.body|richtext|truncatewords_html:20 }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="content-nav-container">
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
+    </div>
+</main>
+
+{% endblock %}

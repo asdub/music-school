@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'contact',
     'subscribe',
     'donate',
+    'workshops',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     'wagtail.core',
     'wagtail_color_panel',
     'wagtail.contrib.modeladmin',
+    'wagtail_icon_picker',
 
     'modelcluster',
     'taggit',
@@ -135,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-uk'
 
 TIME_ZONE = "Europe/Dublin"
 
