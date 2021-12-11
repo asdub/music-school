@@ -19,7 +19,12 @@
                     <h1>{{ page.title }}</h1>
                 </div>
                 <div class="heading-event-detail">
-                    {{ page.date|date:"l d, F Y" }}
+                    {% now "Y-m-d" as todays_date %}
+                    {% if todays_date > page.date|date:"Y-m-d" %}  
+                    <span class="finished"><i class="fas fa-exclamation-circle"></i> Finished</span>
+                    {% else %}
+                        {{ page.date|date:"l d, F Y" }}
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -45,12 +50,15 @@
                         <span> Admission</span>
                     </div>
                     <div class="workshop-card-price-inner">
+                        {% now "Y-m-d" as todays_date %}
+                        {% if todays_date < page.date|date:"Y-m-d" %}  
                        <span class="btn-smm btn-black">
                             <a href="https://pay.easypaymentsplus.com/feepay1v2.aspx?id=1966" target="_blank"> 
                                 Enrol
                             </a>
                             <i class="fas fa-chevron-right"></i>
                         </span>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="workshop-card-body">

@@ -89,6 +89,7 @@ main {
 }
 
 .workshop-item-container {
+    height: 100%;
     background: #fafafa;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -148,8 +149,13 @@ main {
     padding: 0.5rem;
 }
 
+.finished,
 .workshop-card-date span {
     color: #f18d8d;
+}
+
+.finished {
+    font-size: 1.2em;
 }
 
 span.workshop-card-times {
@@ -238,6 +244,12 @@ span.workshop-card-times {
     }
 }
 
+@media only screen and (min-width: 639px) {
+    .workshop-card-date {
+        font-size: 60%;
+    }
+}
+
 @media only screen and (min-width: 768px) { 
     .heading-container {
         display: grid;
@@ -278,5 +290,20 @@ span.workshop-card-times {
         border-bottom-right-radius: 3px;
         border-top-right-radius: 3px;
     }
+
+    .workshop-card-date {
+        font-size: 80%;
+    }
 }
 
+@media only screen and (min-width: 936px) {
+    .workshop-card-date {
+        font-size: 70%;
+    }
+}
+
+@media all and (min-width: 1200px) {
+    .workshop-card-date {
+        font-size: 80%;
+    }
+}

@@ -629,6 +629,7 @@ footer {
 }
 
 .joy-ev-item {
+    height: 100%;
     background: #fafafa;
     color: white;
     border-radius: 3px;
