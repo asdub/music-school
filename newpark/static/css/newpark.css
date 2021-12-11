@@ -581,6 +581,10 @@ footer {
 
 /* Events Section CSS */
 
+.main-events-heading.about-heading-section.heading-section {
+    border-bottom: 1px solid #072660;
+}
+
 .events.content-section {
     display: flex;
     flex-direction: column;
@@ -621,10 +625,11 @@ footer {
     opacity: 1;
 }
 
-.joy-ev-item:hover > a > .event-details-container > .joy-ev-where > .btn-smm.btn-smaller,
+.joy-ev-item:hover > a > .event-details-container > .event-details-where-container > .btn-smm.btn-smaller,
 .joy-ev-item:focus > a > .event-details-container > .joy-ev-when,
 .joy-ev-item:hover > a > .event-details-container > .joy-ev-when {
     background: #e9f0ea;
+    border: 1px solid #cacecb;
     color: black;
 }
 
@@ -666,21 +671,26 @@ footer {
     color: white;
 }
 
-.joy-ev-where {
+.event-details-where-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 0;
-    font-size: 96%;
-    color: #072660;
     margin: 0 0.5rem;
     border-bottom: 1px solid #072660;
+}
+
+.joy-ev-where {
+    font-size: 96%;
+    color: #072660;
 }
 
 .btn-smm.btn-smaller {
     padding: 0.25rem 0.65rem;
     font-weight: 400;
+    text-transform: uppercase;
+    font-size: 0.75rem;
 }
 
 .joy-ev-when span {
@@ -688,8 +698,7 @@ footer {
 }
 
 .joy-view-choices {
-    border-bottom: 1px solid #e9f0ea;
-    padding: 0 0 1rem 1rem;
+    padding: 0 0 0.5rem 0;
 }
 
 .joy-ev-details.joy-field {

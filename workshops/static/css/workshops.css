@@ -115,6 +115,7 @@ main {
 .workshop-item-container:hover > .worshop-details > .workshop-card-price > 
 .workshop-card-price-inner > .btn-smm.btn-smaller {
     background: #e9f0ea;
+    border: 1px solid #cacecb;
     color: black;
 }
 
@@ -170,6 +171,8 @@ span.workshop-card-times {
 
 .btn-smm.btn-smaller {
     padding: 0.25rem 0.65rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
 }
 
 .workshop-card-price i {
