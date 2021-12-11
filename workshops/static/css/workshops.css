@@ -49,7 +49,7 @@ main {
 }
 
 .heading-main-content {
-    padding: 1rem 2rem;
+    padding: 1rem;
 }
 
 .heading-cover {
@@ -125,7 +125,7 @@ main {
     justify-content: flex-end;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    background-size: cover;
+    background-size: cover !important;
     height: 180px;
     color: white;
     padding: 0.25rem;
@@ -170,12 +170,6 @@ span.workshop-card-times {
     padding: 0.75rem 0;
 }
 
-.btn-smm.btn-smaller {
-    padding: 0.25rem 0.65rem;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-}
-
 .workshop-card-price i {
     font-size: 0.8rem;
 }
@@ -199,9 +193,48 @@ span.workshop-card-times {
     grid-area: nav;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    margin: 1rem 1rem 0.5rem auto;
+    justify-content: center;
+    margin: 0 2rem;
+    margin-left: auto;
 }
+
+/* Workshop Post */
+
+.event-item.heading-main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-item.heading-main-content .heading h1 {
+    margin-bottom: 0.25rem;
+}
+
+.heading-event-detail {
+    font-weight: 600;
+    font-size: 90%;
+    text-transform: uppercase;
+}
+
+.event-item.content-section{
+    display: grid;
+    grid-template-columns: minmax(auto, 1400px);
+    grid-auto-rows: minmax(200px, auto) auto;
+}
+
+.event-item-cover {
+    background-size: cover !important;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.event-item-container {
+    background: #fafafa;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
+/* Screens */
 
 @media only screen and (min-width: 576px) {
     span.workshop-card-times {
@@ -222,9 +255,34 @@ span.workshop-card-times {
         display: block;
     }
 
+    .event-item.heading-main-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
     .box-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 }
 
+@media only screen and (min-width: 992px) { 
+    .event-item.content-section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .event-item-cover  {
+        border-top-right-radius: 0;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    
+    .event-item-container {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+}

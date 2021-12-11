@@ -28,11 +28,11 @@ main {
 
 .heading-section {
     margin: 1rem 1rem 0.5rem 1rem;
-    border-radius: 3px;
+    border-bottom: 1px solid #072660;
 }
 
 .heading-main-content {
-    padding: 1rem 2rem
+    padding: 1rem;
 }
 
 .heading-cover {

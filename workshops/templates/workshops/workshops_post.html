@@ -13,31 +13,53 @@
 
 <main>
     <div class="heading-section heading-section">
-        <div class="heading-container">
-            {% image page.cover original as cover %}
-            <div class="heading-main-content" style="background: url({{ cover.url }}) center bottom no-repeat;">
+        <div class="event-heading-container">
+            <div class="event-item heading-main-content">
                 <div class="heading">
                     <h1>{{ page.title }}</h1>
                 </div>
+                <div class="heading-event-detail">
+                    {{ page.date|date:"l d, F Y" }}
+                </div>
             </div>
         </div>
-        <div class="content-section">
-            <div class="box-container">
-                <div class="workshop-date">
-                    <span>Date: </span> 
-                    {{ page.date }}
+    </div>
+    <div class="event-item content-section box-shadow">
+        {% image page.cover fill-1400x400 as cover %}
+        <div class="event-item-cover" style="background: url({{ cover.url }}) center center no-repeat;"></div>
+        <div class="event-item-container">
+            <div class="worshop-details">
+                <div class="workshop-card-date">
+                    <div class="workshop-card-date-inner">
+                    {{ page.date|date:"l d, F Y" }}
+                    </div>
+                    <span class="workshop-card-times">
+                        <i class="far fa-clock"></i>
+                        {{ page.start_time|time:"f A" }} / {{ page.end_time|time:"f A" }}
+                    </span>
                 </div>
-                <div class="workshop-price">
-                    <span>Admission: </span> 
-                    {{ page.price }}
+                <div class="workshop-card-price">
+                    <div class="workshop-card-price-inner">
+                        <i class="fas fa-euro-sign"></i>
+                        {{page.price }}
+                        <span> Admission</span>
+                    </div>
+                    <div class="workshop-card-price-inner">
+                       <span class="btn-smm btn-black">
+                            <a href="https://pay.easypaymentsplus.com/feepay1v2.aspx?id=1966"> 
+                                Enrol
+                            </a>
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </div>
                 </div>
-                <div class="workshop-body">
+                <div class="workshop-card-body">
                     {{ page.body|richtext }}
                 </div>
             </div>
         </div>
     </div>
-    <div class="nav-container">
+    <div class="content-nav-container">
         <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
     </div>
 </main>

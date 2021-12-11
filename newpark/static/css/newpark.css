@@ -146,6 +146,22 @@ a:link {
    color: white;
 }
 
+.btn-smm.btn-smaller {
+    padding: 0.25rem 0.65rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.btn-smm.btn-black {
+    background: black;
+    text-transform: uppercase;
+    font-size: 95%;
+}
+
+.btn-smm.btn-black a {
+   color: white;
+}
+
 .btn.btn-navy.btn-lg.btn-block {
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
@@ -215,9 +231,10 @@ a.btn-path-inner:focus {
     padding: 1rem 2rem;
 }
 
-h1 {
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
+.heading-container-blk h1,
+.heading h1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .navbar >.container, 
