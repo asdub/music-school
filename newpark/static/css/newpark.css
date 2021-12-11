@@ -75,7 +75,7 @@ iframe {
     height: 100%;
     border-radius: 3px;
     float: right;
-    padding-bottom: 1rem;
+    #padding-bottom: 1rem;
 }
 
 .map-container-content {
@@ -135,15 +135,15 @@ a:link {
     font-size: 1rem;
     font-weight: 600;
     border-radius: 2rem !important;
-    background-color: #e9f0ea;
-    color:rgb(36, 36, 36);
+    background-color: #072660;
+    color: white;
+    transition: all 0.2s ease-in-out;
 }
 
 .btn-smm:hover,
 .btn-smm:focus {
    opacity: 0.75;
-   color:rgba(99, 99, 99, 1);
-
+   color: white;
 }
 
 .btn.btn-navy.btn-lg.btn-block {
@@ -259,7 +259,7 @@ h1 {
 
 /* Box Shadows */
 .box-shadow {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
 }
 
 /* Nav */
@@ -594,8 +594,7 @@ footer {
 }
 
 .events-main.content-section {
-    margin: 0;
-    padding: 1rem;
+    margin: 1rem 2rem;
 }
 
 .joy-title {
@@ -609,44 +608,61 @@ footer {
 }
 
 .joy-ev-item {
-    background: #072660;
+    background: #fafafa;
     color: white;
-    padding: 1rem;
     border-radius: 3px;
     transition: all 0.2s ease-in-out;
+    opacity: 0.9;
 }
 
 .joy-ev-item:hover,
 .joy-ev-item:focus {
     transform: scale(1.02);
+    opacity: 1;
 }
+
+
 
 .joy-img-container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-size: cover;
+    height: 180px;
+    color: white;
 }
 
-.joy-img-container img,
 .event-detail-joy-img img {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     max-width: 100%;
 }
 
-.joy-title h3 a {
+.joy-title.joy-title--item {
+    padding: 0;
+}
+
+.joy-title h3 {
+    margin: 0;
+    padding: 0.5rem;
     color: white;
-    font-size: 90%;
 }
 
 .joy-ev-when {
-    padding: 0.5rem 0 0 0;
+    background: #072660;
+    color: white;
+    padding: 0.5rem;
     font-weight: 600;
 }
 
 .joy-ev-where {
-    padding: 0 0 0.5rem 0;
+    padding: 0.25rem 0;
     font-size: 90%;
+    color: white;
+    margin: 0 0.5rem;
+    border-bottom: 1px solid white;
 }
 
 .joy-ev-when span {
@@ -656,6 +672,13 @@ footer {
 .joy-view-choices {
     border-bottom: 1px solid #e9f0ea;
     padding: 0 0 1rem 1rem;
+}
+
+.joy-ev-details.joy-field {
+    margin: 0 0.5rem;
+    font-size: 95%;
+    color: black;
+    padding: 0.5rem 0;
 }
 
 .events.box-container {
@@ -678,7 +701,7 @@ footer {
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
-    background: #e9f0ea;
+    background: #072660;
     padding: 1rem;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;

@@ -1,7 +1,7 @@
 {% load wagtailimages_tags %}
 
 {% for item in self.single %}
-    <div class="about-box-wrapper" style="background: {{ page.color }}; color: {% if page.color == '#072660' %}white{% else %}inherit{% endif %}">
+    <div class="about-box-wrapper box-shadow" style="background: {{ page.color }}; color: {% if page.color == '#072660' %}white{% else %}inherit{% endif %}">
         <div class="about-box-inner">
             <div class="about-box">
                 {% if item.heading %}

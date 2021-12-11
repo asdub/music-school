@@ -1,34 +1,33 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="joy-ev-item">
-    <div class="joy-title joy-title--item">
-        <h3><a class="joy-title__link" href="{{ url }}">{{ title }}</a></h3>
-    </div>
-        {% if event.image %}
-            <a class="joy-img-link joy-field" 
-                href="{{ url }}">
-                <div class="joy-img-container">
-                    {% image event.image fill-250x250 class="joy-img-link__img" %}
+    <a class="joy-img-link joy-field" href="{{ url }}">
+        {% image  event.image fill-450x200 as event_cover %}
+            <div class="joy-img-container" style="background: url({{ event_cover.url }}) center center no-repeat;">
+                <div class="joy-title joy-title--item">
+                    <h3>{{ title }}</h3>
                 </div>
-            </a>
-        {% endif %}
-        {% include "joyous/includes/who.html" %}
-        {% include "joyous/includes/when.html" %}
-        {% include "joyous/includes/where.html" %}
+            </div>
+            <div class="event-details-container">
+                {% include "joyous/includes/who.html" %}
+                {% include "joyous/includes/when.html" %}
+                {% include "joyous/includes/where.html" %}
+            </div>
         {% if event.details %}
-        {% if event.extra_information %}
-            <div class="joy-ev-extra joy-field">
-                {{ event.extra_information|richtext|truncatewords_html:20 }}
-            </div> 
-        {% endif %}
-        <div class="joy-ev-details joy-field">
-            {{ event.details|richtext|truncatewords_html:20 }}
-        </div>
-        {% else %}
-        {% if event.cancellation_details %}
+            {% if event.extra_information %}
+                <div class="joy-ev-extra joy-field">
+                    {{ event.extra_information|richtext|truncatewords_html:20 }}
+                </div> 
+            {% endif %}
             <div class="joy-ev-details joy-field">
-                {{ event.cancellation_details|richtext }}
-            </div> 
+                {{ event.details|richtext|truncatewords_html:20 }}
+            </div>
+        {% else %}
+            {% if event.cancellation_details %}
+                <div class="joy-ev-details joy-field">
+                    {{ event.cancellation_details|richtext }}
+                </div> 
+            {% endif %}
         {% endif %}
-    {% endif %}
+    </a>
 </div>   

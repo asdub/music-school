@@ -42,7 +42,7 @@
                 {% now "Y-m-d" as todays_date %}
                 {% if todays_date < post.specific.date|date:"Y-m-d" %}
                 <a href="{% pageurl post %}">
-                    <div class="workshop-item-container">
+                    <div class="workshop-item-container box-shadow">
                         {% image post.specific.cover fill-450x200 as workshop_cover %}
                         <div class="workshop-item-cover" style="background: url({{ workshop_cover.url }}) center center no-repeat;">
                             <h2>{{ post.title }}</h2>
@@ -68,7 +68,7 @@
     </div>
     <div class="previous-content-section">
         <h2>Previous Workshops</h2> 
-        <div class="box-content-container"> 
+        <div class="box-content-container box-shadow"> 
             {% for post in page.get_children %}
                 {% now "Y-m-d" as todays_date %}
                 {% if todays_date > post.specific.date|date:"Y-m-d" %}

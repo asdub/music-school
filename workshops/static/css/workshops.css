@@ -32,9 +32,16 @@ main {
     margin: 1rem 2rem;
 }
 
+.content-section h2,
+.previous-content-section h2 {
+    padding: 0 0 1rem 0;
+}
+
 .previous-content-section {
     grid-area: prevcontent;
     margin: 1rem 2rem;
+    border-top: 1px solid #072660;
+    padding: 1.5rem 0 0 0;
 }
 
 .nav-container {
@@ -70,7 +77,7 @@ main {
 }
 
 .box {
-    background: linear-gradient(#fafafa, #0726603d);
+    background: linear-gradient(#dddada, #0726603d);
     border-radius: 3px;
     color: black;
     padding: 1rem 2rem;
@@ -100,7 +107,7 @@ main {
 }
 
 .workshop-item-container:hover > .worshop-details > .workshop-card-date {
-    background: #e0bdbd;
+    background: #e9f0ea;
     color: black;
 }
 
@@ -111,7 +118,7 @@ main {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     background-size: cover;
-    height: 150px;
+    height: 180px;
     color: white;
     padding: 0.25rem;
 }
@@ -123,19 +130,19 @@ main {
 .workshop-card-date {
     color: white;
     text-transform: uppercase;
-    font-size: 85%;
+    font-size: 80%;
     font-weight: 600;
     background: #072660;
-    padding: 0.25rem;
+    padding: 0.5rem;
 }
 
 .workshop-card-price {
-    margin: 0rem 0.25rem;
+    margin: 0rem 0.5rem;
     font-size: 85%;
     color: #072660;
     font-weight: 600;
     border-bottom: 1px solid;
-    padding: 0.25rem 0;
+    padding: 0.5rem 0;
 }
 
 .workshop-card-price i {
@@ -147,7 +154,7 @@ main {
 }
 
 .workshop-card-body {
-    margin: 0 0.25rem;
+    margin: 0 0.5rem;
     font-size: 95%;
     color: black;
     padding: 0.5rem 0;
