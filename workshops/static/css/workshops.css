@@ -97,16 +97,23 @@ main {
     transition: all 0.2s ease-in-out;
 }
 
+.workshop-item-container:focus,
 .workshop-item-container:hover {
     transform: scale(1.02);
     opacity: 1;
 }
-
-.workshop-item-container:hover > .worshop-details > .workshop-card-date  {
-    transition: all 0.2s ease-in-out;
+.workshop-item-container:focus > .worshop-details > .workshop-card-date > .workshop-card-times,
+.workshop-item-container:hover > .worshop-details > .workshop-card-date > .workshop-card-times,
+.workshop-item-container:focus > .worshop-details > .workshop-card-date,
+.workshop-item-container:hover > .worshop-details > .workshop-card-date {
+    background: #e9f0ea;
+    color: black;
 }
 
-.workshop-item-container:hover > .worshop-details > .workshop-card-date {
+.workshop-item-container:focus > .worshop-details > .workshop-card-price > 
+.workshop-card-price-inner > .btn-smm.btn-smaller,
+.workshop-item-container:hover > .worshop-details > .workshop-card-price > 
+.workshop-card-price-inner > .btn-smm.btn-smaller {
     background: #e9f0ea;
     color: black;
 }
@@ -128,6 +135,10 @@ main {
 }
 
 .workshop-card-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     color: white;
     text-transform: uppercase;
     font-size: 80%;
@@ -136,13 +147,29 @@ main {
     padding: 0.5rem;
 }
 
+.workshop-card-date span {
+    color: #f18d8d;
+}
+
+span.workshop-card-times {
+    color: white;
+}
+
 .workshop-card-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     margin: 0rem 0.5rem;
     font-size: 85%;
     color: #072660;
     font-weight: 600;
     border-bottom: 1px solid;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
+}
+
+.btn-smm.btn-smaller {
+    padding: 0.25rem 0.65rem;
 }
 
 .workshop-card-price i {
@@ -190,3 +217,4 @@ main {
         grid-template-columns: 1fr 1fr;
     }
 }
+

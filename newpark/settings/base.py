@@ -207,7 +207,7 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 #Events Calandar
 JOYOUS_THEME_CSS = "/static/joyous/css/joyous_forest_theme.css"
 JOYOUS_HOLIDAYS = "Ireland"
-JOYOUS_TIME_FORMAT = "fq"
+JOYOUS_TIME_FORMAT = "f A"
 
 # Stripe
 STRIPE_CURRENCY = 'eur'

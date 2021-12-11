@@ -4,6 +4,10 @@ a:link {
     text-decoration: none;
 }
 
+iframe {
+    padding-bottom: 1rem;
+}
+
 /* Home - Layout Main */
 main {
     position: relative;

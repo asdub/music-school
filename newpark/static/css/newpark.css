@@ -132,7 +132,7 @@ a:link {
 .btn-smm {
     text-decoration: none;
     padding: 0.35rem 0.65rem;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     border-radius: 2rem !important;
     background-color: #072660;
@@ -621,6 +621,13 @@ footer {
     opacity: 1;
 }
 
+.joy-ev-item:hover > a > .event-details-container > .joy-ev-where > .btn-smm.btn-smaller,
+.joy-ev-item:focus > a > .event-details-container > .joy-ev-when,
+.joy-ev-item:hover > a > .event-details-container > .joy-ev-when {
+    background: #e9f0ea;
+    color: black;
+}
+
 
 
 .joy-img-container {
@@ -652,17 +659,28 @@ footer {
 
 .joy-ev-when {
     background: #072660;
-    color: white;
     padding: 0.5rem;
+    text-transform: uppercase;
+    font-size: 80%;
     font-weight: 600;
+    color: white;
 }
 
 .joy-ev-where {
-    padding: 0.25rem 0;
-    font-size: 90%;
-    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    font-size: 96%;
+    color: #072660;
     margin: 0 0.5rem;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #072660;
+}
+
+.btn-smm.btn-smaller {
+    padding: 0.25rem 0.65rem;
+    font-weight: 400;
 }
 
 .joy-ev-when span {

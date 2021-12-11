@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="content-section">
-        <h2>Latest Workshops</h2> 
+        <h2>Upcoming Workshops</h2> 
         <div class="box-content-container"> 
             {% for post in page.get_children %}
                 {% now "Y-m-d" as todays_date %}
@@ -49,12 +49,23 @@
                         </div>
                         <div class="worshop-details">
                             <div class="workshop-card-date">
+                                <div class="workshop-card-date-inner">
                                 {{ post.specific.date|date:"l d, F Y" }}
+                                </div>
+                                <span class="workshop-card-times">
+                                    <i class="far fa-clock"></i>
+                                    {{ post.specific.start_time|time:"f A" }} / {{ post.specific.end_time|time:"f A" }}
+                                </span>
                             </div>
                             <div class="workshop-card-price">
-                                <i class="fas fa-euro-sign"></i>
-                                {{ post.specific.price }}
-                                <span> Admission</span>
+                                <div class="workshop-card-price-inner">
+                                    <i class="fas fa-euro-sign"></i>
+                                    {{ post.specific.price }}
+                                    <span> Admission</span>
+                                </div>
+                                <div class="workshop-card-price-inner">
+                                   <span class="btn-smm btn-smaller"> More Info <i class="fas fa-chevron-right"></i></span>
+                                </div>
                             </div>
                             <div class="workshop-card-body">
                                 {{ post.specific.body|richtext|truncatewords_html:20 }}
@@ -80,11 +91,19 @@
                         </div>
                         <div class="worshop-details">
                             <div class="workshop-card-date">
+                                <div class="workshop-card-date-inner">
                                 {{ post.specific.date|date:"l d, F Y" }}
+                                </div>         
+                                <span><i class="fas fa-exclamation-circle"></i> Finished</span>
                             </div>
                             <div class="workshop-card-price">
-                                <span>Admission /</span>
-                                € {{ post.specific.price }}
+                                <div class="workshop-card-price-inner">
+                                    <span>Admission /</span>
+                                    € {{ post.specific.price }}
+                                </div>
+                                <div class="workshop-card-price-inner">
+                                    <span class="btn-smm btn-smaller"> More Info <i class="fas fa-chevron-right"></i></span>
+                                 </div>
                             </div>
                             <div class="workshop-card-body">
                                 {{ post.specific.body|richtext|truncatewords_html:20 }}
