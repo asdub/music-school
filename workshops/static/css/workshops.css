@@ -154,6 +154,7 @@ main {
 
 span.workshop-card-times {
     color: white;
+    font-size: 80%;
 }
 
 .workshop-card-price {
@@ -200,6 +201,12 @@ span.workshop-card-times {
     flex-direction: column;
     justify-content: flex-end;
     margin: 1rem 1rem 0.5rem auto;
+}
+
+@media only screen and (min-width: 576px) {
+    span.workshop-card-times {
+        font-size: 100%;
+    }
 }
 
 @media only screen and (min-width: 768px) { 
