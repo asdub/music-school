@@ -7,6 +7,8 @@
 /*CSS vars */
 :root {
     --pathway-space: 20;
+    --sline-active: 0;
+    --line-position:bottom;
 }
 
 /***********/
@@ -175,8 +177,8 @@ a:link {
     background: #5ec6bc;
     color: white !important;
     width: fit-content;
-    padding: 0.45rem 0.5rem;
-    border-radius: 5px;
+    padding: 0.45rem 0.6rem;
+    border-radius: 2rem;
     transition: all 0.1s ease-in-out;
 }
 
@@ -188,14 +190,16 @@ a.btn-path:focus {
 
 .btn-path-inner {
     background: white;
+    color: black;
     width: fit-content;
-    padding: 0.35rem 0.5rem;
-    border-radius: 5px;
+    padding: 0.35rem 0.6rem;
+    border-radius: 2rem;
     transition: all 0.1s ease-in-out;
 }
 
 a.btn-path-inner:hover,
 a.btn-path-inner:focus {
+    color: black;
     text-decoration: underline;
     background: rgb(236, 235, 235);
 }
@@ -210,7 +214,11 @@ a.btn-path-inner:focus {
 
 .path-container {
     margin: 1rem; 
-    z-index: 2;
+    z-index: 1;
+}
+
+.leader-line {
+    z-index: 0;
 }
 
 .path-container-inner {
@@ -578,7 +586,7 @@ footer {
 
 @media only screen and (min-width: 576px) {
     :root {
-        --pathway-space: 50;
+        --pathway-space: 30;
     }
 
     .contact-item-container {
@@ -702,6 +710,10 @@ footer {
     border-bottom: 1px solid #072660;
 }
 
+.event-details-where-container .joy-ev-where {
+    color: #072660;
+}
+
 .joy-ev-where {
     color: white;
 }
@@ -741,7 +753,7 @@ footer {
     align-items: center;
     color: white;
     text-transform: uppercase;
-    font-size: 80%;
+    font-size: 70%;
     font-weight: 600;
     background: #072660;
     padding: 0.5rem;
@@ -782,6 +794,7 @@ footer {
 /* Screens */
 
 @media only screen and (min-width: 576px) {
+    .event-detail-joy-date-time,
     .event-details-container > .joy-ev-when.joy-field {
         font-size: 80%;
     }
@@ -796,6 +809,8 @@ footer {
 @media only screen and (min-width: 768px) {
     :root {
         --pathway-space: 70;
+        --sline-active: 1;
+        --line-position:right;
     }
 
     .path-container-inner {

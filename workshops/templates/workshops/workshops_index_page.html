@@ -40,7 +40,7 @@
         <div class="box-content-container"> 
             {% for post in page.get_children %}
                 {% now "Y-m-d" as todays_date %}
-                {% if todays_date < post.specific.date|date:"Y-m-d" %}
+                {% if todays_date <= post.specific.date|date:"Y-m-d" %}
                 <a href="{% pageurl post %}">
                     <div class="workshop-item-container box-shadow">
                         {% image post.specific.cover fill-450x200 as workshop_cover %}

@@ -1,7 +1,7 @@
 from django.db import models
 
 from wagtail.search import index
-from wagtail.core.models import Page, Orderable
+from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -11,7 +11,7 @@ from wagtail_color_panel.edit_handlers import NativeColorPanel
 from newpark.streams import blocks
 
 
-class AboutIndexPage(Page):
+class MusicIndexPage(Page):
     cover = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -19,6 +19,14 @@ class AboutIndexPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    hero = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    herotext = models.TextField(max_length=250, null=True)
     body = RichTextField(blank=True, null=True)
 
     box = StreamField(
@@ -36,13 +44,15 @@ class AboutIndexPage(Page):
 
     content_panels = [
         FieldPanel('title'),
-        ImageChooserPanel('cover', heading='Cover Image',),
         FieldPanel('body', heading='Heading Blurb'),
+        ImageChooserPanel('cover', heading='Cover Image',),
+        ImageChooserPanel('hero', heading='Hero Image',),
+        FieldPanel('herotext', heading='Hero Text'),
         StreamFieldPanel('box', heading='Navigation Boxes',),
     ]
 
 
-class About(Page):
+class Music(Page):
     cover = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -78,12 +88,12 @@ class About(Page):
         FieldPanel('heading', heading='Page Intro Text'),
         ImageChooserPanel('cover', heading='Cover Image',),
         NativeColorPanel('color', heading='Color Accent'),
-        StreamFieldPanel('body', heading='List Content',),
+        StreamFieldPanel('body', heading='Multi Item Content',),
         StreamFieldPanel('singlebody', heading='Single Item Content',),
     ]
 
 
-class AboutLocationPage(Page):
+class MusicGrid(Page):
     cover = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -93,9 +103,9 @@ class AboutLocationPage(Page):
     )
     color = ColorField(blank=True, null=True)
     heading = models.TextField(max_length=250, null=True)
-    body = StreamField(
+    box = StreamField(
         [
-            ('ListBox', blocks.ListBlock()),
+            ('SingleBox', blocks.SingleBlock()),
         ],
         null=True,
         blank=True,
@@ -109,8 +119,5 @@ class AboutLocationPage(Page):
         FieldPanel('heading', heading='Page Intro Text'),
         ImageChooserPanel('cover', heading='Cover Image',),
         NativeColorPanel('color', heading='Color Accent'),
-        StreamFieldPanel('body', heading='List Content',),
+        StreamFieldPanel('box', heading='Grid Box',),
     ]
-
-
-

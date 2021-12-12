@@ -2,6 +2,10 @@
 
 {% for listitem in self.list %}
     <div class="about-box-wrapper box-shadow" style="background: {{ page.color }}; color: {% if page.color == '#072660' %}white{% else %}inherit{% endif %}">
+        {% if listitem.cover %}
+        {% image listitem.cover fill-600x200 as about_box_cover %}
+            <div class="about-cover-container" style="background: linear-gradient( rgb(255 255 255 / 40%), rgb(7 38 96 / 35%)), url({{ about_box_cover.url }}) center center no-repeat;"></div>
+        {% endif %}
         <div class="about-box-inner">
             <div class="about-box">
                 {% if listitem.heading %}

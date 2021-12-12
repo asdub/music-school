@@ -116,6 +116,7 @@ main {
 
 .heading-container > h1 {
     color: white;
+    margin: 1rem 0;
 }
 
 /* Home - Contect Secton */
@@ -177,7 +178,7 @@ main {
 
 .form-success > i {
     font-size: 30px;
-    color: #072660
+    color: #072660;
 }
 
 .btn-container {

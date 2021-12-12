@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'subscribe',
     'donate',
     'workshops',
+    'music',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

@@ -1,4 +1,4 @@
-/* About Templates CSS */
+/* Music Templates CSS */
 
 main {
     display: grid;
@@ -21,8 +21,7 @@ main {
     grid-area: content;
 }
 
-.end-nav-container,
-.about-nav-container {
+.end-nav-container {
     grid-area: nav;
 }
 
@@ -40,6 +39,8 @@ main {
 }
 
 .content-section {
+    display: grid;
+    grid-gap: 1rem;
     margin: 1rem 2rem;
 }
 
@@ -48,6 +49,10 @@ main {
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     grid-auto-rows: 200px;
+}
+
+.pathway.music {
+    padding: 1rem;
 }
 
 .nav-box-wrapper {
@@ -84,6 +89,40 @@ main {
     transform: scale(1.08);
 }
 
+.music-hero {
+    background-size: cover !important;
+    border-radius: 3px;
+}
+
+.music-hero-overlay {
+    height: 100%;
+    width: 100%;
+}
+
+.music-hero-overlay {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+}
+
+.music-hero-active {
+    background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(7, 38, 96, 0.4));
+    opacity: 1;
+}
+
+.hero-text-containter {
+    background: #072660;
+    padding: 1rem;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.hero-text {
+    color: white;
+    font-weight: 600;
+}
+
 .nav-box-overlay {
     border-radius: 3px;
     opacity: .75;
@@ -99,7 +138,7 @@ main {
     color: white;
 }
 
-/* About Individual Pages */
+/* Music Individual Pages */
 .about-heading-section.heading-section {
     background: none;
 }
@@ -153,9 +192,8 @@ main {
     align-items: center;
     justify-content: center;
 }
-.single-image-container img,
-.image-container img,
-.joy-img img {
+
+.single-image-container img {
     width: 100%;
     max-width: 1000px;
     height: auto;
@@ -165,21 +203,6 @@ main {
 .image-container span {
     font-size: 85%;
     font-weight: 100;
-}
-
-.about-box > p > a {
-    color: #33c7b9;
-    text-decoration: underline;
-}
-
-.location-map-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: minmax(350px, auto) auto;
-}
-
-.location-map-container > div {
-    padding: 0;
 }
 
 @media only screen and (min-width: 607px) {
@@ -229,22 +252,22 @@ main {
         min-width: 300px;
         max-width: 350px;
     }
-    
-    .location-map-container {
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1rem;
-    }
-
 }
 
-@media only screen and (min-width: 992px) { 
-    .location-map-container {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 1rem;
+@media only screen and (min-width: 1200px) { 
+    .music-hero-overlay {
+        display: flex;
+        flex-direction: row;
     }
 
-    .map-container-content {
-        grid-column-start: 1;
-        grid-column-end: 3;
+    .hero-text-containter {
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 3px;
+        max-width: 250px;
     }
+
+    .hero-text {
+        font-size: 150%;
+    }
+
 }
