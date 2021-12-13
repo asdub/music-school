@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'donate',
     'workshops',
     'music',
+    'remote',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -216,3 +217,7 @@ STRIPE_CURRENCY = 'eur'
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 STRIPE_ENDPOINT_SECRET = env('STRIPE_ENDPOINT_SECRET')
+
+# Zoom
+ZOOM_API = env('ZOOM_API')
+ZOOM_SECRET = env('ZOOM_SECRET')
