@@ -27,52 +27,66 @@
         </div>
     </div>
     <div class="content-section">
-        {% image page.hero original as hero_image %}
-        <div class="music-hero box-shadow" style="background: linear-gradient(rgba(7, 38, 96, 0.8), rgba(255, 255, 255, 0.8)), url({{ hero_image.url }}) center center;">
-            <div class="music-hero-overlay">
-                <div class="hero-text-containter">
-                    <div class="hero-text">
-                        {{ page.herotext }}
-                    </div>
-                </div>
-                <div class="pathway-container">
-                    <div class="pathway music">
-                        <div class="path-container">
-                            <a class="btn-path" id="a1" href="{{ page.about_page }}">Newpark Nippers <i class="fas fa-chevron-right"></i></a>
-                        </div>
-                        <div class="path-container">
-                            <a class="btn-path" href="{{ page.about_page }}">Gateway to Music <i class="fas fa-chevron-right"></i></a>
-                        </div>
-                        <div class="path-container">
-                            <a class="btn-path" href="{{ page.about_page }}">Gateway to Instruments <i class="fas fa-chevron-right"></i></a>
-                        </div>
-                        <div class="path-container">
-                            <a class="btn-path" id="a2" href="{{ page.about_page }}">Individual Lessons <i class="fas fa-chevron-down"></i></a>
-                        <div class="path-container-inner">
-                            <a class="btn-path-inner" id="a3" href="{{ page.about_page }}">Ensemble <i class="fas fa-chevron-right"></i></a>
-                            <a class="btn-path-inner" id="b" href="{{ page.about_page }}">Musicianship <i class="fas fa-chevron-right"></i></a>
-                            <a class="btn-path-inner" id="c" href="{{ page.about_page }}">Workshops <i class="fas fa-chevron-right"></i></a>
-                        </div>
-                        </div>
-                        <div class="path-container">
-                        <a class="btn-path" href="{{ page.about_page }}">Jazz Improvisation <i class="fas fa-chevron-right"></i></a>
-                        </div>
-                        <div class="path-container">
-                        <a class="btn-path" id="d" href="{{ page.about_page }}">Micro Courses <i class="fas fa-chevron-right"></i></a>
+        {% if page.enable_hero %}
+            {% image page.hero original as hero_image %}
+                {% if page.enable_pathway %}
+                <div class="music-hero box-shadow" style="background: linear-gradient(rgba(7, 38, 96, 0.8), rgba(255, 255, 255, 0.8)), url({{ hero_image.url }}) center center;">
+            {% else %}
+                <div class="music-hero box-shadow" style="background: linear-gradient(rgba(7, 38, 96, 0.3), rgba(255, 255, 255, 0.5)), url({{ hero_image.url }}) center center;">
+            {% endif %}
+                <div class="music-hero-overlay">
+                    <div class="hero-text-containter">
+                        <div class="hero-text">
+                            {{ page.herotext }}
                         </div>
                     </div>
+                    {% if page.enable_pathway %}
+                    <div class="pathway-container">
+                        <div class="pathway music">
+                            <div class="path-container">
+                                <a class="btn-path" id="a1" href="{{ page.about_page }}">Newpark Nippers <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                            <div class="path-container">
+                                <a class="btn-path" href="{{ page.about_page }}">Gateway to Music <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                            <div class="path-container">
+                                <a class="btn-path" href="{{ page.about_page }}">Gateway to Instruments <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                            <div class="path-container">
+                                <a class="btn-path" id="a2" href="{{ page.about_page }}">Individual Lessons <i class="fas fa-chevron-down"></i></a>
+                            <div class="path-container-inner">
+                                <a class="btn-path-inner" id="a3" href="{{ page.about_page }}">Ensemble <i class="fas fa-chevron-right"></i></a>
+                                <a class="btn-path-inner" id="b" href="{{ page.about_page }}">Musicianship <i class="fas fa-chevron-right"></i></a>
+                                <a class="btn-path-inner" id="c" href="{{ page.about_page }}">Workshops <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                            </div>
+                            <div class="path-container">
+                            <a class="btn-path" href="{{ page.about_page }}">Jazz Improvisation <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                            <div class="path-container">
+                            <a class="btn-path" id="d" href="{{ page.about_page }}">Micro Courses <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
-        </div>
+        {% endif %}
         <div class="box-container">
             {% include_block page.box %}
         </div>
     </div>
+    <div class="end-nav-container">
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
+    </div>
 </main>
 {% endblock %}
 
+
 {# Main javascript #}
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/leader-line.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/home_newpark.js' %}"></script>
+    {% if page.enable_pathway %}
+        <script type="text/javascript" src="{% static 'js/leader-line.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/home_newpark.js' %}"></script>
+{% endif %}
 {% endblock %}

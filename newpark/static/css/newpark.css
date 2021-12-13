@@ -7,8 +7,6 @@
 /*CSS vars */
 :root {
     --pathway-space: 20;
-    --sline-active: 0;
-    --line-position:bottom;
 }
 
 /***********/
@@ -21,6 +19,10 @@ body {
     font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3));
+}
+
+p:empty {
+    display: none;
 }
 /* Global Fade Animation */
 
@@ -77,7 +79,7 @@ iframe {
     height: 100%;
     border-radius: 3px;
     float: right;
-    #padding-bottom: 1rem;
+    padding-bottom: 1rem;
 }
 
 .map-container-content {
@@ -137,7 +139,7 @@ a:link {
     font-size: 0.95rem;
     font-weight: 600;
     border-radius: 2rem !important;
-    background-color: #072660;
+    background-color: #161617;
     color: white;
     transition: all 0.2s ease-in-out;
 }
@@ -155,9 +157,9 @@ a:link {
 }
 
 .btn-smm.btn-black {
-    background: black;
+    background: #16161F;
     text-transform: uppercase;
-    font-size: 80%;
+    font-size: 90%;
 }
 
 .btn-smm.btn-black a {
@@ -204,6 +206,16 @@ a.btn-path-inner:focus {
     background: rgb(236, 235, 235);
 }
 
+.block-Buttons {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 1.5rem 0;
+}
+
+.top-nav-btn-container {
+    padding: 0 0.5rem;
+}
+
 /* Pathway */
 .pathway {
     display: flex;
@@ -213,6 +225,7 @@ a.btn-path-inner:focus {
 }
 
 .path-container {
+    width: fit-content;
     margin: 1rem; 
     z-index: 1;
 }
@@ -315,6 +328,10 @@ button.navbar-toggler {
 
 .dropdown-menu .megamenu .show {
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+}
+
+.nav-box h3 {
+    font-size: 1.8rem;
 }
 
 /* Footer */
@@ -694,7 +711,7 @@ footer {
 
 .joy-ev-when {
     background: #072660;
-    padding: 0.5rem;
+    padding: 0.5rem 0 0.5rem 0;
     text-transform: uppercase;
     font-weight: 600;
     color: white;
@@ -715,11 +732,12 @@ footer {
 }
 
 .joy-ev-where {
+    padding: 0 0.5rem 0 0.5rem;
     color: white;
 }
 
 .btn-smm.btn-smaller {
-    padding: 0.25rem 0.65rem;
+    padding: 0.45rem 0.65rem;
     font-weight: 400;
     text-transform: uppercase;
     font-size: 0.75rem;
@@ -748,9 +766,9 @@ footer {
 
 .event-detail-joy-date-time {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     color: white;
     text-transform: uppercase;
     font-size: 70%;
@@ -804,13 +822,25 @@ footer {
     .event-details-container > .joy-ev-when.joy-field {
         font-size: 70%;
     }
+
+    .event-detail-joy-date-time {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .joy-ev-when {
+        padding: 0.5rem;
+    }
+
+    .joy-ev-where {
+        padding: 0;
+    }
 }
 
 @media only screen and (min-width: 768px) {
     :root {
         --pathway-space: 70;
-        --sline-active: 1;
-        --line-position:right;
     }
 
     .path-container-inner {
@@ -860,6 +890,10 @@ footer {
 
     .event-details-container > .joy-ev-when.joy-field {
         font-size: 80%;
+    }
+
+    .block-Buttons {
+        justify-content: flex-end;
     }
     
 }	

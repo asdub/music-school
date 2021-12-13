@@ -3,6 +3,7 @@ from typing_extensions import Required
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail_color_panel.blocks import NativeColorBlock
+from wagtail_icon_picker.blocks import FontAwesomeIconPickerBlock
 
 
 class NavBlock(blocks.StructBlock):
@@ -53,7 +54,7 @@ class ListBlock(blocks.StructBlock):
     class Meta:
         template = "streams/about_list_block.html"
         icon = "placeholder"
-        label = "About List Block"
+        label = "Multi Content Block"
 
 
 class SingleBlock(blocks.StructBlock):
@@ -74,5 +75,23 @@ class SingleBlock(blocks.StructBlock):
     class Meta:
         template = "streams/about_single_block.html"
         icon = "placeholder"
-        label = "About Single Block"
+        label = "Single Content Block"
     
+
+class ButtonBlock(blocks.StructBlock):
+    """ Block for Including Nav Buttons"""
+
+    buttons = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("icon", FontAwesomeIconPickerBlock(required=True)),
+                ("button_text", blocks.CharBlock(required=True, max_length=60)),
+                ("button_page", blocks.PageChooserBlock(required=False)),
+                ("button_url", blocks.URLBlock(required=False)),
+            ]
+        )
+    )
+    class Meta:
+        template = "streams/button_block.html"
+        icon = "placeholder"
+        label = "Button Block"

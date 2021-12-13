@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-about{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <div class="about-heading-section heading-section">
+        <div class="heading-container">
+            <div class="heading-main-content">
+                <div class="heading">
+                    <h1>{{ page.title }}</h1>
+                </div>
+                <div class="heading-blurb">
+                    {{ page.heading }}
+                </div>
+            </div>
+            {% image page.cover original as cover %}
+            <div class="heading-cover" style="background: url({{ cover.url }}) center bottom no-repeat;">
+                
+            </div>
+        </div>
+    </div>
+    <div class="content-section">
+        {% if page.buttons %}
+            {% include_block page.buttons %}
+        {% endif %}
+        <div class="box-container">
+            {% if page.body %}
+                {% include_block page.body %}
+            {% elif page.singlebody %}
+                {% include_block page.singlebody %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="about-nav-container">
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
+    </div>
+</main>
+{% endblock %}

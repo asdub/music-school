@@ -25,7 +25,7 @@
     <div class="events content-section">
             {% block event_image %}
             {% if page.image %}
-                {% image page.image fill-800x250 as event_item_img %}
+                {% image page.image fill-800x600 as event_item_img %}
                 <div class="event-detail-cover" style="background: url({{ event_item_img.url }}) center center no-repeat;"></div>
             {% endif %}
             {% endblock event_image %}

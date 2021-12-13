@@ -3,3 +3,7 @@
     --color-primary-darker: #375a99;
     --color-primary-dark: #375a99;
 }
+
+.label, label {
+    width: auto;
+}

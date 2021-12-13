@@ -121,11 +121,13 @@ main {
     max-width: 1200px;
 }
 
+.about-list-box-wrapper,
 .about-box-wrapper {
     border-radius: 3px;
     height: fit-content;
 }
 
+.about-list-cover-container,
 .about-cover-container {
     height: 150px;
     background-size: cover !important;
@@ -183,6 +185,7 @@ main {
 }
 
 @media only screen and (min-width: 607px) {
+    .about-list-box-wrapper,
     .about-box-wrapper {
         height: 100%;
     }

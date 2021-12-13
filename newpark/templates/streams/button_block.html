@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+
+{% for button in self.buttons %}
+    <div class="top-nav-btn-container">
+        {% if button.button_page %}
+            <a class="btn-smm" href="{{ button.button_page.url }}" target="_blank">
+        {% elif button.button_url %}
+            <a class="btn-smm" href="{{  button.button_url }}" target="_blank">
+                {{ button.button_text }} <i class="{{ button.icon}}"></i>
+            </a>
+        {% endif %}
+    </div>
+{% endfor %}
