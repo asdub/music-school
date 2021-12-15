@@ -1,7 +1,10 @@
-import json
+from django.db import models
 from django.conf import settings
-from zoomus import ZoomClient
 
+import json
+import logging
+from zoomus import ZoomClient
+from remote import graph_api
 
 class Users():
     """ Create Zoom User object """
@@ -34,3 +37,22 @@ def get_users():
             if not remote_user.exclude:
                 users.append(remote_user)
         return users
+
+
+
+def get_video():
+    from remote.models import Video
+    request = settings.GATEWAY1
+    video_data = graph_api.one_drive(request)
+    for video in video_data['value']:
+        if Video.objects.filter(pk=video['id']).exists():
+            logging.info(f"{video['id']} - {video['name']} already exisits in db")
+        else:
+            Video.objects.create(
+                id=video['id'],
+                type="1",
+                name=video['name'],
+                url=video['@microsoft.graph.downloadUrl'],
+            )
+            logging.info(f"{video['id']} - {video['name']} added to db")
+    return Video.objects.all()

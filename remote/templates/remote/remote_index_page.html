@@ -26,22 +26,16 @@
             </div>
         </div>
     </div>
-    <div class="content-section">
+    <div class="index-content content-section">
         {% if page.enable_hero %}
-            {% image page.hero original as hero_image %}
-                {% if page.enable_pathway %}
-                <div class="music-hero box-shadow" style="background: linear-gradient(rgba(7, 38, 96, 0.8), rgba(255, 255, 255, 0.8)), url({{ hero_image.url }}) center center;">
-            {% else %}
-                <div class="music-hero box-shadow" style="background: linear-gradient(rgba(7, 38, 96, 0.3), rgba(255, 255, 255, 0.5)), url({{ hero_image.url }}) center center;">
-            {% endif %}
-                <div class="music-hero-overlay">
+            {% image page.hero fill-1400x400 as hero_image %}
+                <div class="index-hero box-shadow" style="background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(7, 38, 96, 0.8)), url({{ hero_image.url }}) center center;">
                     <div class="hero-text-containter">
                         <div class="hero-text">
-                            {{ page.herotext }}
+                            <h2>{{ page.herotext }}</h2>
                         </div>
                     </div>
                 </div>
-            </div>
         {% endif %}
         <div class="box-container">
             {% include_block page.box %}

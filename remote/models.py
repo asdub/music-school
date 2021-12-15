@@ -42,8 +42,7 @@ class RemoteIndexPage(Page):
         index.SearchField('body'),
     ]
 
-    content_panels = [
-        FieldPanel('title'),
+    content_panels = Page.content_panels + [
         FieldPanel('body', heading='Heading Blurb'),
         ImageChooserPanel('cover', heading='Cover Image',),
         FieldRowPanel([
@@ -53,6 +52,55 @@ class RemoteIndexPage(Page):
         ], heading="Hero Settings"),
         StreamFieldPanel('box', heading='Navigation Boxes',),
     ]
+
+class Video(models.Model):
+    """ Create Zoom User object """
+    id = models.CharField(primary_key=True, max_length=100)
+    type = models.IntegerField(default=0, null=False)
+    name = models.CharField(max_length=100)
+    url = models.URLField()
+    img = models.ImageField(upload_to='video_poster')
+
+
+class RemoteVideo(Page):
+    cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    heading =  RichTextField(blank=True, null=True)
+
+    singlebody = StreamField(
+        [
+            ('SingleBox', blocks.SingleBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
+    search_fields = Page.search_fields + [
+        index.SearchField('singlebody'),
+        index.SearchField('heading'),
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('heading', heading='Heading Blurb'),
+        ImageChooserPanel('cover', heading='Cover Image',),
+        StreamFieldPanel('singlebody', heading='Single Item Content',),
+    ]
+
+
+    def get_context(self, request, *args, **kwargs):
+        # Add sorted Zoom user list to context
+        context = super().get_context(request, *args, **kwargs)
+        video_list = services.get_video()
+        sorted_video_list = sorted(video_list, key=lambda l: (l.name))
+
+        context['gateway1_video'] = sorted_video_list
+        return context
+
 
 
 class Remote(Page):
@@ -79,7 +127,6 @@ class Remote(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('title'),
         FieldPanel('heading', heading='Heading Blurb'),
         ImageChooserPanel('cover', heading='Cover Image',),
         StreamFieldPanel('singlebody', heading='Single Item Content',),

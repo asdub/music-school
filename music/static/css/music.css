@@ -84,9 +84,29 @@ main {
     z-index: -2;
 }
 
+.nav-box h3 {
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.block-NavBox > a:hover > .nav-box-wrapper > .nav-box-inner > .nav-box > h3,
+.block-NavBox > a:focus > .nav-box-wrapper > .nav-box-inner > .nav-box > h3,
 .block-NavBox > a:hover > .nav-box-wrapper > .nav-box-container,
 .block-NavBox > a:focus > .nav-box-wrapper > .nav-box-container {
     transform: scale(1.08);
+    text-decoration: underline;
+}
+
+.nav-box-overlay {
+    border-radius: 3px;
+    opacity: .75;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .music-hero {
@@ -122,21 +142,6 @@ main {
 .hero-text {
     color: white;
     font-weight: 600;
-}
-
-.nav-box-overlay {
-    border-radius: 3px;
-    opacity: .75;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-
-.nav-box h3 {
-    color: white;
 }
 
 /* Music Individual Pages */

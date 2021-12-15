@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-remote{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/remote.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <div class="heading-section heading-section">
+        <div class="heading-container">
+            <div class="heading-main-content">
+                <div class="heading">
+                    <h1>{{ page.title }}</h1>
+                </div>
+                <div class="heading-blurb">
+                    {{ page.heading|richtext }}
+                </div>
+            </div>
+            {% image page.cover original as cover %}
+            <div class="heading-cover" style="background: url({{ cover.url }}) center bottom no-repeat;">
+                
+            </div>
+        </div>
+    </div>
+    <div class="content-section">
+        <div class="video-box box-container">
+            <div class="video-container-wrapper remote-container-wrapper">
+                <span><i class="fas fa-chalkboard-teacher"></i> Gateway to Music Lesson Videos</span>
+                <div class="video-container remote-container">
+                    {% for video in gateway1_video %}
+                        <figure>
+                            <video id="video1" playsinline="" controls="" controlslist="nodownload" oncontextmenu="return false;" preload="metadata" poster="">
+                                <source id="mp4" src="{{ video.url }}" type="video/mp4"> Your browser does not
+                                support the video type. I suggest you upgrade your browser.
+                            </video>
+                            <figcaption>
+                                <h6>Gateway to Music</h6>
+                                <span>Video {{ forloop.counter }}</span>
+                            </figcaption>
+                        </figure>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="end-nav-container">
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
+    </div>
+</main>
+{% endblock %}
+
+{# Remote javascript #}
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/helper.js' %}"></script>
+{% endblock %}
