@@ -3,22 +3,22 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
-{% block body_class %}template-about{% endblock %}
+{% block body_class %}template-remote{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/remote.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
 <main>
-    <div class="about-heading-section heading-section">
+    <div class="heading-section heading-section">
         <div class="heading-container">
             <div class="heading-main-content">
                 <div class="heading">
                     <h1>{{ page.title }}</h1>
                 </div>
                 <div class="heading-blurb">
-                    {{ page.heading }}
+                    {{ page.heading|richtext }}
                 </div>
             </div>
             {% image page.cover original as cover %}
@@ -29,21 +29,33 @@
     </div>
     <div class="content-section">
         <div class="box-container">
+            <div class="search-bar">
+                <label>Search Filter</label>
+                <input type="text" id="search" placeholder="Enter your Teacher's name.." title="Type in a name">
+            </div>
+            <div class="remote-container-wrapper">
+                <span><i class="fas fa-chalkboard-teacher"></i> Available Teachers</span>
                 <div class="remote-container">
                     {% for user in zoom_users %}
-                    <div class="remote-conte">
-                        <ul>
-                           <p>{{ user.fname }} {{user.lname}}</p>
-                           <p>{{ user.email }}</p>
-                           <p>{{ user.pmi }}</p>
-                        </ul>
-                    </div>
+                        <div class="remote-item box-shadow">
+                            <span>{{ user.fname }}</span>
+                            <span>{{user.lname}}</span>
+                            <a class="btn-smm" href="{{ user.pmi }}" target="_blank">
+                                <i class="fas fa-video"></i> Connect
+                            </a>
+                        </div>
                     {% endfor %}
                 </div>
+            </div>
         </div>
     </div>
-    <div class="about-nav-container">
+    <div class="end-nav-container">
         <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
     </div>
 </main>
+{% endblock %}
+
+{# Remote javascript #}
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/helper.js' %}"></script>
 {% endblock %}

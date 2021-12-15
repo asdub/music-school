@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-remoteindexpage{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/remote.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <div class="heading-section">
+        <div class="heading-container">
+            <div class="heading-main-content">
+                <div class="heading">
+                    <h1>{{ page.title }}</h1>
+                </div>
+                <div class="heading-blurb">
+                    {{ page.body|richtext }}
+                </div>
+            </div>
+            {% image page.cover original as cover %}
+            <div class="heading-cover" style="background: url({{ cover.url }}) center center no-repeat;">
+            </div>
+        </div>
+    </div>
+    <div class="content-section">
+        {% if page.enable_hero %}
+            {% image page.hero original as hero_image %}
+                {% if page.enable_pathway %}
+                <div class="music-hero box-shadow" style="background: linear-gradient(rgba(7, 38, 96, 0.8), rgba(255, 255, 255, 0.8)), url({{ hero_image.url }}) center center;">
+            {% else %}
+                <div class="music-hero box-shadow" style="background: linear-gradient(rgba(7, 38, 96, 0.3), rgba(255, 255, 255, 0.5)), url({{ hero_image.url }}) center center;">
+            {% endif %}
+                <div class="music-hero-overlay">
+                    <div class="hero-text-containter">
+                        <div class="hero-text">
+                            {{ page.herotext }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="box-container">
+            {% include_block page.box %}
+        </div>
+    </div>
+    <div class="end-nav-container">
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
+    </div>
+</main>
+{% endblock %}
+
+
+{# Main javascript #}
+{% block extra_js %}
+    {% if page.enable_pathway %}
+        <script type="text/javascript" src="{% static 'js/leader-line.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/home_newpark.js' %}"></script>
+{% endif %}
+{% endblock %}

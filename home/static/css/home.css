@@ -1,5 +1,6 @@
 /* Generic Settings */
-a:link {
+a,
+.nav-link {
     color: rgba(7, 38, 96, 1);
     text-decoration: none;
 }

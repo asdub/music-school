@@ -9,8 +9,8 @@ class Users():
         self.id = ""
         self.fname = ""
         self.lname = ""
-        self.email = ""
         self.pmi = ""
+        self.exclude = ""
 
 # Obtain users from Zoom api and extract required data
 def get_users():
@@ -22,13 +22,15 @@ def get_users():
 
     for user in user_list['users']:
         user_id = user['id']
-        data = json.loads(client.user.list(user_id=user_id).content)
+        data = json.loads(client.user.list(user_id=user_id, page_size=100, include_fields='custom_attributes').content)
         for item in data['users']:
             remote_user = Users()
             remote_user.id = item['id']
-            remote_user.fname = item['first_name']
-            remote_user.lname = item['last_name']
-            remote_user.email = item['email']
-            remote_user.pmi = item['pmi']
-            users.append(remote_user)
+            remote_user.fname = item['first_name'].title()
+            remote_user.lname = item['last_name'].title()
+            remote_user.pmi = "https://zoom.us/j/" + str(item['pmi'])
+            for custom in item['custom_attributes']:
+                remote_user.exclude = custom['value']
+            if not remote_user.exclude:
+                users.append(remote_user)
         return users

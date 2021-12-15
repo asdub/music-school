@@ -31,5 +31,8 @@
             {% include_block page.box %}
         </div>
     </div>
+    <div class="about-nav-container">
+        <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
+    </div>
 </main>
 {% endblock %}
