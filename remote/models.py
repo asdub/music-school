@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 from wagtail.search import index
 from wagtail.core.models import Page
@@ -56,7 +57,7 @@ class RemoteIndexPage(Page):
 class Video(models.Model):
     """ Create Zoom User object """
     id = models.CharField(primary_key=True, max_length=100)
-    type = models.IntegerField(default=0, null=False)
+    type = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     url = models.URLField()
     img = models.ImageField(upload_to='video_poster')
@@ -71,6 +72,15 @@ class RemoteVideo(Page):
         related_name='+'
     )
     heading =  RichTextField(blank=True, null=True)
+    video_source = models.IntegerField(choices=(
+        (1, 'Gateway 1'), 
+        (2, 'Gateway 2'),
+        (3, 'Gateway P')
+        ),
+        default=1,
+        null=False, 
+        blank=False,
+    )
 
     singlebody = StreamField(
         [
@@ -87,18 +97,25 @@ class RemoteVideo(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('heading', heading='Heading Blurb'),
+        FieldPanel('video_source', heading='Video Source'),
         ImageChooserPanel('cover', heading='Cover Image',),
         StreamFieldPanel('singlebody', heading='Single Item Content',),
     ]
 
 
     def get_context(self, request, *args, **kwargs):
-        # Add sorted Zoom user list to context
-        context = super().get_context(request, *args, **kwargs)
-        video_list = services.get_video()
+        # Add Gateway videos to contect
+        context = super().get_context(request, self, *args, **kwargs)
+        if self.video_source == 1:
+            gateway = settings.GATEWAY1
+        elif self.video_source == 2:
+             gateway = settings.GATEWAY2
+        else: 
+             gateway = settings.GATEWAY3
+        video_list = services.get_video(gateway)
         sorted_video_list = sorted(video_list, key=lambda l: (l.name))
 
-        context['gateway1_video'] = sorted_video_list
+        context['gateway_video'] = sorted_video_list
         return context
 
 

@@ -30,9 +30,18 @@
     <div class="content-section">
         <div class="video-box box-container">
             <div class="video-container-wrapper remote-container-wrapper">
-                <span><i class="fas fa-chalkboard-teacher"></i> Gateway to Music Lesson Videos</span>
+                <span>
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    {% if page.video_source == 1 %}
+                        Gateway to Music 1 Lesson Videos
+                    {% elif page.video_source == 2 %}
+                        Gateway to Music 2 Lesson Videos
+                    {% else %}
+                        Gateway to Music Percussion Lesson Videos
+                    {% endif %}
+                    </span>
                 <div class="video-container remote-container">
-                    {% for video in gateway1_video %}
+                    {% for video in gateway_video %}
                         <figure>
                             <video id="video1" playsinline="" controls="" controlslist="nodownload" oncontextmenu="return false;" preload="metadata" poster="">
                                 <source id="mp4" src="{{ video.url }}" type="video/mp4"> Your browser does not
@@ -52,9 +61,4 @@
         <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
     </div>
 </main>
-{% endblock %}
-
-{# Remote javascript #}
-{% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/helper.js' %}"></script>
 {% endblock %}
