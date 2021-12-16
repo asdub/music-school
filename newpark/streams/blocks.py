@@ -27,6 +27,31 @@ class NavBlock(blocks.StructBlock):
         label = "Navigation Block"
 
 
+class GridBlock(blocks.StructBlock):
+    """ Block for Grid Layout """
+
+    grids = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                
+                ('color', NativeColorBlock(default="#000000")),
+                ("cover", ImageChooserBlock(required=True)),
+                ("title", blocks.CharBlock(required=True)),
+                ("intro", blocks.TextBlock(required=True)),
+                ("body", blocks.RichTextBlock(required=False)),
+                ("button_text", blocks.CharBlock(required=False, max_length=60)),
+                ("button_page", blocks.PageChooserBlock(required=False)),
+                ("button_url", blocks.URLBlock(required=False)),
+
+            ]
+        )
+    )
+    class Meta:
+        template = "streams/grid_block.html"
+        icon = "placeholder"
+        label = "Grid Block"
+
+
 class ListBlock(blocks.StructBlock):
     """ Block for About Page Lists """
 

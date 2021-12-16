@@ -67,7 +67,7 @@ class Music(Page):
         related_name='+'
     )
     color = ColorField(blank=True, null=True)
-    heading = models.TextField(max_length=250, null=True)
+    heading = models.TextField(null=True)
 
     buttons = StreamField(
         [
@@ -100,7 +100,7 @@ class Music(Page):
     ]
 
     content_panels =  Page.content_panels + [
-        FieldPanel('heading', heading='Page Intro Text'),
+        FieldPanel('heading', heading='Heading Blurb'),
         ImageChooserPanel('cover', heading='Cover Image',),
         NativeColorPanel('color', heading='Color Accent'),
         StreamFieldPanel('buttons', heading='Top Navigation Button Settings',),
@@ -117,11 +117,10 @@ class MusicGrid(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    color = ColorField(blank=True, null=True)
-    heading = models.TextField(max_length=250, null=True)
-    box = StreamField(
+    heading = models.TextField(null=True)
+    grid = StreamField(
         [
-            ('SingleBox', blocks.SingleBlock()),
+            ('Grid', blocks.GridBlock()),
         ],
         null=True,
         blank=True,
@@ -129,11 +128,11 @@ class MusicGrid(Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('heading'),
+        index.SearchField('grid'),
     ]
 
     content_panels =  Page.content_panels + [
-        FieldPanel('heading', heading='Page Intro Text'),
+        FieldPanel('heading', heading='Heading Blurb'),
         ImageChooserPanel('cover', heading='Cover Image',),
-        NativeColorPanel('color', heading='Color Accent'),
-        StreamFieldPanel('box', heading='Grid Box',),
+        StreamFieldPanel('grid', heading='Grid Block',),
     ]
