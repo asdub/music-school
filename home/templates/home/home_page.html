@@ -11,6 +11,29 @@
 
 {% block content %}
 <main>
+    <div class="hero-video-section">
+        <div class="video-container">
+        {% for video in gateway_video %}
+        {% image page.video_cover fill-800x600 as video_poster %}
+        <video src="{{ video.url }}" controls="" controlslist="nodownload" poster="{{ video_poster.url }}" loop="" preload="meta" playsinline="" data-origwidth="0" data-origheight="0">
+        </video>
+        {% endfor %}
+        </div>
+        <div class="hero-video-content">
+            <div class="hero-video-head">
+                <h1>{{ page.video_heading }}</h1>
+            </div>
+            <div class="hero-video-text">
+                {{ page.video_body|richtext }}
+            </div>
+            <div class="hero-video-nav">
+                <a class="btn btn-white btn-lg btn-block" href="{{ page.video_page.slug }}">
+                    {{ page.video_button }} 
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="about-section">
         {% image page.about_cover original as about_photo %}
         <div class="about-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.7)), url({{ about_photo.url }}) center center;">
@@ -50,7 +73,7 @@
                         <a class="btn-path" href="{{ page.about_page }}">Jazz Improvisation <i class="fas fa-chevron-right"></i></a>
                        </div>
                        <div class="path-container">
-                        <a class="btn-path" id="d" href="{{ page.about_page }}">Micro Courses <i class="fas fa-chevron-right"></i></a>
+                        <a class="btn-path" id="d" href="{{ page.about_page }}">Micro & Diploma Courses <i class="fas fa-chevron-right"></i></a>
                        </div>
                    </div>
                 </div>
@@ -61,17 +84,30 @@
             </div>
         </a>
     </div>
-    <div class="support-section box-shadow">
-        {% image page.support_cover original as support_photo %}
-        <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.6)), url({{ support_photo.url }}) center center;">
+    <div class="festival-section box-shadow">
+        {% image page.festival_cover original as festival_photo %}
+        <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.2), rgba(7, 38, 96, 0.1)), url({{ festival_photo.url }}) center center;">
             <div class="music-hero-overlay"></div>
                 <div class="heading-container">
-                    <h1>{{ page.support_heading }}</h1>
+                    <h1>{{ page.festival_heading }}</h1>
+                </div>
+                <div class="festival-content">
+                    
+                </div>
+            <span class="span-navy">{{ page.festival_button }} <i class="fas fa-chevron-right"></i></span>
+        </div>
+    </div>
+    <div class="workshops-section box-shadow">
+        {% image page.workshops_cover original as workshops_photo %}
+        <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.6)), url({{ workshops_photo.url }}) center center;">
+            <div class="music-hero-overlay"></div>
+                <div class="heading-container">
+                    <h1>{{ page.workshops_heading }}</h1>
                 </div>
                 <div class="support-content">
                     
                 </div>
-            <span class="span-navy">{{ page.support_button }} <i class="fas fa-chevron-right"></i></span>
+            <span class="span-navy">{{ page.workshops_button }} <i class="fas fa-chevron-right"></i></span>
         </div>
     </div>
     <div id="contact-us" class="contact-section box-shadow">

@@ -114,6 +114,14 @@ a:link {
     border-radius: 2rem !important;
 }
 
+.btn-white {
+    color: black !important;
+    background-color: #ffffff !important;
+    border-color: #072660 !important;
+    width: 100%;
+    border-radius: 2rem !important;
+}
+
 .span-navy {
     padding: 0.875rem;
     background: rgb(7 38 96 / 80%);

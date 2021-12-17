@@ -245,11 +245,22 @@ main {
     font-size: 90%;
 }
 
+.grid-item-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
 .grid-nav-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin: 0 1rem 1rem;
+    padding: 0 0 0.25rem 0;
+}
+
+.grid-nav-container a {
+    margin: 0 0.5rem 0 0;
 }
 
 @media only screen and (min-width: 607px) {

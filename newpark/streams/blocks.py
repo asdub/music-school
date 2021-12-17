@@ -37,12 +37,16 @@ class GridBlock(blocks.StructBlock):
                 ('color', NativeColorBlock(default="#000000")),
                 ("cover", ImageChooserBlock(required=True)),
                 ("title", blocks.CharBlock(required=True)),
-                ("intro", blocks.TextBlock(required=True)),
+                ("intro", blocks.TextBlock(required=False)),
                 ("body", blocks.RichTextBlock(required=False)),
-                ("button_text", blocks.CharBlock(required=False, max_length=60)),
-                ("button_page", blocks.PageChooserBlock(required=False)),
-                ("button_url", blocks.URLBlock(required=False)),
-
+                ("buttons", blocks.ListBlock(blocks.StructBlock(
+                    [
+                        ("icon", FontAwesomeIconPickerBlock(required=False)),
+                        ("button_text", blocks.CharBlock(required=False, max_length=60)),
+                        ("button_page", blocks.PageChooserBlock(required=False)),
+                        ("button_url", blocks.URLBlock(required=False)),
+                    ]
+                ))),
             ]
         )
     )

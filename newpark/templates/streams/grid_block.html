@@ -4,28 +4,33 @@
     <div class="grid-container box-shadow" style="background: {{ item.color }}; color: {% if item.color == '#072660' %}white{% else %}inherit{% endif %}">
             {% if item.cover %}
             {% image item.cover fill-1400x400 as grid_cover %}
-            <div class="grid-cover-container" style="background: linear-gradient( rgb(255 255 255 / 40%), rgb(7 38 96 / 35%)), url({{ grid_cover.url }}) center center no-repeat;"></div>
+            <div class="grid-cover-container" style="background: linear-gradient( rgb(255 255 255 / 40%), rgb(7 38 96 / 35%)), url({{ grid_cover.url }}) center center no-repeat;">
+            </div>
             {% endif %}
         <div class="grid-inner">
-            {% if item.title %}
+            <div class="grid-item-heading">
                 <h3>{{ item.title }}</h3>
-            {% endif %}
+                <div class="grid-nav-container">
+                    {% if item.buttons %}
+                        {% for button in item.buttons %}
+                            {% if button.button_page %}
+                                <a href="{{ button.button_page.url }}" class="btn-smm">
+                                    {{ button.button_text }} <i class="{{ button.icon}}"></i>
+                                </a>
+                            {% elif button.button_url %}
+                                <a href="{{ button.button_url }}" class="btn-smm">
+                                    {{ button.button_text }} <i class="{{ button.icon}}"></i>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
             {% if item.intro %}
                 <span>{{ item.intro}}</span>
             {% endif %}
             {% if item.body %}
                 <p>{{ item.body }}</p>
-            {% endif %}
-        </div>
-        <div class="grid-nav-container">
-            {% if item.button_page %}
-                <a href="{{ item.button_page.url }}" class="btn-smm">
-                    {{ item.button_text }} <i class="fas fa-chevron-right"></i>
-                </a>
-            {% elif card.button_url %}
-                <a href="{{ item.button_url }}" class="btn-smm">
-                    {{ item.button_text }} <i class="fas fa-chevron-right"></i>
-                </a>
             {% endif %}
         </div>
     </div>

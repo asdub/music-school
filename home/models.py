@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+
 from wagtail.search import index
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
@@ -7,6 +9,8 @@ from wagtail.images.models import Image
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import PageChooserPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
+
+from remote import services
 
 @register_setting
 class MyCustomSettings(BaseSetting):
@@ -57,6 +61,26 @@ class SiteSettings(BaseSetting):
     ]
 
 class HomePage(Page):
+    #Video Section
+    video_cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    video_heading = models.CharField(max_length=250, null=True)
+    video_body = RichTextField(blank=True, null=True)
+    video_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Video Button Link'
+    )
+    video_button = models.CharField(max_length=100, null=True)
+
     #About Section
     about_cover = models.ForeignKey(
         'wagtailimages.Image',
@@ -115,6 +139,44 @@ class HomePage(Page):
     )
     support_button = models.CharField(max_length=100, null=True)
 
+    #Festival Seciton
+    festival_cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    festival_heading = models.CharField(max_length=250, null=True)
+    festival_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Festival Button Link'
+    )
+    festival_button = models.CharField(max_length=100, null=True)
+
+    #Workshops Seciton
+    workshops_cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    workshops_heading = models.CharField(max_length=250, null=True)
+    workshops_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Workshops Button Link'
+    )
+    workshops_button = models.CharField(max_length=100, null=True)
+
     # Search
     search_fields = Page.search_fields + [
         index.SearchField('about_heading'),
@@ -123,17 +185,41 @@ class HomePage(Page):
 
     #CMS Content Panels
     content_panels = Page.content_panels + [
+        ImageChooserPanel('video_cover', heading='Video Poster',),
+        FieldPanel('video_heading', heading='Video Section Heading',),
+        FieldPanel('video_body', heading='Video Content'),
+        PageChooserPanel('video_page'),
+        FieldPanel('video_button', heading='Video Button Text'),
         ImageChooserPanel('about_cover', heading='About Cover Image',),
         FieldPanel('about_heading', heading='About Section Heading',),
-        FieldPanel('about_body', heading='About Content', classname='full'),
+        FieldPanel('about_body', heading='About Content'),
         PageChooserPanel('about_page'),
-        FieldPanel('about_button', heading='About Button Text', classname='full'),
+        FieldPanel('about_button', heading='About Button Text'),
         ImageChooserPanel('music_cover', heading='Music Cover Image',),
         FieldPanel('music_heading', heading='Music Section Heading',),
         PageChooserPanel('music_page'),
-        FieldPanel('music_button', heading='Music Button Text', classname='full'),
+        FieldPanel('music_button', heading='Music Button Text'),
         ImageChooserPanel('support_cover', heading='Support Cover Image',),
         FieldPanel('support_heading', heading='Support Section Heading',),
         PageChooserPanel('support_page'),
-        FieldPanel('support_button', heading='Support Button Text', classname='full'),
+        FieldPanel('support_button', heading='Support Button Text'),
+        ImageChooserPanel('festival_cover', heading='Festival Cover Image',),
+        FieldPanel('festival_heading', heading='Festival Section Heading',),
+        PageChooserPanel('festival_page'),
+        FieldPanel('festival_button', heading='Festival Button Text'),
+        ImageChooserPanel('workshops_cover', heading='Workshops Cover Image',),
+        FieldPanel('workshops_heading', heading='Workshops Section Heading',),
+        PageChooserPanel('workshops_page'),
+        FieldPanel('workshops_button', heading='Workshops Button Text'),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        # Add Gateway videos to contect
+        context = super().get_context(request, self, *args, **kwargs)
+        gateway = settings.CHRISTMAS
+        video_list = services.get_video(gateway)
+        sorted_video_list = sorted(video_list, key=lambda l: (l.name))
+        print(sorted_video_list)
+
+        context['gateway_video'] = sorted_video_list
+        return context

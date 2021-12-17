@@ -68,7 +68,6 @@ class Music(Page):
     )
     color = ColorField(blank=True, null=True)
     heading = models.TextField(null=True)
-
     buttons = StreamField(
         [
             ('Buttons', blocks.ButtonBlock()),
@@ -76,7 +75,6 @@ class Music(Page):
         null=True,
         blank=True,
     )
-   
     body = StreamField(
         [
             ('ListBox', blocks.ListBlock()),
@@ -84,7 +82,6 @@ class Music(Page):
         null=True,
         blank=True,
     )
-
     singlebody = StreamField(
         [
             ('SingleBox', blocks.SingleBlock()),
