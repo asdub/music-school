@@ -16,8 +16,6 @@ main {
 
 .heading-section {
     grid-area: heading;
-    margin: 1rem 1rem 0.5rem 1rem;
-    border-bottom: 1px solid #072660;
 }
 
 .heading-container {
@@ -29,7 +27,7 @@ main {
 
 .content-section {
     grid-area: content;
-    margin: 1rem 2rem;
+
 }
 
 .content-section h2,
@@ -37,9 +35,8 @@ main {
     padding: 0 0 1rem 0;
 }
 
-.previous-content-section {
+.previous-content-section.content-section {
     grid-area: prevcontent;
-    margin: 1rem 2rem;
     border-top: 1px solid #072660;
     padding: 1.5rem 0 0 0;
 }

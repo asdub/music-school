@@ -42,7 +42,7 @@ main {
     grid-template-rows: 100%;
     grid-template-areas: "image content";
     background: #fafafa;
-    margin: 1rem 1rem 0.5rem 1rem;
+    margin: 0.5rem;
     border-radius: 3px;
 }
 
@@ -75,7 +75,7 @@ main {
     grid-template-rows: auto;
     background: #072660;
     color: white;
-    margin: 1rem 1rem 0 1rem;
+    margin: 1rem 0.5rem;
     border-radius: 3px;
 }
 
@@ -86,7 +86,7 @@ main {
 /* Home - Music */
 .music-section {
     grid-area: music;
-    margin: 0.5rem 1rem;
+    margin: 0.5rem;
     overflow: hidden;
 }
 
@@ -100,14 +100,14 @@ main {
 /* Home - Festival */
 .festival-section {
     grid-area: festival;
-    margin: 0.5rem 1rem;
+    margin: 0.5rem;
     overflow: hidden;
 }
 
 /* Home - Workshops */
 .workshops-section {
     grid-area: workshops;
-    margin: 0.5rem 1rem;
+    margin: 0.5rem;
     overflow: hidden;
 }
 
@@ -175,7 +175,7 @@ main {
     grid-template-rows: 100%;
     grid-template-areas: "contactinfo map";
     background: #fafafa;
-    margin: 0.5rem 1rem;
+    margin: 0.5rem;
     border-radius: 3px;
 }
 
@@ -270,6 +270,21 @@ main {
         display: grid;
         grid-template-columns: 45% 55%;
     }
+    
+    .hero-video-section,
+    .about-section,
+    .music-section,
+    .contact-section {
+        margin: 0.5rem 1rem;
+    }
+
+    .festival-section {
+        margin: 0.5rem 0.5rem 0.5rem 1rem
+    }
+
+    .workshops-section {
+        margin: 0.5rem 1rem 0.5rem 0.5rem
+    }
 }
 
 @media all and (min-width: 992px) {
@@ -293,13 +308,12 @@ main {
     .hero-video-section {
         grid-template-columns: 60% 40%
     }
-}
 
-@media only screen and (min-width: 1200px) { 
-    .music-section {
-        margin: 0.5rem 0.5rem 0.5rem 1rem;
+    .festival-section {
+        margin: 0.5rem 1rem 0.5rem 0.5rem
     }
-    .support-section {
-        margin: 0.5rem 1rem 0.5rem 0.5rem;
+
+    .music-section {
+        margin: 0.5rem 0.5rem 0.5rem 1rem
     }
 }

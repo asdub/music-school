@@ -26,10 +26,6 @@ main {
     grid-area: nav;
 }
 
-.heading-section {
-    margin: 1rem 1rem 0.5rem 1rem;
-    border-bottom: 1px solid #072660;
-}
 
 .heading-main-content {
     padding: 1rem;
@@ -37,10 +33,6 @@ main {
 
 .heading-cover {
     display: none;
-}
-
-.content-section {
-    margin: 1rem 2rem;
 }
 
 .block-NavBox {

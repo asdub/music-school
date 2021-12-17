@@ -91,7 +91,7 @@ class AboutLocationPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    color = ColorField(blank=True, null=True)
+    color = ColorField(default='#fafafa', blank=True, null=True)
     heading = models.TextField(max_length=250, null=True)
     body = StreamField(
         [

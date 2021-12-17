@@ -22,10 +22,12 @@ window.addEventListener('load', (event) => {
 
   if (mediaQuery.matches) {
     slineActive = 1
-    position = 'right'
+    startPosition = 'right'
+    endPostion = 'left'
   } else {
     slineActive = 0
-    position = 'bottom'
+    startPosition = 'bottom'
+    endPostion = 'top'
   };
 
   // Progression Line
@@ -34,7 +36,8 @@ window.addEventListener('load', (event) => {
     startPlug: 'behind',
     endPlug: 'behind',
     color: 'white',
-    startSocket: position,
+    startSocket: startPosition,
+    endSocket: endPostion,
   });
   if (slineActive == 1) {
     bline = new LeaderLine(document.getElementById('a2'),  document.getElementById('b'));

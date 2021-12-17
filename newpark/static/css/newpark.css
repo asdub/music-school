@@ -6,7 +6,7 @@
 
 /*CSS vars */
 :root {
-    --pathway-space: 20;
+    --pathway-space: 5;
 }
 
 /***********/
@@ -16,6 +16,7 @@ html {
 }
 
 body {
+    min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3));
@@ -117,7 +118,6 @@ a:link {
 .btn-white {
     color: black !important;
     background-color: #ffffff !important;
-    border-color: #072660 !important;
     width: 100%;
     border-radius: 2rem !important;
 }
@@ -259,6 +259,7 @@ a.btn-path-inner:focus {
     padding: 1rem 2rem;
 }
 
+
 .heading-container-blk h1,
 .heading h1 {
     margin-top: 1rem;
@@ -268,6 +269,15 @@ a.btn-path-inner:focus {
 .navbar >.container, 
 .navbar >.container-fluid {
     max-width: 1400px;
+}
+
+.heading-section {
+    margin: 1rem 0.5rem 0.5rem 0.5rem;
+    border-bottom: 1px solid #072660;
+}
+
+.content-section {
+    margin: 0.5rem;
 }
 
 /* Colours */
@@ -718,7 +728,7 @@ footer {
 
 .joy-ev-when {
     background: #072660;
-    padding: 0.5rem 0 0.5rem 0;
+    padding: 0.5rem 0 0.5rem 0.5rem;
     text-transform: uppercase;
     font-weight: 600;
     color: white;
@@ -848,6 +858,14 @@ footer {
 @media only screen and (min-width: 768px) {
     :root {
         --pathway-space: 70;
+    }
+
+    .heading-section {
+        margin: 1rem 1rem 0.5rem 1rem;
+    }
+
+    .content-section {
+        margin: 0.5rem 1rem;
     }
 
     .path-container-inner {

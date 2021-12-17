@@ -13,7 +13,7 @@ class NavBlock(blocks.StructBlock):
         blocks.StructBlock(
             [
                 ("image", ImageChooserBlock(required=True)),
-                ('color', NativeColorBlock(default="#000000")),
+                ('color', NativeColorBlock(default="#072660")),
                 ("title", blocks.CharBlock(required=True, max_length=60)),
                 ("button_page", blocks.PageChooserBlock(required=False)),
                 ("button_url", blocks.URLBlock(required=False)),
@@ -34,7 +34,7 @@ class GridBlock(blocks.StructBlock):
         blocks.StructBlock(
             [
                 
-                ('color', NativeColorBlock(default="#000000")),
+                ('color', NativeColorBlock(default="#fafafa")),
                 ("cover", ImageChooserBlock(required=True)),
                 ("title", blocks.CharBlock(required=True)),
                 ("intro", blocks.TextBlock(required=False)),
