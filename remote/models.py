@@ -75,7 +75,8 @@ class RemoteVideo(Page):
     video_source = models.IntegerField(choices=(
         (1, 'Gateway 1'), 
         (2, 'Gateway 2'),
-        (3, 'Gateway P')
+        (3, 'Gateway P'),
+        (4, 'Pro Tip Videos')
         ),
         default=1,
         null=False, 
@@ -109,9 +110,12 @@ class RemoteVideo(Page):
         if self.video_source == 1:
             gateway = settings.GATEWAY1
         elif self.video_source == 2:
-             gateway = settings.GATEWAY2
+            gateway = settings.GATEWAY2
+        elif self.video_source == 2:
+            gateway = settings.GATEWAY3
         else: 
-             gateway = settings.GATEWAY3
+            gateway = settings.PROTIPS
+            
         video_list = services.get_video(gateway)
         sorted_video_list = sorted(video_list, key=lambda l: (l.name))
 

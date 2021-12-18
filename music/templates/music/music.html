@@ -36,6 +36,8 @@
                 {% include_block page.body %}
             {% elif page.singlebody %}
                 {% include_block page.singlebody %}
+            {% elif page.standardbody %}
+                {% include_block page.standardbody %}
             {% endif %}
         </div>
     </div>

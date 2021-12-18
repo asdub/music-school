@@ -28,15 +28,25 @@
         </div>
     </div>
     <div class="content-section">
+        {% if page.buttons %}
+            {% include_block page.buttons %}
+        {% endif %}
         <div class="box-container">
+            {% if page.standard %}
+                {% include_block page.standard %}
+            {% endif %}
             {% if page.body %}
                 {% include_block page.body %}
-            {% elif page.singlebody %}
+            {% endif %}
+            {% if page.singlebody %}
                 {% include_block page.singlebody %}
+            {% endif %}
+            {% if page.table %}
+                {% include_block page.table %}
             {% endif %}
         </div>
     </div>
-    <div class="about-nav-container">
+    <div class="end-nav-container">
         <a href="{{ page.get_parent.url }}" class="btn btn-navy btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back to {{ page.get_parent.title }}</a>
     </div>
 </main>

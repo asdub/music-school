@@ -1,0 +1,34 @@
+{% load wagtailimages_tags %}
+
+{% for listitem in self.table %}
+    <div class="about-list-box-wrapper box-shadow" style="background: {{ page.color }}; color: {% if page.color == '#072660' %}white{% else %}inherit{% endif %}">
+        {% if listitem.cover %}
+        {% image listitem.cover fill-1200x300 as about_box_cover %}
+            <div class="about-list-cover-container" style="background: linear-gradient( rgb(255 255 255 / 40%), rgb(7 38 96 / 35%)), url({{ about_box_cover.url }}) center center no-repeat;"></div>
+        {% endif %}
+        <div class="about-box-inner">
+            <div class="about-box">
+                <h3>{{ listitem.heading }}</h3>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        {% for title in listitem.titles %}
+                            <th scope="col">{{ title.title }}</th>
+                        {% endfor %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {%for rows in listitem.rows %}
+                      <tr>
+                        <td>{{ rows.course }}</td>
+                        <td>{{ rows.class_length }}</td>
+                        <td>{{ rows.duration }}</td>
+                        <td>{{ rows.price }}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+{% endfor %}

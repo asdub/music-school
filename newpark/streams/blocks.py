@@ -34,9 +34,9 @@ class GridBlock(blocks.StructBlock):
         blocks.StructBlock(
             [
                 
-                ('color', NativeColorBlock(default="#fafafa")),
-                ("cover", ImageChooserBlock(required=True)),
-                ("title", blocks.CharBlock(required=True)),
+                ('color', NativeColorBlock(default="#072660")),
+                ("cover", ImageChooserBlock(required=False)),
+                ("title", blocks.CharBlock(required=False   )),
                 ("intro", blocks.TextBlock(required=False)),
                 ("body", blocks.RichTextBlock(required=False)),
                 ("buttons", blocks.ListBlock(blocks.StructBlock(
@@ -56,6 +56,70 @@ class GridBlock(blocks.StructBlock):
         label = "Grid Block"
 
 
+class TableBlock(blocks.StructBlock):
+    """ Standard Block for Pages """
+
+    table = blocks.ListBlock(
+        blocks.StructBlock(
+            [   
+                ("cover", ImageChooserBlock(required=False)),
+                ("heading", blocks.CharBlock(required=False, max_length=100)),
+                ("titles", blocks.ListBlock(blocks.StructBlock(
+                    [
+                        ("title", blocks.CharBlock(required=False)),
+                    ], block_counts = {
+                        'title': {'max_num': 4},
+                    }
+                ))),
+                ("rows", blocks.ListBlock(blocks.StructBlock(
+                    [
+                        ("course", blocks.CharBlock(required=False)),
+                        ("class_length", blocks.CharBlock(required=False)),
+                        ("duration", blocks.CharBlock(required=False)),
+                        ("price", blocks.CharBlock(required=False)),
+                    ]
+                ))),
+            ], block_counts = {
+                'titles': {'max_mun': 1},
+            }
+        )
+    )
+    class Meta:
+        template = "streams/table_block.html"
+        icon = "placeholder"
+        label = "Table Content Block"
+
+
+class StandardBlock(blocks.StructBlock):
+    """ Standard Block for Pages """
+
+    standard = blocks.ListBlock(
+        blocks.StructBlock(
+            [   
+                ("cover", ImageChooserBlock(required=False)),
+                ("heading", blocks.CharBlock(required=False, max_length=100)),
+                ("subtext", blocks.TextBlock(required=False)),
+                ("listtext", blocks.ListBlock(blocks.StructBlock(
+                    [
+                        ("text", blocks.RichTextBlock(required=False)),
+                    ]
+                ))),
+                ("single_image", ImageChooserBlock(required=False)),
+                ("image_gallery", blocks.ListBlock(blocks.StructBlock(
+                    [
+                        ("gallery_image", ImageChooserBlock(required=False)),
+                        ("caption", blocks.CharBlock(required=False)),
+                    ]
+                )))
+            ]
+        )
+    )
+    class Meta:
+        template = "streams/standard_list_block.html"
+        icon = "placeholder"
+        label = "Multi Content Block"
+
+
 class ListBlock(blocks.StructBlock):
     """ Block for About Page Lists """
 
@@ -65,7 +129,7 @@ class ListBlock(blocks.StructBlock):
                 ("cover", ImageChooserBlock(required=False)),
                 ("heading", blocks.CharBlock(required=False, max_length=100)),
                 ("subtext", blocks.TextBlock(required=False)),
-                ("list", blocks.ListBlock(blocks.StructBlock(
+                ("listtext", blocks.ListBlock(blocks.StructBlock(
                     [
                         ("text", blocks.RichTextBlock(required=False)),
                     ]

@@ -53,6 +53,7 @@ p:empty {
   }
 
 main {
+    min-height: 80vh;
     animation: fadeIn 2s;
     -webkit-animation: fadeIn 2s;
     -moz-animation: fadeIn 2s;
@@ -250,6 +251,25 @@ a.btn-path-inner:focus {
 
 .btn-path-inner {
     margin: 0.5rem;
+}
+
+/* Layout */
+
+.block-StandardBox {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.end-nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 2rem;
+    margin-left: auto;
 }
 
 

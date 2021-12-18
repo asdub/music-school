@@ -3,7 +3,7 @@
 {% for item in self.single %}
     <div class="about-box-wrapper box-shadow" style="background: {{ page.color }}; color: {% if page.color == '#072660' %}white{% else %}inherit{% endif %}">
         {% if item.cover %}
-        {% image item.cover fill-600x800 as about_box_cover %}
+        {% image item.cover fill-1200x300 as about_box_cover %}
             <div class="about-cover-container" style="background: linear-gradient( rgb(255 255 255 / 40%), rgb(7 38 96 / 35%)), url({{ about_box_cover.url }}) center center no-repeat;"></div>
         {% endif %}
         <div class="about-box-inner">
@@ -18,6 +18,12 @@
                     <p>{{ item.text }}</p>
                 {% endif %}
             </div>
+            {% if item.image %}
+                <div class="about-img-container">
+                    {% image item.image fill-800x300 as img %}
+                    <img src="{{ img.url }}" alt="{{ img.name }}">
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endfor %}

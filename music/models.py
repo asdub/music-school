@@ -90,6 +90,14 @@ class Music(Page):
         blank=True,
     )
 
+    standardbody = StreamField(
+        [
+            ('StandardBox', blocks.StandardBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
     search_fields = Page.search_fields + [
         index.SearchField('heading'),
         index.SearchField('body'),
@@ -101,6 +109,7 @@ class Music(Page):
         ImageChooserPanel('cover', heading='Cover Image',),
         NativeColorPanel('color', heading='Color Accent'),
         StreamFieldPanel('buttons', heading='Top Navigation Button Settings',),
+        StreamFieldPanel('standardbody', heading='Standard Item Content',),
         StreamFieldPanel('body', heading='Multi Item Content',),
         StreamFieldPanel('singlebody', heading='Single Item Content',),
     ]

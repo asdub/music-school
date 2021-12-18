@@ -36,8 +36,10 @@
                         Gateway to Music 1 Lesson Videos
                     {% elif page.video_source == 2 %}
                         Gateway to Music 2 Lesson Videos
-                    {% else %}
+                    {% elif  page.video_source == 3 %}
                         Gateway to Music Percussion Lesson Videos
+                    {% else %}
+                        Latest Pro-Tips Videos
                     {% endif %}
                     </span>
                 <div class="video-container remote-container">
@@ -48,7 +50,15 @@
                                 support the video type. I suggest you upgrade your browser.
                             </video>
                             <figcaption>
-                                <h6>Gateway to Music</h6>
+                                {% if page.video_source == 1 %}
+                                <h6>Gateway to Music 1 Lesson Videos</h6>
+                                {% elif page.video_source == 2 %}
+                                <h6>Gateway to Music 2 Lesson Videos</h6>
+                                {% elif  page.video_source == 3 %}
+                                <h6>Gateway to Music Percussion Lesson Videos</h6>
+                                {% else %}
+                                   <h6>Newpark Pro-Tips</h6>
+                                {% endif %}
                                 <span>Video {{ forloop.counter }}</span>
                             </figcaption>
                         </figure>
