@@ -64,6 +64,7 @@ class TableBlock(blocks.StructBlock):
             [   
                 ("cover", ImageChooserBlock(required=False)),
                 ("heading", blocks.CharBlock(required=False, max_length=100)),
+                ("intro", blocks.RichTextBlock(required=False)),
                 ("titles", blocks.ListBlock(blocks.StructBlock(
                     [
                         ("title", blocks.CharBlock(required=False)),
