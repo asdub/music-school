@@ -82,6 +82,7 @@ main {
 }
 
 .hero-video-content {
+    grid-row-start: 2;
     padding: 1rem 2rem;
 }
 
@@ -280,6 +281,10 @@ main {
         margin: 0.5rem 1rem;
     }
 
+    .hero-video-content {
+        grid-row-start: 1;
+    }
+
     .festival-section {
         margin: 0.5rem 0.5rem 0.5rem 1rem
     }
@@ -308,7 +313,7 @@ main {
         grid-template-areas: "contactinfo map map";
     }
     .hero-video-section {
-        grid-template-columns: 60% 40%
+        grid-template-columns: 55% 45%
     }
 
     .festival-section {

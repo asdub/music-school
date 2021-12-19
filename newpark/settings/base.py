@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'workshops',
     'music',
     'remote',
+    'menus',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
