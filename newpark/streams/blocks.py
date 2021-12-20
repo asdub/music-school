@@ -189,3 +189,4 @@ class ButtonBlock(blocks.StructBlock):
         template = "streams/button_block.html"
         icon = "placeholder"
         label = "Button Block"
+    

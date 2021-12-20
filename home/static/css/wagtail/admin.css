@@ -7,3 +7,16 @@
 .label, label {
     width: auto;
 }
+
+li.field-col.col12.btn.required.char_field > div > div.field-content > div > input {
+    color: #fff;
+    background-color: #072660;
+    border-color: #072660;
+    border-radius: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.field-row.col6 {
+    width: 100%;
+}

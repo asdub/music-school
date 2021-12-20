@@ -11,7 +11,6 @@ window.addEventListener('load', (event) => {
   let space = getComputedStyle(document.body).getPropertyValue('--pathway-space');
   let style = document.createElement('style');
   let slineActive;
-  let position;
   let styles = [];
   let keyframes;
 
@@ -21,13 +20,13 @@ window.addEventListener('load', (event) => {
     };
 
   if (mediaQuery.matches) {
-    slineActive = 1
-    startPosition = 'right'
-    endPostion = 'left'
+    slineActive = 1;
+    startPosition = 'right';
+    endPostion = 'left';
   } else {
-    slineActive = 0
-    startPosition = 'bottom'
-    endPostion = 'top'
+    slineActive = 0;
+    startPosition = 'bottom';
+    endPostion = 'top';
   };
 
   // Progression Line

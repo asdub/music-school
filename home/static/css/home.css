@@ -16,6 +16,10 @@ video {
     border-radius: 3px;
 }
 
+video[poster] {
+    width:100%;
+  }
+
 /* Home - Layout Main */
 main {
     position: relative;
@@ -122,7 +126,7 @@ main {
     background-size: cover !important;
     height: 100%;
     width: 100%;
-    transition: top 1s ease-in-out;
+    transition: all 0.35s ease-in-out;
     overflow: hidden;
     /* Safari */
     -webkit-backface-visibility: hidden;
@@ -146,13 +150,16 @@ main {
     opacity: 1;
 }
 
-.music-hero span {
-    transition: all 0.3s ease-out;
+.music-hero:focus > .span-navy,
+.music-hero:hover > .span-navy {
+    transition: all 0.35s ease-in-out;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    transform: scale(1.1);
 }
 
-.music-hero:hover > span {
+.music-hero:focus > .span-navy,
+.music-hero:hover > .span-navy {
     transform: scale(1.1);
 }
 
@@ -282,7 +289,7 @@ main {
     }
 
     .hero-video-content {
-        grid-row-start: 1;
+        grid-row-start: 2;
     }
 
     .festival-section {
@@ -322,5 +329,9 @@ main {
 
     .music-section {
         margin: 0.5rem 0.5rem 0.5rem 1rem
+    }
+
+    .hero-video-content {
+        grid-row-start: 1;
     }
 }

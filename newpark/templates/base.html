@@ -178,11 +178,73 @@
                 <div class="footer-menu">
                         <ul class="footer-nav">
                             <span>Navigation</span>
-                            <li class="nav-item"><a class="nav-link" href="#"> About </a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"> Music </a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"> Enrol </a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"> Remote Lessons </a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"> Newpark Festival 2022 </a></li>
+                            {% for item in navigation.menu_items.all %}
+                                <li class="nav-item">
+                                    <a class="nav-link" 
+                                        href="{{ item.link }}"
+                                        {% if item.open_in_new_tab %} 
+                                            target="_blank"
+                                        {% endif %}> 
+                                        {{ item.title }} 
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <ul class="footer-nav">
+                            <span>{{ sub_music.title }}</span>
+                            {% for item in sub_music.menu_items.all %}
+                            <li class="sub-nav-item">
+                                <a class="sub-nav-link" 
+                                    href="{{ item.link }}"
+                                    {% if item.open_in_new_tab %} 
+                                        target="_blank"
+                                    {% endif %}> 
+                                    {{ item.title }} 
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <ul class="footer-nav">
+                            <span>{{ about_newpark.title }}</span>
+                            {% for item in about_newpark.menu_items.all %}
+                            <li class="sub-nav-item">
+                                <a class="sub-nav-link" 
+                                    href="{{ item.link }}"
+                                    {% if item.open_in_new_tab %} 
+                                        target="_blank"
+                                    {% endif %}> 
+                                    {{ item.title }} 
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <ul class="footer-nav">
+                            <span>{{ sub_whats_on.title }}</span>
+                            {% for item in sub_whats_on.menu_items.all %}
+                            <li class="sub-nav-item">
+                                <a class="sub-nav-link" 
+                                    href="{{ item.link }}"
+                                    {% if item.open_in_new_tab %} 
+                                        target="_blank"
+                                    {% endif %}> 
+                                    {{ item.title }} 
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <ul class="footer-nav">
+                            <span>{{ sub_more.title }}</span>
+                            {% for item in sub_more.menu_items.all %}
+                            <li class="sub-nav-item">
+                                <a class="sub-nav-link" 
+                                    href="{{ item.link }}"
+                                    {% if item.open_in_new_tab %} 
+                                        target="_blank"
+                                    {% endif %}> 
+                                    {{ item.title }} 
+                                </a>
+                            </li>
+                            {% endfor %}
                         </ul>
                 </div>
                 <div class="footer-subscribe">
@@ -194,19 +256,19 @@
                 </div>
                 <div class="footer-social">
                         <div class="social-items-container">
-                            <a target="”_blank”" href="https://www.facebook.com/newparkmusic/">
+                            <a target="”_blank”" href="{{ settings.home.SiteSettings.facebook }}">
                                 <i class="fab fa-facebook-square newpark-social-icons" aria-hidden="true"></i>
                                 <span>newparkmusic</span>
                             </a>
-                            <a target="”_blank”" href="https://twitter.com/newparkmusic">
+                            <a target="”_blank”" href="{{ settings.home.SiteSettings.twitter }}">
                                 <i class="fab fa-twitter newpark-social-icons" aria-hidden="true"></i>
                                 <span>@NewparkMusic</span>
                             </a>
-                            <a target="”_blank”" href="https://www.instagram.com/newparkmusic">
+                            <a target="”_blank”" href="{{ settings.home.SiteSettings.instagram }}">
                                 <i class="fab fa-instagram newpark-social-icons" aria-hidden="true"></i>
                                 <span>@newparkmusic</span>
                             </a>
-                            <a target="”_blank”" href="">
+                            <a target="”_blank”" href="{{ settings.home.SiteSettings.spotify }}">
                                 <i class="fab fa-spotify newpark-social-icons" aria-hidden="true"></i>
                                 <span>@newparkmusic</span>
                             </a>
@@ -218,8 +280,8 @@
                 <div class="footer-terms">
                     <span>© 2021 Newpark Academy of Music</span>
                     <div class="privacy-nav">
-                        <div class="privacy-item"><a class="nav-link" href="#"> Privacy Policy </a></div>
-                        <div class="privacy-item"><a class="nav-link" href="#"> Terms of Service </a></div>
+                        <div class="privacy-item"><a class="nav-link" href="{{ settings.home.SiteSettings.privacy.url }}"> Privacy Policy </a></div>
+                        <!--<div class="privacy-item"><a class="nav-link" href="#"> Terms of Service </a></div>-->
                     </div>
                 </div>
             </div>

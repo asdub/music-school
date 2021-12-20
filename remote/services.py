@@ -6,6 +6,15 @@ import logging
 from zoomus import ZoomClient
 from remote import graph_api
 
+class Video():
+    """ Create Video object """
+    def __init__(self):
+        self.id = ""
+        self.type = ""
+        self.name = ""
+        self.url = ""
+
+
 class Users():
     """ Create Zoom User object """
     def __init__(self):
@@ -41,19 +50,14 @@ def get_users():
 
 
 def get_video(request):
-    from remote.models import Video
     video_data = graph_api.one_drive(request)
+    content = []
     for video in video_data['value']:
         if 'video' in video:
-            if Video.objects.filter(pk=video['id']).exists():
-                Video.objects.filter(pk=video['id']).update(url=video['@microsoft.graph.downloadUrl'])
-                logging.info(f"{video['id']} - {video['name']} already exisits in db updating URL")
-            else:
-                Video.objects.create(
-                    id=video['id'],
-                    type=request,
-                    name=video['name'],
-                    url=video['@microsoft.graph.downloadUrl'],
-                )
-                logging.info(f"{video['id']} - {video['name']} added to db")
-    return Video.objects.filter(type=request)
+            videos = Video()
+            videos.id = video['id']
+            videos.type = request
+            videos.name = video['name']
+            videos.url = video['@microsoft.graph.downloadUrl']
+            content.append(videos)
+    return content

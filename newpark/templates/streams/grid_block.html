@@ -3,7 +3,7 @@
 {% for item in self.grids %}
     <div class="grid-container box-shadow" style="background: {{ item.color }}; color: {% if item.color == '#072660' %}white{% else %}inherit{% endif %}">
             {% if item.cover %}
-            {% image item.cover fill-1400x400 as grid_cover %}
+            {% image item.cover fill-850x400 as grid_cover %}
             <div class="grid-cover-container" style="background: linear-gradient( rgb(255 255 255 / 40%), rgb(7 38 96 / 35%)), url({{ grid_cover.url }}) center center no-repeat;">
             </div>
             {% endif %}

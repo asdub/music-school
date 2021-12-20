@@ -54,14 +54,6 @@ class RemoteIndexPage(Page):
         StreamFieldPanel('box', heading='Navigation Boxes',),
     ]
 
-class Video(models.Model):
-    """ Create Zoom User object """
-    id = models.CharField(primary_key=True, max_length=100)
-    type = models.CharField(max_length=100)
-    name = models.CharField(max_length=100)
-    url = models.URLField()
-    img = models.ImageField(upload_to='video_poster')
-
 
 class RemoteVideo(Page):
     cover = models.ForeignKey(

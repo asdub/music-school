@@ -28,14 +28,14 @@
         </div>
         <div class="video-container">
             {% for video in gateway_video %}
-                {% image page.video_cover fill-800x600 as video_poster %}
-                <video src="{{ video.url }}" controls="" controlslist="nodownload" poster="{{ video_poster.url }}" loop="" preload="meta" playsinline="" data-origwidth="0" data-origheight="0">
+                {% image page.video_cover original as video_poster %}
+                <video src="{{ video.url }}" controls="" controlslist="nodownload" poster="{{ video_poster.url }}" loop="" preload="none" playsinline="" data-origwidth="0" data-origheight="0">
                 </video>
             {% endfor %}
         </div>
     </div>
     <div class="about-section">
-        {% image page.about_cover original as about_photo %}
+        {% image page.about_cover fill-1000x1000 as about_photo %}
         <div class="about-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.7)), url({{ about_photo.url }}) center center;">
         </div>
         <div class="about-content-container content-container box-shadow">
@@ -47,68 +47,82 @@
         </div>
     </div>
     <div class="music-section box-shadow">
-        {% image page.music_cover original as music_photo %}
-        <a href="{{ page.music_page }}">
+        {% image page.music_cover fill-1000x1000 as music_photo %}
             <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3)), url({{ music_photo.url }}) center center;">
                 <div class="music-hero-overlay">
-                   <div class="pathway">
-                       <div class="path-container">
-                            <a class="btn-path" id="a1" href="{{ page.about_page }}">Newpark Nippers <i class="fas fa-chevron-right"></i></a>
-                       </div>
-                       <div class="path-container">
-                            <a class="btn-path" href="{{ page.about_page }}">Gateway to Music <i class="fas fa-chevron-right"></i></a>
-                       </div>
-                       <div class="path-container">
-                            <a class="btn-path" href="{{ page.about_page }}">Gateway to Instruments <i class="fas fa-chevron-right"></i></a>
-                       </div>
-                       <div class="path-container">
-                            <a class="btn-path" id="a2" href="{{ page.about_page }}">Individual Lessons <i class="fas fa-chevron-down"></i></a>
-                        <div class="path-container-inner">
-                            <a class="btn-path-inner" id="a3" href="{{ page.about_page }}">Ensemble <i class="fas fa-chevron-right"></i></a>
-                            <a class="btn-path-inner" id="b" href="{{ page.about_page }}">Musicianship <i class="fas fa-chevron-right"></i></a>
-                            <a class="btn-path-inner" id="c" href="{{ page.about_page }}">Workshops <i class="fas fa-chevron-right"></i></a>
-                        </div>
-                       </div>
-                       <div class="path-container">
-                        <a class="btn-path" href="{{ page.about_page }}">Jazz Improvisation <i class="fas fa-chevron-right"></i></a>
-                       </div>
-                       <div class="path-container">
-                        <a class="btn-path" id="d" href="{{ page.about_page }}">Micro & Diploma Courses <i class="fas fa-chevron-right"></i></a>
-                       </div>
-                   </div>
-                </div>
-                    <div class="heading-container">
-                        <h1>{{ page.music_heading }}</h1>
+                <div class="pathway">
+                    <div class="path-container">
+                            <a class="btn-path" id="a1" href="{{ page.pathway1_page.url }}">{{ page.pathway1 }} <i class="fas fa-chevron-right"></i></a>
                     </div>
-                <span class="span-navy" href="{{ page.music_page }}">{{ page.music_button }} <i class="fas fa-chevron-right"></i></span>
+                    <div class="path-container">
+                            <a class="btn-path" href="{{ page.pathway2_page.url }}">{{ page.pathway2 }} <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="path-container">
+                            <a class="btn-path" href="{{ page.pathway3_page.url }}">{{ page.pathway3 }} <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="path-container">
+                            <a class="btn-path" id="a2" href="{{ page.pathway4_page.url }}">{{ page.pathway4 }} <i class="fas fa-chevron-down"></i></a>
+                        <div class="path-container-inner">
+                            <a class="btn-path-inner" id="a3" href="{{ page.pathway5_page.url }}">{{ page.pathway5 }} <i class="fas fa-chevron-right"></i></a>
+                            <a class="btn-path-inner" id="b" href="{{ page.pathway6_page.url }}">{{ page.pathway6 }} <i class="fas fa-chevron-right"></i></a>
+                            <a class="btn-path-inner" id="c" href="{{ page.pathway7_page.url }}">{{ page.pathway7 }} <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="path-container">
+                        <a class="btn-path" href="{{ page.pathway8_page.url }}">{{ page.pathway8 }} <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="path-container">
+                        <a class="btn-path" id="d" href="{{ page.pathway9_page.url }}">{{ page.pathway9 }} <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                </div>
+                <div class="heading-container">
+                    <h1>{{ page.music_heading }}</h1>
+                </div>
+                <div class="span-navy">
+                    <a href="{{ page.music_page.slug }}">
+                        <span>
+                            {{ page.music_button }} <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </a>
+                </div>
             </div>
-        </a>
     </div>
     <div class="festival-section box-shadow">
-        {% image page.festival_cover original as festival_photo %}
+        {% image page.festival_cover fill-500x500 as festival_photo %}
+    <a href="{{ page.festival_page.slug }}">
         <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.2), rgba(7, 38, 96, 0.1)), url({{ festival_photo.url }}) center center;">
             <div class="music-hero-overlay"></div>
-                <div class="heading-container">
-                    <h1>{{ page.festival_heading }}</h1>
-                </div>
-                <div class="festival-content">
-                    
-                </div>
-            <span class="span-navy">{{ page.festival_button }} <i class="fas fa-chevron-right"></i></span>
+            <div class="heading-container">
+                <h1>{{ page.festival_heading }}</h1>
+            </div>
+            <div class="festival-content">
+            </div>
+            <div class="span-navy">
+                <span>
+                    {{ page.festival_button }} <i class="fas fa-chevron-right"></i>
+                </span>
+            </div>
         </div>
+    </a>
     </div>
     <div class="workshops-section box-shadow">
-        {% image page.workshops_cover original as workshops_photo %}
+        {% image page.workshops_cover fill-500x500 as workshops_photo %}
+    <a href="{{ page.workshops_page.slug }}">
         <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.6)), url({{ workshops_photo.url }}) center center;">
             <div class="music-hero-overlay"></div>
-                <div class="heading-container">
-                    <h1>{{ page.workshops_heading }}</h1>
-                </div>
-                <div class="support-content">
-                    
-                </div>
-            <span class="span-navy">{{ page.workshops_button }} <i class="fas fa-chevron-right"></i></span>
+            <div class="heading-container">
+                <h1>{{ page.workshops_heading }}</h1>
+            </div>
+            <div class="support-content">
+            </div>
+            <div class="span-navy">
+                <span>
+                    {{ page.workshops_button }} <i class="fas fa-chevron-right"></i>
+                </span>
+            </div>
         </div>
+    </a>
     </div>
     <div id="contact-us" class="contact-section box-shadow">
         <div class="contact-container">
