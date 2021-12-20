@@ -179,6 +179,8 @@ MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = "Newpark Academy of Music"
 
+PASSWORD_REQUIRED_TEMPLATE = "login.html"
+
 # Search
 # https://docs.wagtail.io/en/stable/topics/search/backends.html
 WAGTAILSEARCH_BACKENDS = {

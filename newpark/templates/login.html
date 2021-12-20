@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <div class="content-section">
+        <div class="login-page">
+            <div class="form box-shadow">
+                <div class="img-container">
+                    <img src="{% static 'svg/newpark-round-white-outline.svg' %}" alt="Newpark Academy of Music" height="100">
+                </div>
+                <h3>Remote Lessons</h3>
+                <form class="login-form" action="{{ action_url }}" method="POST">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div>
+                        {{ form.password.errors }}
+                        {{ form.password.label_tag }}
+                        {{ form.password }}
+                    </div>
+                    {% for field in form.hidden_fields %}
+                        {{ field }}
+                    {% endfor %}
+                    <div class="btn-container">
+                        <input class="btn btn-white btn-lg btn-block" type="submit" value="Continue" />
+                        <a href="{{ page.get_parent.url }}" class="btn btn-white btn-lg btn-block"><i class="fas fa-chevron-left"></i> Back</a>
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
