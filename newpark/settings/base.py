@@ -11,12 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import environ
 import os
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-import environ
 # Initialise environment variables
 env = environ.Env()
 environ.Env.read_env()
@@ -56,10 +56,13 @@ INSTALLED_APPS = [
     'wagtail_color_panel',
     'wagtail.contrib.modeladmin',
     'wagtail_icon_picker',
+    'wagtailseo',
+    'wagtail.contrib.postgres_search',
 
     'modelcluster',
     'taggit',
     'ls.joyous',
+    
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -110,10 +113,23 @@ WSGI_APPLICATION = 'newpark.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'), 
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': 'localhost',  
+        'PORT': '',
     }
 }
 
@@ -185,7 +201,7 @@ PASSWORD_REQUIRED_TEMPLATE = "login.html"
 # https://docs.wagtail.io/en/stable/topics/search/backends.html
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.search.backends.database',
+        'BACKEND': 'wagtail.contrib.postgres_search.backend',
     }
 }
 

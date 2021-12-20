@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-from wagtail.search import index
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import ( 
@@ -13,6 +12,8 @@ from wagtail.admin.edit_handlers import (
 from wagtail.images.models import Image
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
+
+from wagtailseo.models import SeoMixin
 
 from newpark.streams import blocks
 from remote import services
@@ -102,7 +103,7 @@ class SiteSettings(BaseSetting):
             ], classname='col12'),
         ], heading="Privacy Policy"),
     ]
-class HomePage(Page):
+class HomePage(SeoMixin, Page):
     #Video Section
     video_cover = models.ForeignKey(
         'wagtailimages.Image',
@@ -303,12 +304,6 @@ class HomePage(Page):
         verbose_name='Button Link'
     )
 
-    # Search
-    search_fields = Page.search_fields + [
-        index.SearchField('about_heading'),
-        index.SearchField('about_body'),
-    ]
-
     # Content Panels
     content_panels = Page.content_panels + [
         MultiFieldPanel([
@@ -382,6 +377,9 @@ class HomePage(Page):
             FieldPanel('workshops_button', heading='Workshops Button Text'),
         ], heading="Home - Music Section"),
     ]
+
+    promote_panels = SeoMixin.seo_panels
+
 
     def get_context(self, request, *args, **kwargs):
         # Add Gateway videos to context

@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-from wagtail.search import index
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, FieldRowPanel
@@ -38,11 +37,6 @@ class RemoteIndexPage(Page):
         blank=True,
     )
 
-    search_fields = Page.search_fields + [
-        index.SearchField('box'),
-        index.SearchField('body'),
-    ]
-
     content_panels = Page.content_panels + [
         FieldPanel('body', heading='Heading Blurb'),
         ImageChooserPanel('cover', heading='Cover Image',),
@@ -71,8 +65,8 @@ class RemoteVideo(Page):
         (4, 'Pro Tip Videos')
         ),
         default=1,
-        null=False, 
-        blank=False,
+        null=True, 
+        blank=True,
     )
 
     singlebody = StreamField(
@@ -82,11 +76,6 @@ class RemoteVideo(Page):
         null=True,
         blank=True,
     )
-
-    search_fields = Page.search_fields + [
-        index.SearchField('singlebody'),
-        index.SearchField('heading'),
-    ]
 
     content_panels = Page.content_panels + [
         FieldPanel('heading', heading='Heading Blurb'),
@@ -133,11 +122,6 @@ class Remote(Page):
         null=True,
         blank=True,
     )
-
-    search_fields = Page.search_fields + [
-        index.SearchField('singlebody'),
-        index.SearchField('heading'),
-    ]
 
     content_panels = Page.content_panels + [
         FieldPanel('heading', heading='Heading Blurb'),

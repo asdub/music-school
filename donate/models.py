@@ -1,6 +1,5 @@
 from django.db import models
 
-from wagtail.search import index
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel
@@ -13,13 +12,13 @@ from newpark.streams import blocks
 
 class Donation(models.Model):
     """ Model to store donations made via Stripe"""
-    donation_id = models.CharField(max_length=32, null=False, editable=False)
+    donation_id = models.CharField(max_length=32, null=True, editable=False)
     date = models.DateTimeField(null=True, editable=False)
-    status = models.CharField(max_length=32, null=False, editable=False)
-    customer_name = models.CharField(max_length=50, null=False, blank=False, editable=False)
-    customer_email = models.EmailField(max_length=254, null=False, blank=False, editable=False)
-    donation_amount = models.CharField(max_length=12, null=False, default=0, editable=False)
-    receipt_url = models.URLField(max_length=200, null=False, blank=False, editable=False)
+    status = models.CharField(max_length=32, null=True, editable=False)
+    customer_name = models.CharField(max_length=50, null=True, blank=False, editable=False)
+    customer_email = models.EmailField(max_length=254, null=True, blank=False, editable=False)
+    donation_amount = models.CharField(max_length=12, null=True, default=0, editable=False)
+    receipt_url = models.URLField(max_length=200, null=True, blank=False, editable=False)
 
 
 class DonateIndexPage(Page):

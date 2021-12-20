@@ -1,6 +1,5 @@
 from django.db import models
 
-from wagtail.search import index
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, FieldRowPanel
@@ -38,11 +37,6 @@ class MusicIndexPage(Page):
         null=True,
         blank=True,
     )
-
-    search_fields = Page.search_fields + [
-        index.SearchField('box'),
-        index.SearchField('body'),
-    ]
 
     content_panels = [
         FieldPanel('title'),
@@ -98,12 +92,6 @@ class Music(Page):
         blank=True,
     )
 
-    search_fields = Page.search_fields + [
-        index.SearchField('heading'),
-        index.SearchField('body'),
-        index.SearchField('singlebody'),
-    ]
-
     content_panels =  Page.content_panels + [
         FieldPanel('heading', heading='Heading Blurb'),
         ImageChooserPanel('cover', heading='Cover Image',),
@@ -131,11 +119,6 @@ class MusicGrid(Page):
         null=True,
         blank=True,
     )
-
-    search_fields = Page.search_fields + [
-        index.SearchField('heading'),
-        index.SearchField('grid'),
-    ]
 
     content_panels =  Page.content_panels + [
         FieldPanel('heading', heading='Heading Blurb'),

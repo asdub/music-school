@@ -1,6 +1,5 @@
 from django.db import models
 
-from wagtail.search import index
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel
@@ -28,11 +27,6 @@ class AboutIndexPage(Page):
         null=True,
         blank=True,
     )
-
-    search_fields = Page.search_fields + [
-        index.SearchField('box'),
-        index.SearchField('body'),
-    ]
 
     content_panels = [
         FieldPanel('title'),
@@ -92,12 +86,6 @@ class About(Page):
         blank=True,
     )
 
-    search_fields = Page.search_fields + [
-        index.SearchField('heading'),
-        index.SearchField('body'),
-        index.SearchField('singlebody'),
-    ]
-
     content_panels =  Page.content_panels + [
         FieldPanel('heading', heading='Page Intro Text'),
         ImageChooserPanel('cover', heading='Cover Image',),
@@ -127,10 +115,6 @@ class AboutLocationPage(Page):
         null=True,
         blank=True,
     )
-
-    search_fields = Page.search_fields + [
-        index.SearchField('heading'),
-    ]
 
     content_panels =  Page.content_panels + [
         FieldPanel('heading', heading='Page Intro Text'),
