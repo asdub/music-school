@@ -45,10 +45,18 @@ class About(Page):
         related_name='+'
     )
     color = ColorField(blank=True, null=True)
-    heading = models.TextField(blank=True, null=True)
+    heading = RichTextField(blank=True, null=True)
     standard = StreamField(
         [
             ('StandardBox', blocks.StandardBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
+    introbox = StreamField(
+        [
+            ('IntroBox', blocks.SingleBlock()),
         ],
         null=True,
         blank=True,
@@ -65,6 +73,14 @@ class About(Page):
     singlebody = StreamField(
         [
             ('SingleBox', blocks.SingleBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
+    box = StreamField(
+        [
+            ('NavBox', blocks.NavBlock()),
         ],
         null=True,
         blank=True,
@@ -91,9 +107,11 @@ class About(Page):
         ImageChooserPanel('cover', heading='Cover Image',),
         NativeColorPanel('color', heading='Color Accent'),
         StreamFieldPanel('buttons', heading='Top Navigation Button Settings',),
+        StreamFieldPanel('introbox', heading='Top Boxes',),
+        StreamFieldPanel('box', heading='Navigation Boxes',),
+        StreamFieldPanel('singlebody', heading='Single Item Content',),
         StreamFieldPanel('standard', heading='Standard Content',),
         StreamFieldPanel('body', heading='List Content',),
-        StreamFieldPanel('singlebody', heading='Single Item Content',),
         StreamFieldPanel('table', heading='Table Content',),
     ]
 

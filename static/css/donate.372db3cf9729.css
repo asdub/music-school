@@ -1,0 +1,346 @@
+/* Donate App CSS */
+
+/* About Templates CSS */
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 82px auto minmax(400px, auto) auto;
+    grid-template-areas:
+        " . "
+        "heading"
+        "content"
+        "nav";
+    max-width: 1400px;
+    margin: auto;
+}
+
+.donate-heading.heading-section {
+    background: none;
+}
+
+.heading-section {
+    grid-area: heading;
+}
+
+.content-section {
+    grid-area: content;
+}
+
+.end-nav-container,
+.about-nav-container {
+    grid-area: nav;
+}
+
+.heading-section {
+    background: #fafafa;
+    margin: 1rem 1rem 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+.heading-main-content {
+    padding: 1rem;
+}
+
+.heading-cover {
+    display: none;
+}
+
+.content-section {
+    margin: 1rem 1rem 0.5rem 1rem;
+}
+
+.block-NavBox {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: 200px;
+}
+
+.nav-box-wrapper {
+    align-items: center;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    /* Safari */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0)
+}
+
+
+.nav-box-container {
+    border-radius: 3px;
+    background-size: cover !important;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    z-index: -2;
+}
+
+.block-NavBox > a:hover > .nav-box-wrapper > .nav-box-container,
+.block-NavBox > a:focus > .nav-box-wrapper > .nav-box-container {
+    transform: scale(1.08);
+}
+
+.nav-box-overlay {
+    border-radius: 3px;
+    opacity: .75;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.nav-box h3 {
+    color: white;
+}
+
+/* Individual Pages */
+.about-heading-section.heading-section {
+    background: none;
+}
+
+.block-ListBox {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+    margin: auto;
+}
+
+.block-SingleBox {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+    margin: auto;
+    max-width: 800px;
+}
+
+.about-box-wrapper {
+    padding: 1rem;
+    border-radius: 3px;
+    height: fit-content;
+}
+
+.about-box-wrapper > p > a {
+    color: white;
+    text-decoration: underline;
+}
+
+.about-nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 1rem 1rem 0.5rem auto;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container span {
+    font-size: 85%;
+    font-weight: 100;
+}
+
+.about-box > p > a {
+    color: white;
+    text-decoration: underline;
+}
+
+.btn-donate {
+   background: #ededed;
+   border: 1px solid #bbbbbb;
+   transition: all 0.3s ease-out;
+}
+
+.btn-donate:hover {
+    border: 1px solid #072660;
+}
+
+.btn-donate:focus,
+.btn-donate-active {
+    background: #072660;
+    color: white;
+}
+
+#payment-form {
+    background: rgb(250 250 250 / 71%);
+    padding: 1rem;
+}
+
+.support-content {
+    margin: auto;
+}
+
+.support-form-container span {
+    color: #072660;
+    font-weight: 600;
+}
+
+.support-form-container input {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #5c5c5c;
+    width: 100%;
+    min-height: 32px;
+    margin: 0.25rem 0;
+    background: #fafafa;
+    color: #5c5c5c;
+    font-size: 90%;
+    padding: 0.25rem;
+}
+#payment-form > div > div.support-form-inputs > button {
+    margin: 1rem 0 0 0;
+}
+
+.support-form-container input:focus {
+    outline: none;
+    border-color: #072660;
+    border-width: 2px;
+}
+
+#support-amount {
+    max-width: 100px;
+    font-size: 100%;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    border-radius: 2rem;
+    padding: 0.15em 0.8rem;
+    background: #072660;
+    color: white;
+    border: 0;
+    transition: top 1s ease-in-out;
+}
+
+.support-form-options-container {
+    margin: 1rem 0 0 0;
+}
+
+.support-form-options-container > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.support-donation-levels-wrap > li {
+    display: inline-block;
+    padding: 0.25rem 0;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+#card-element {
+    border-bottom: 1px solid #072660;
+    padding: 0.45rem 0.25rem;
+    background: #fafafa;
+    margin: 0.25rem 0;
+}
+
+#card-element:hover,
+#card-element:focus,
+#card-element:active {
+    outline: none;
+    border-color: #072660;
+    border-width: 2px;
+}
+
+#card-element > div > iframe {
+    float: revert;
+}
+
+.alert-danger {
+    font-size: 70%;
+    font-weight: 600;
+    padding: 0.1rem 0.25rem;
+}
+
+.fas.fa-circle-notch.fa-spin {
+    display: none;
+}
+
+.fas.fa-circle-notch.fa-spin.visable {
+    display: inline-block;
+}
+
+.charge-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.charge-success > i {
+    font-size: 3rem;
+    color: #076008;
+    padding: 1rem;
+}
+
+@media only screen and (min-width: 768px) { 
+    .heading-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: auto;
+        grid-template-areas:
+            "head head image";
+    }
+
+    .heading-main-content {
+        grid-area: head;
+        padding: 1rem 2rem;
+    }
+
+    .heading-cover {
+        grid-area: image;
+        display: block;
+        background-size: contain !important;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        margin: 0.5rem;
+        image-rendering: -moz-crisp-edges; /* Firefox */
+        image-rendering: -o-crisp-edges; /* Opera */
+        image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+    }
+
+    .about-box-wrapper {
+        padding: 1rem 2rem;
+    }
+    
+    .location-map-container {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+    }
+
+}
+
+@media only screen and (min-width: 992px) { 
+    .location-map-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1rem;
+    }
+
+    .map-container-content {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}

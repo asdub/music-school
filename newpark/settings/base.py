@@ -108,7 +108,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'newpark.wsgi.application'
-
+SECRET_KEY =  env('DJ_SECRET')
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

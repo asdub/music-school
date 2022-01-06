@@ -104,8 +104,34 @@ class SiteSettings(BaseSetting):
         ], heading="Privacy Policy"),
     ]
 class HomePage(SeoMixin, Page):
+    #Hero Section
+    hero_cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    hero_heading = models.CharField(max_length=250, null=True)
+    hero_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Button Link'
+    )
+    hero_button = models.CharField(max_length=100, null=True)
+
     #Video Section
     video_cover = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    video_background = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
@@ -307,25 +333,11 @@ class HomePage(SeoMixin, Page):
     # Content Panels
     content_panels = Page.content_panels + [
         MultiFieldPanel([
-            ImageChooserPanel('video_cover', heading='Video Poster',),
-            FieldPanel('video_heading', heading='Video Section Heading',),
-            FieldPanel('video_body', heading='Video Content'),
-            PageChooserPanel('video_page'),
-            FieldPanel('video_button', heading='Video Button Text'),
-        ], heading="Home - Hero Video"),
-        MultiFieldPanel([
-            ImageChooserPanel('about_cover', heading='Cover Image',),
-            FieldPanel('about_heading', heading='Section Heading',),
-            FieldPanel('about_body', heading='Content'),
-            PageChooserPanel('about_page'),
-            FieldPanel('about_button', heading='Button Text'),
-        ], heading="Home - About Section"),
-        MultiFieldPanel([
-            ImageChooserPanel('music_cover', heading='Cover Image',),
-            FieldPanel('music_heading', heading='Section Heading',),
-            PageChooserPanel('music_page'),
-            FieldPanel('music_button', heading='Button Text'),
-        ], heading="Home - Music Section"),
+            ImageChooserPanel('hero_cover', heading='Hero Cover',),
+            FieldPanel('hero_heading', heading='Hero Heading',),
+            PageChooserPanel('hero_page'),
+            FieldPanel('hero_button', heading='Hero Button Text'),
+        ], heading="Home - Hero"),
         MultiFieldPanel([
             FieldRowPanel([
                 FieldPanel('pathway1', heading='Button Text', classname="col12 btn"),
@@ -365,17 +377,38 @@ class HomePage(SeoMixin, Page):
             ], classname="col6"),
         ], heading="Home - Music Pathways"),
         MultiFieldPanel([
+            ImageChooserPanel('music_cover', heading='Cover Image',),
+            FieldPanel('music_heading', heading='Section Heading',),
+            PageChooserPanel('music_page'),
+            FieldPanel('music_button', heading='Button Text'),
+        ], heading="Home - Music Section"),
+        MultiFieldPanel([
             ImageChooserPanel('festival_cover', heading='Festival Cover Image',),
             FieldPanel('festival_heading', heading='Festival Section Heading',),
             PageChooserPanel('festival_page'),
             FieldPanel('festival_button', heading='Festival Button Text'),
-        ], heading="Home - Music Section"),
+        ], heading="Home - Festival Section"),
         MultiFieldPanel([
             ImageChooserPanel('workshops_cover', heading='Workshops Cover Image',),
             FieldPanel('workshops_heading', heading='Workshops Section Heading',),
             PageChooserPanel('workshops_page'),
             FieldPanel('workshops_button', heading='Workshops Button Text'),
-        ], heading="Home - Music Section"),
+        ], heading="Home - Workshop Section"),
+        MultiFieldPanel([
+            ImageChooserPanel('video_cover', heading='Video Poster',),
+            ImageChooserPanel('video_background', heading='Video Background',),
+            FieldPanel('video_heading', heading='Video Section Heading',),
+            FieldPanel('video_body', heading='Video Content'),
+            PageChooserPanel('video_page'),
+            FieldPanel('video_button', heading='Video Button Text'),
+        ], heading="Home - Video"),
+        MultiFieldPanel([
+            ImageChooserPanel('about_cover', heading='Cover Image',),
+            FieldPanel('about_heading', heading='Section Heading',),
+            FieldPanel('about_body', heading='Content'),
+            PageChooserPanel('about_page'),
+            FieldPanel('about_button', heading='Button Text'),
+        ], heading="Home - About Section"),
     ]
 
     promote_panels = SeoMixin.seo_panels

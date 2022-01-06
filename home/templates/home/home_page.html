@@ -10,47 +10,15 @@
 {% endblock extra_css %}
 
 {% block content %}
-<main>
-    <div class="hero-video-section">
-        <div class="hero-video-content">
-            <div class="hero-video-head">
-                <h1>{{ page.video_heading }}</h1>
-            </div>
-            <div class="hero-video-text">
-                {{ page.video_body|richtext }}
-            </div>
-            <div class="hero-video-nav">
-                <a class="btn btn-white btn-lg btn-block" href="{{ page.video_page.slug }}">
-                    {{ page.video_button }} 
-                    <i class="fas fa-chevron-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="video-container">
-            {% for video in gateway_video %}
-                {% image page.video_cover original as video_poster %}
-                <video src="{{ video.url }}" controls="" controlslist="nodownload" poster="{{ video_poster.url }}" loop="" preload="none" playsinline="" data-origwidth="0" data-origheight="0">
-                </video>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="about-section">
-        {% image page.about_cover fill-1000x1000 as about_photo %}
-        <div class="about-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.7)), url({{ about_photo.url }}) center center;">
-        </div>
-        <div class="about-content-container content-container box-shadow">
-            <h1>{{ page.about_heading }}</h1>
-            <div class="section-text-content">
-                {{ page.about_body|richtext }}
-            </div>
-            <a class="btn btn-navy btn-lg btn-block" href="{{ page.about_page.slug }}">{{ page.about_button }} <i class="fas fa-chevron-right"></i></a>
-        </div>
-    </div>
-    <div class="music-section box-shadow">
-        {% image page.music_cover fill-1000x1000 as music_photo %}
-            <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3)), url({{ music_photo.url }}) center center;">
-                <div class="music-hero-overlay">
-                <div class="pathway">
+ {% image page.hero_cover fill-1900x1000 as hero_photo %}
+<div class="hero music-section" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.5)), url({{ hero_photo.url }}) center center;">
+    <div class="hero-img music-hero">
+        <div class="music-hero-overlay">
+            <div class="hero-container">
+                <div class="heading-container">
+                    <h1>{{ page.hero_heading }}</h1>
+                </div>
+                <div class="hero-pathway pathway">
                     <div class="path-container">
                             <a class="btn-path" id="a1" href="{{ page.pathway1_page.url }}">{{ page.pathway1 }} <i class="fas fa-chevron-right"></i></a>
                     </div>
@@ -69,24 +37,51 @@
                         </div>
                     </div>
                     <div class="path-container">
-                        <a class="btn-path" href="{{ page.pathway8_page.url }}">{{ page.pathway8 }} <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                    <div class="path-container">
-                        <a class="btn-path" id="d" href="{{ page.pathway9_page.url }}">{{ page.pathway9 }} <i class="fas fa-chevron-right"></i></a>
+                        <a class="btn-path" id="d" href="{{ page.pathway9_page.url }}">{{ page.pathway9 }} <i class="fas fa-chevron-down"></i></a>
+                        <div class="path-container-inner">
+                            <a class="btn-path-inner" id="d1" href="{{ page.pathway8_page.url }}">{{ page.pathway8 }} <i class="fas fa-chevron-right"></i></a>
+                        </div>
                     </div>
                 </div>
-                </div>
+            </div>
+        </div>
+        <div class="hero-banner-container">
+            <span>Pathways through Newpark</span>
+        </div>
+        <div class="hero-nav-container">
+            <div class="span-alt">
+                <a href="#music">
+                    <span>
+                        Explore Newpark <i class="fas fa-chevron-down"></i>
+                    </span>
+                </a>
+            </div>
+            <div class="span-navy">
+                <a href="{{ page.hero_page.slug }}">
+                    <span>
+                        {{ page.hero_button }} <i class="fas fa-chevron-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<main id="music">
+    <div class="page-music music-section box-shadow">
+        {% image page.music_cover fill-1000x1000 as music_photo %}
+        <a href="{{ page.music_page.slug }}">
+            <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.3)), url({{ music_photo.url }}) center center;">
+                <div class="music-hero-overlay"></div>
                 <div class="heading-container">
                     <h1>{{ page.music_heading }}</h1>
                 </div>
                 <div class="span-navy">
-                    <a href="{{ page.music_page.slug }}">
-                        <span>
-                            {{ page.music_button }} <i class="fas fa-chevron-right"></i>
-                        </span>
-                    </a>
+                    <span>
+                        {{ page.music_button }} <i class="fas fa-chevron-right"></i>
+                    </span>
                 </div>
             </div>
+        </a>
     </div>
     <div class="festival-section box-shadow">
         {% image page.festival_cover fill-500x500 as festival_photo %}
@@ -107,7 +102,7 @@
     </a>
     </div>
     <div class="workshops-section box-shadow">
-        {% image page.workshops_cover fill-500x500 as workshops_photo %}
+    {% image page.workshops_cover fill-500x500 as workshops_photo %}
     <a href="{{ page.workshops_page.slug }}">
         <div class="music-hero" style="background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(7, 38, 96, 0.6)), url({{ workshops_photo.url }}) center center;">
             <div class="music-hero-overlay"></div>
@@ -124,6 +119,53 @@
         </div>
     </a>
     </div>
+    <div class="about-section">
+        {% image page.about_cover fill-1000x1000 as about_photo %}
+        <a href="{{ page.about_page.slug }}">
+            <div class="about-hero" style="background: linear-gradient( rgba(87, 87, 87, 0.5), rgba(7, 38, 96, 0.7)), url({{ about_photo.url }}) center center;">
+                <div class="about-content-container content-container">
+                    <div class="heading-container-relative">
+                        <h1>{{ page.about_heading }}</h1>
+                    </div>
+                    <div class="section-text-content">
+                        {{ page.about_body|richtext }}
+                    </div>
+                    <div class="span-navy">
+                        <span>
+                            {{ page.about_button }} <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="hero-video-section">
+        {% image page.video_background fill-800x800 as video_background %}
+        <a href="{{ page.video_page.slug }}">
+            <div class="music-hero" style="background: linear-gradient( rgba(87, 87, 87, 0.5), rgba(7, 38, 96, 0.6)), url({{ video_background.url }}) center center;">
+                <div class="about-content-container content-container">
+                    <div class="heading-container-relative">
+                        <h1>{{ page.video_heading }}</h1>
+                    </div>
+                    <div class="video-container">
+                        {% for video in gateway_video %}
+                            {% image page.video_cover original as video_poster %}
+                            <video src="{{ video.url }}" controls="" controlslist="nodownload" poster="{{ video_poster.url }}" loop="" preload="none" playsinline="" data-origwidth="0" data-origheight="0">
+                            </video>
+                        {% endfor %}
+                    </div>
+                    <div class="section-text-content">
+                        {{ page.video_body|richtext }}
+                    </div>
+                    <div class="span-navy">
+                        <span>
+                            {{ page.video_button }} <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
     <div id="contact-us" class="contact-section box-shadow">
         <div class="contact-container">
             <div class="heading-container-blk">
@@ -135,12 +177,11 @@
         </div>
         <div class="map-container">
             <div class="map-container-content">
-                <iframe loading="lazy" src="{{  settings.home.SiteSettings.googlemaps_embed }}" width="600" height="400" frameborder="0" style="border: 0px;height: 541.333px;" allowfullscreen="" aria-hidden="false" tabindex="0" data-rocket-lazyload="fitvidscompatible" data-origwidth="600" data-origheight="400" class="lazyloaded" data-ll-status="loaded"></iframe>
+                <iframe title="Google Maps" loading="lazy" src="{{  settings.home.SiteSettings.googlemaps_embed }}" width="600" height="400" frameborder="0" style="border: 0px;height: 541.333px;" allowfullscreen="" aria-hidden="false" tabindex="0" data-rocket-lazyload="fitvidscompatible" data-origwidth="600" data-origheight="400" class="lazyloaded" data-ll-status="loaded"></iframe>
             </div>
         </div>
     </div>
     <div class="social-section">
-        
     </div>
 </main>
 {% endblock content %}
@@ -149,5 +190,6 @@
 {% block extra_js %}
     <script type="text/javascript" src="{% static 'js/leader-line.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/home_newpark.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/home_helper.js' %}"></script>
 {% endblock %}
 

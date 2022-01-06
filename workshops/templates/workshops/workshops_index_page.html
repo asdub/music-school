@@ -25,14 +25,18 @@
             </div>
         </div>
         <div class="box-container">
+	{% if page.box1 %}
             <div class="box box-shadow">
                 <i class="{{ page.box1_icon}}"></i>
                 {{ page.box1|richtext }}
             </div>
+	{% endif %}
+	{% if page.box2 %}
             <div class="box box-shadow">
                 <i class="{{ page.box2_icon}}"></i>
                 {{ page.box2|richtext }}
             </div>
+	{% endif %}
         </div>
     </div>
     <div class="content-section">

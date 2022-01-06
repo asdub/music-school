@@ -25,8 +25,8 @@ window.addEventListener('load', (event) => {
     endPostion = 'left';
   } else {
     slineActive = 0;
-    startPosition = 'bottom';
-    endPostion = 'top';
+    startPosition = 'top';
+    endPostion = 'bottom';
   };
 
   // Progression Line
@@ -44,7 +44,9 @@ window.addEventListener('load', (event) => {
       startPlug: 'behind',
       endPlug: 'behind',
       color: 'white',
-      path: 'grid',
+      path: 'straight',
+      startSocket: 'right',
+      endSocket: 'top',
     });
 
     sline = new LeaderLine(document.getElementById('a3'),  document.getElementById('c'));
@@ -53,6 +55,17 @@ window.addEventListener('load', (event) => {
       endPlug: 'behind',
       color: 'white',
     });
+
+    fline = new LeaderLine(document.getElementById('d'),  document.getElementById('d1'));
+    fline.setOptions({
+      startPlug: 'behind',
+      endPlug: 'behind',
+      color: 'white',
+      path: 'straight',
+      startSocket: 'bottom',
+      endSocket: 'top',
+    });
+
   }
 
   function lineupdate() {
@@ -61,6 +74,7 @@ window.addEventListener('load', (event) => {
     if (slineActive == 1) {
       bline.position();
       sline.position();
+      fline.position();
     }
   }
 
@@ -97,13 +111,15 @@ window.addEventListener('load', (event) => {
             if (slineActive == 1) {
               bline.show('draw', {duration: 3100});
               sline.show('draw', {duration: 3200});
+              fline.show('draw', {duration: 3300});
             }
           }, );
       } else {
           line.hide('fade');
           if (slineActive == 1) {
-            bline.hide('fade');
+            fline.hide('fade');
             sline.hide('fade');
+            bline.hide('fade');
           }
           overlay.classList.remove('music-hero-active');
           style.innerHTML = '';

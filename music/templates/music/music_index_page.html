@@ -28,7 +28,7 @@
     </div>
     <div class="content-section">
         {% if page.enable_hero %}
-            {% image page.hero original as hero_image %}
+            {% image page.hero fill-1900x600 as hero_image %}
                 {% if page.enable_pathway %}
                 <div class="music-hero box-shadow" style="background: linear-gradient(rgba(7, 38, 96, 0.8), rgba(255, 255, 255, 0.8)), url({{ hero_image.url }}) center center;">
             {% else %}
@@ -44,27 +44,29 @@
                     <div class="pathway-container">
                         <div class="pathway music">
                             <div class="path-container">
-                                <a class="btn-path" id="a1" href="{{ page.about_page }}">Newpark Nippers <i class="fas fa-chevron-right"></i></a>
+                                <a class="btn-path" id="a1" href="{{ page.get_parent.specific.pathway1_page.url }}">{{ page.get_parent.specific.pathway1 }} <i class="fas fa-chevron-right"></i></a>
                             </div>
                             <div class="path-container">
-                                <a class="btn-path" href="{{ page.about_page }}">Gateway to Music <i class="fas fa-chevron-right"></i></a>
+                                <a class="btn-path" href="{{ page.get_parent.specific.pathway2_page.url }}">{{ page.get_parent.specific.pathway2 }} <i class="fas fa-chevron-right"></i></a>
                             </div>
                             <div class="path-container">
-                                <a class="btn-path" href="{{ page.about_page }}">Gateway to Instruments <i class="fas fa-chevron-right"></i></a>
+                                <a class="btn-path" href="{{ page.get_parent.specific.pathway3_page.url }}">{{ page.get_parent.specific.pathway3 }} <i class="fas fa-chevron-right"></i></a>
                             </div>
                             <div class="path-container">
-                                <a class="btn-path" id="a2" href="{{ page.about_page }}">Individual Lessons <i class="fas fa-chevron-down"></i></a>
+                                <a class="btn-path" id="a2" href="{{ page.get_parent.specific.pathway4_page.url }}">{{ page.get_parent.specific.pathway4 }} <i class="fas fa-chevron-down"></i></a>
                             <div class="path-container-inner">
-                                <a class="btn-path-inner" id="a3" href="{{ page.about_page }}">Ensemble <i class="fas fa-chevron-right"></i></a>
-                                <a class="btn-path-inner" id="b" href="{{ page.about_page }}">Musicianship <i class="fas fa-chevron-right"></i></a>
-                                <a class="btn-path-inner" id="c" href="{{ page.about_page }}">Workshops <i class="fas fa-chevron-right"></i></a>
+                                <a class="btn-path-inner" id="a3" href="{{ page.get_parent.specific.pathway5_page.url }}">{{ page.get_parent.specific.pathway5 }} <i class="fas fa-chevron-right"></i></a>
+                                <a class="btn-path-inner" id="b" href="{{ page.get_parent.specific.pathway6_page.url }}">{{ page.get_parent.specific.pathway6 }} <i class="fas fa-chevron-right"></i></a>
+                                <a class="btn-path-inner" id="c" href="{{ page.get_parent.specific.pathway7page.url }}">{{ page.get_parent.specific.pathway7 }} <i class="fas fa-chevron-right"></i></a>
                             </div>
+                            </div>
+                            <div class="path-container" style="margin-top: -1rem;">
+                                <div class="path-container-inner">
+                                    <a class="btn-path-inner" id="d1" href="{{ page.get_parent.specific.pathway8_page.url }}">{{ page.get_parent.specific.pathway8 }} <i class="fas fa-chevron-right"></i></a>
+                                </div>
                             </div>
                             <div class="path-container">
-                            <a class="btn-path" href="{{ page.about_page }}">Jazz Improvisation <i class="fas fa-chevron-right"></i></a>
-                            </div>
-                            <div class="path-container">
-                            <a class="btn-path" id="d" href="{{ page.about_page }}">Micro & Diploma Courses <i class="fas fa-chevron-right"></i></a>
+                            <a class="btn-path" id="d" href="{{ page.get_parent.specific.pathway9_page.url }}">{{ page.get_parent.specific.pathway9 }} <i class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </div>

@@ -61,7 +61,7 @@ class Music(Page):
         related_name='+'
     )
     color = ColorField(blank=True, null=True)
-    heading = models.TextField(null=True)
+    heading = RichTextField(blank=True, null=True)
     buttons = StreamField(
         [
             ('Buttons', blocks.ButtonBlock()),

@@ -18,7 +18,7 @@
                     <h1>{{ page.title }}</h1>
                 </div>
                 <div class="heading-blurb">
-                    {{ page.heading }}
+                    {{ page.heading|richtext }}
                 </div>
             </div>
             {% image page.cover original as cover %}
@@ -32,15 +32,27 @@
             {% include_block page.buttons %}
         {% endif %}
         <div class="box-container">
-            {% if page.standard %}
-                {% include_block page.standard %}
+            {% if page.introbox %}
+                {% include_block page.introbox %}
             {% endif %}
-            {% if page.body %}
-                {% include_block page.body %}
+
+            {% if page.box %}
+                {% include_block page.box %}
             {% endif %}
+
             {% if page.singlebody %}
                 {% include_block page.singlebody %}
             {% endif %}
+
+            {% if page.standard %}
+
+                {% include_block page.standard %}
+            {% endif %}
+            
+            {% if page.body %}
+                {% include_block page.body %}
+            {% endif %}
+            
             {% if page.table %}
                 {% include_block page.table %}
             {% endif %}

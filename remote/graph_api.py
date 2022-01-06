@@ -11,7 +11,7 @@ import msal
 # Optional logging
 # logging.basicConfig(level=logging.DEBUG)
 def one_drive(request):
-    config = json.load(open('onedrive_parameters.json'))
+    config = json.load(open('/var/www/newpark/onedrive_parameters.json'))
 
     # Create a preferably long-lived app instance which maintains a token cache.
     app = msal.ConfidentialClientApplication(

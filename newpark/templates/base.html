@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
+        {% include "wagtailseo/meta.html" %}
         <meta charset="utf-8" />
         <title>
             {% block title %}
@@ -24,6 +25,10 @@
         </title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/newpark.css' %}">
@@ -38,9 +43,9 @@
         <nav class="navbar fixed-top navbar-expand-lg bg-nav">
             <div class="container-fluid nav-container">
                 <a class="navbar-brand" href="{{ request.scheme }}://{{ request.get_host }}">
-                    <img src="{% static 'svg/newpark-logo.svg' %}" alt="Newpark Academy of Music" height="40">
+                    <img src="{% static 'svg/newpark-logo.svg' %}" alt="Newpark Academy of Music" height="42">
                 </a>
-                <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+                <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-label="Menu">
                     <span class="custom-toggler navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="main_nav">
@@ -256,19 +261,19 @@
                 </div>
                 <div class="footer-social">
                         <div class="social-items-container">
-                            <a target="”_blank”" href="{{ settings.home.SiteSettings.facebook }}">
+                            <a target="_blank" aria-label="Facebook" href="{{ settings.home.SiteSettings.facebook }}">
                                 <i class="fab fa-facebook-square newpark-social-icons" aria-hidden="true"></i>
                                 <span>newparkmusic</span>
                             </a>
-                            <a target="”_blank”" href="{{ settings.home.SiteSettings.twitter }}">
+                            <a target="_blank" aria-label="Twitter" href="{{ settings.home.SiteSettings.twitter }}">
                                 <i class="fab fa-twitter newpark-social-icons" aria-hidden="true"></i>
                                 <span>@NewparkMusic</span>
                             </a>
-                            <a target="”_blank”" href="{{ settings.home.SiteSettings.instagram }}">
+                            <a target="_blank" aria-label="Instagram" href="{{ settings.home.SiteSettings.instagram }}">
                                 <i class="fab fa-instagram newpark-social-icons" aria-hidden="true"></i>
                                 <span>@newparkmusic</span>
                             </a>
-                            <a target="”_blank”" href="{{ settings.home.SiteSettings.spotify }}">
+                            <a target="_blank" aria-label="Spotify" href="{{ settings.home.SiteSettings.spotify }}">
                                 <i class="fab fa-spotify newpark-social-icons" aria-hidden="true"></i>
                                 <span>@newparkmusic</span>
                             </a>
@@ -290,5 +295,6 @@
         {% block pl_js %}
           
         {% endblock %}
+        {% include "wagtailseo/struct_data.html" %}
     </body>
 </html>
